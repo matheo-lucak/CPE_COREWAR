@@ -1,8 +1,8 @@
 ##
 ## EPITECH PROJECT, 2019
-## task01
+## CPE_corewar_2019
 ## File description:
-## task01
+## Compiles the corewar and asm programs
 ##
 
 CFLAGS			=	-W -Wall -Wextra
