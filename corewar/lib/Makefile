@@ -11,7 +11,28 @@ CPPFLAGS	=	-I../include
 
 CRI_FLAGS	=	-lcriterion --coverage
 
-SRC_MY		=
+SRC_MY		=	my_atoi.c					\
+				my_cmalloc.c				\
+				my_memcpy.c					\
+				my_memset.c					\
+				my_put_signed_long_base.c	\
+				my_putchar.c				\
+				my_putstr.c					\
+				my_puttab.c					\
+				my_read_file.c				\
+				my_read_stdin.c				\
+				my_realloc_tab.c			\
+				my_sfree.c					\
+				my_strcmp.c					\
+				my_strconcat.c				\
+				my_strdup.c					\
+				my_strdup_until.c			\
+				my_strncmp.c				\
+				my_strncpy.c				\
+				my_strlen.c					\
+				my_strlen_until.c			\
+				my_strndup.c				\
+				my_tablen.c
 
 SRC_MY_PATH	=	$(addprefix ./my/,$(SRC_MY))
 
