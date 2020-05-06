@@ -12,8 +12,10 @@
 
 typedef struct core_s
 {
-    int dump_nbr_cycle;
-    int nb_programs;
+    int ac;
+    char **av;
+    int nbr_cycle_dump;
+    int nbr_programs;
     program_t *programs;
 } core_t;
 
