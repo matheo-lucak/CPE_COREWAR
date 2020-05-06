@@ -18,4 +18,6 @@ typedef struct header_info_s
     bool comment_set;
 } header_info_t;
 
+bool is_header(char *line, char *cmd_string);
+
 #endif /* !HEADER_INFO_H_ */

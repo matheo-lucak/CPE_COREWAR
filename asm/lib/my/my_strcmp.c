@@ -7,20 +7,20 @@
 
 int my_strcmp(char *s1, char *s2)
 {
-    int i = 0;
+    register int index = 0;
 
     if (!s1 || !s2)
-        return (84);
-    while (s1[i] != '\0' && s2[i] != '\0') {
-        if (s1[i] > s2[i])
+        return (0);
+    while (s1[index] && s2[index]) {
+        if (s1[index] > s2[index])
             return (1);
-        if (s1 [i] < s2[i])
+        if (s1[index] < s2[index])
             return (-1);
-        i += 1;
+        index += 1;
     }
-    if (!s1[i] && s2[i])
+    if (!s1[index] && s2[index])
         return (-1);
-    if (!s2[i] && s1[i])
+    if (!s2[index] && s1[index])
         return (1);
     return (0);
 }

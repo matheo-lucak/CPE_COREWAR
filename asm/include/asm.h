@@ -25,6 +25,7 @@ typedef struct byte_parser_s
     int p4 : 2;
 } byte_parser_t;
 
+//Main structure of ASM
 typedef struct asm_info_s
 {
     header_info_t header_info;
@@ -32,5 +33,6 @@ typedef struct asm_info_s
     label_t *labels;
 } asm_info_t;
 
+bool parse_file(int fd, asm_info_t *asm_i);
 
 #endif /* !ASM_H_ */
