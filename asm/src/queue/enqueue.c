@@ -25,7 +25,7 @@ bool enqueue(queue_t **queue, void *src_node, size_t size)
 {
     void *new_node = NULL;
 
-    if (!queue || !queue)
+    if (!queue || !src_node || size < sizeof(queue_t))
         return (false);
     new_node = malloc(size);
     if (!new_node)
