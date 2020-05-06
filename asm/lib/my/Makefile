@@ -29,6 +29,7 @@ SRC			=	my_arrlen.c				\
 				my_putstr.c				\
 				my_show_word_array.c	\
 				my_skip.c				\
+				my_str_is.c				\
 				my_str_to_word_array.c	\
 				my_strcat.c				\
 				my_strcmp.c				\
@@ -44,7 +45,7 @@ SRC			=	my_arrlen.c				\
 				my_strdup_word.c		\
 				my_strndup.c			\
 				my_strstr.c				\
-				find_char.c				\
+				my_find_char.c			\
 				my_memcpy.c				\
 				my_free_arr.c			\
 				get_next_line.c

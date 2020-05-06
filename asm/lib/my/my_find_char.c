@@ -2,10 +2,10 @@
 ** EPITECH PROJECT, 2020
 ** PSU_tetris_2019
 ** File description:
-** find_char
+** my_find_char
 */
 
-int find_char(const char *str, char to_find)
+int my_find_char(const char *str, char to_find)
 {
     int index = 0;
 

@@ -13,7 +13,7 @@ bool my_skip_chars(char **src, char const *template)
 
     if (!src)
         return (false);
-    while (*src && find_char(template, (*src[0])) != -1) {
+    while (*src && my_find_char(template, (*src[0])) != -1) {
         *src += 1;
     }
     return (true);
@@ -36,7 +36,7 @@ bool my_skip_is(char **src, bool (*func)(char))
 {
     register size_t index = 0;
 
-    if (!src)
+    if (!src || !func)
         return (false);
     while (*src && func((*src)[0])) {
         *src += 1;

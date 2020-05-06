@@ -19,6 +19,7 @@ bool my_is_alpha(char c);
 bool my_is_caps_alpha(char c);
 bool my_is_alpha_num(char c);
 bool my_str_is(const char *str, bool (*func)(char));
+bool my_str_is_template(const char *str, const char *template);
 
 int my_pow(int nb, int p);
 float my_powf(float nb, float p);
@@ -53,7 +54,7 @@ bool my_skip_str(char **src, char *str);
 bool my_skip_is(char **src, bool (*func)(char));
 
 int my_strlen(char const *str);
-int find_char(const char *str, char to_find);
+int my_find_char(const char *str, char to_find);
 int my_strcmp(char *s1, char *s2);
 int my_strncmp(char const *s1, char const *s2, int n);
 char *my_strstr(char *str, char *to_find);

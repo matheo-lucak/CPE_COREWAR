@@ -5,7 +5,6 @@
 ** func for env
 */
 
-#include <stdbool.h>
 #include "my.h"
 
 bool my_is_num(char c)
