@@ -11,6 +11,12 @@
 #include <stdbool.h>
 #include "op.h"
 
+#include "header_info.h"
+#include "instruction.h"
+#include "labels.h"
+
+#include "queue.h"
+
 typedef struct byte_parser_s
 {
     int p1 : 2;
@@ -18,5 +24,13 @@ typedef struct byte_parser_s
     int p3 : 2;
     int p4 : 2;
 } byte_parser_t;
+
+typedef struct asm_info_s
+{
+    header_info_t header_info;
+    instruct_t *instructs;
+    label_t *labels;
+} asm_info_t;
+
 
 #endif /* !ASM_H_ */

@@ -11,7 +11,9 @@ SRC_LINKING 		=
 
 SRC_PARSING			=
 
-SRC_QUEUE			=
+SRC_QUEUE			=	src/queue/dequeue.c		\
+						src/queue/empty_queue.c	\
+						src/queue/enqueue.c		\
 
 SRC_WRITING			=
 
@@ -46,7 +48,7 @@ debug:				$(LIB)
 tests_run:			LDLIBS += -lcriterion --coverage
 tests_run:			CFLAGS += --coverage
 tests_run:			$(LIB)
-					$(CC) -o $@ $(SRC) $(CPPFLAGS) $(LDFLAGS) $(LDLIBS)
+					$(CC) -o $@ $(SRC) tests/test_*.c $(CPPFLAGS) $(LDFLAGS) $(LDLIBS)
 					./$@
 					mv *.gc* tests/
 					$(RM) $@
@@ -54,6 +56,10 @@ tests_run:			$(LIB)
 clean:
 					$(RM) $(OBJ)
 					$(MAKE) -C lib/my clean
+					$(RM) *.gcda
+					$(RM) *.gcno
+					$(RM) tests/*.gcda
+					$(RM) tests/*.gcno
 
 fclean:				clean
 					$(RM) $(NAME)

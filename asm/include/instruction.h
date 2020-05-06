@@ -11,11 +11,30 @@
 #include "op.h"
 #include "queue.h"
 
+union param_storage
+{
+    int ind : IND_SIZE * 8;
+    int dir : DIR_SIZE * 8;
+    int reg : REG_SIZE * 8;
+};
+
+typedef struct parameters_s
+{
+    int type;
+    int size;
+    union param_storage value;
+    bool has_label;
+    char *label_name;
+} parameters_t;
+
 typedef struct instruction_s
 {
     struct instruction_s *next;
     char code;
-    char param_types;
+    char params_types;
+    parameters_t params[MAX_ARGS_NUMBER];
+    int size;
+    size_t address;
 } instruct_t;
 
 #endif /* !INSTRUCTION_H_ */
