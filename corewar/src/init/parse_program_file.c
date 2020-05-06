@@ -33,7 +33,7 @@ static int get_program_name(char *file, char *name)
 
 static int get_program_comment(char *file, char *comment)
 {
-    int start = 4 + PROG_NAME_LENGTH;
+    int start = 4 + PROG_NAME_LENGTH + 8;
 
     if (!file)
         return 84;
@@ -44,7 +44,7 @@ static int get_program_comment(char *file, char *comment)
 
 static int get_program_instructions(char *file, char **instr, int size)
 {
-    int start = 4 + PROG_NAME_LENGTH + COMMENT_LENGTH;
+    int start = 4 + PROG_NAME_LENGTH + 8 + COMMENT_LENGTH + 4;
 
     if (!file)
         return 84;

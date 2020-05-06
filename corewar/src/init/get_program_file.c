@@ -49,6 +49,9 @@ int get_program_file(int ac, char **av, int *index, program_t *program)
         return 84;
     program->header.prog_size -= 4;
     program->header.prog_size -= PROG_NAME_LENGTH;
+    program->header.prog_size -= 8;
     program->header.prog_size -= COMMENT_LENGTH;
+    program->header.prog_size -= 4;
+    program->header.prog_size -= 1;
     return 0;
 }
