@@ -5,14 +5,19 @@
 ** corewar.c
 */
 
-#include "core.h"
-#include "init.h"
+#include "setup.h"
+#include "vm.h"
 
 int corewar(int ac, char **av)
 {
-    core_t core = {ac, av};
+    setup_t setup = {0};
+    vm_t vm = {0};
 
-    if (init_core(&core) == 84)
+    setup.ac = ac;
+    setup.av = av;
+    if (init_setup(&setup) == 84)
+        return 84;
+    if (init_vm(&vm, &setup) == 84)
         return 84;
     return 0;
 }

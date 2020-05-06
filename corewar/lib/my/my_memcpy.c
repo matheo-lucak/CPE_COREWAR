@@ -12,7 +12,7 @@ int my_memcpy(void *src, void *dest, size_t size)
     size_t i = -1;
 
     if (!src || !dest)
-        return 0;
+        return 84;
     while (++i < size)
         ((char *)dest)[i] = ((char *)src)[i];
     return 0;

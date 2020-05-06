@@ -6,7 +6,7 @@
 */
 
 #include "my.h"
-#include "core.h"
+#include "setup.h"
 
 static bool check_nbr_cycle_dump(char *str)
 {
