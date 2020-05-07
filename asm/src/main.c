@@ -7,6 +7,7 @@
 
 #include "my.h"
 #include "usage.h"
+#include "asm.h"
 
 static void print_usage(const char *bin_name)
 {

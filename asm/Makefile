@@ -9,11 +9,12 @@ MAIN				=	src/main.c
 
 SRC_LINKING 		=
 
-SRC_PARSING			=	src/parsing/header/is_header.c	\
+SRC_PARSING			=	src/parsing/header/fill_header.c	\
+						src/parsing/header/is_header.c		\
 
-SRC_QUEUE			=	src/queue/dequeue.c				\
-						src/queue/empty_queue.c			\
-						src/queue/enqueue.c				\
+SRC_QUEUE			=	src/queue/dequeue.c					\
+						src/queue/empty_queue.c				\
+						src/queue/enqueue.c					\
 
 SRC_WRITING			=
 

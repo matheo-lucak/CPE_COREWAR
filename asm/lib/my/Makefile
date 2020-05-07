@@ -6,6 +6,7 @@
 ##
 
 SRC			=	my_arrlen.c				\
+				my_count_char.c			\
 				my_getnbr.c 			\
 				my_hay_needle.c			\
 				my_int_to_str.c			\

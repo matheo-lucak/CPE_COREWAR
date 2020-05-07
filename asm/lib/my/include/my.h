@@ -20,6 +20,7 @@ bool my_is_caps_alpha(char c);
 bool my_is_alpha_num(char c);
 bool my_str_is(const char *str, bool (*func)(char));
 bool my_str_is_template(const char *str, const char *template);
+int my_count_char(const char *str, char c);
 
 int my_pow(int nb, int p);
 float my_powf(float nb, float p);
@@ -46,6 +47,7 @@ char *my_strncpy(char *dest, const char *src, int n);
 char *my_strdup(const char *src);
 char *my_strndup(const char *src, int n);
 char *my_strdup_word(const char *src);
+char *my_quoted_strdup(const char *src, char quote);
 void my_memset(char *str, char c, int len);
 void *my_memcpy(void *dest, const void *src, size_t n);
 

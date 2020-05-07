@@ -12,6 +12,5 @@ bool redirect_parsing(char *line, asm_info_t *asm_i)
 {
     if (is_header(line, COMMENT_CMD_STRING) ||
         is_header(line, COMMENT_CMD_STRING)) {
-    
     }
 }

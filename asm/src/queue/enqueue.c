@@ -31,10 +31,10 @@ bool enqueue(queue_t **queue, void *src_node, size_t size)
     if (!new_node)
         return (false);
     my_memcpy(new_node, src_node, size);
-    ((queue_t*)new_node)->next = NULL;
+    ((queue_t *)new_node)->next = NULL;
     if (!(*queue))
-        enqueue_first_node(queue, (queue_t*)new_node);
+        enqueue_first_node(queue, (queue_t *)new_node);
     else
-        enqueue_new_node(*queue, (queue_t*)new_node);
+        enqueue_new_node(*queue, (queue_t *)new_node);
     return (true);
 }
