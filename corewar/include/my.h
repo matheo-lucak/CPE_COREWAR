@@ -28,4 +28,6 @@ int my_strncpy(char **dest, char const *src, int n);
 
 char *my_strndup(char const *src, int n);
 
+int my_swap_int_endian(int *value);
+
 #endif //CPE_COREWAR_2019_MY_H

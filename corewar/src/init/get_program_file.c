@@ -20,20 +20,21 @@ static int copy_line(char *dest, char *line, size_t size)
     return 0;
 }
 
-static int read_file(char *path, char **dest, int *size)
+static int read_file(char *path, char **dest)
 {
     FILE *fd = fopen(path, "r");
     char *line = NULL;
     size_t read_size = 0;
+    size_t size = 0;
 
     if (fd == NULL)
         return 84;
     while (getline(&line, &read_size, fd) > 0) {
-        if (!(*dest = realloc(*dest, *size + read_size)))
+        if (!(*dest = realloc(*dest, size + read_size)))
             return 84;
         if (copy_line(*dest, line, read_size) == 84)
             return 84;
-        *size += read_size;
+        size += read_size;
         line = NULL;
     }
     return 0;
@@ -45,13 +46,7 @@ int get_program_file(int ac, char **av, int *index, program_t *program)
         return 84;
     if (*index == ac)
         return 84;
-    if (read_file(av[*index], &program->file, &program->header.prog_size) == 84)
+    if (read_file(av[*index], &program->file) == 84)
         return 84;
-    program->header.prog_size -= 4;
-    program->header.prog_size -= PROG_NAME_LENGTH;
-    program->header.prog_size -= 8;
-    program->header.prog_size -= COMMENT_LENGTH;
-    program->header.prog_size -= 4;
-    program->header.prog_size -= 1;
     return 0;
 }
