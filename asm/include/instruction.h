@@ -18,6 +18,13 @@ union param_storage
     int reg : REG_SIZE * 8;
 };
 
+
+//Parameters found in Instruction structure
+//type corresponds to the parameter's type
+//size corresponds to the size of the parameters, depending his type
+//value corresponds to the value of the parameters
+//label_name corresponds to the label name if one has been found.
+//  Else equals NULL
 typedef struct parameters_s
 {
     int type;
@@ -27,6 +34,13 @@ typedef struct parameters_s
     char *label_name;
 } parameters_t;
 
+//Instruction linked list
+//code corresponds to the mnemonic coding byte
+//params_types corresponds to 4 2coding bit, one for each param
+//params //
+//size corresponds of the size in byte of the instruction
+//address corresponds to the offset in byte
+//  where the instruction should be written
 typedef struct instruction_s
 {
     struct instruction_s *next;

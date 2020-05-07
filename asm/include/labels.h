@@ -10,6 +10,9 @@
 
 #include "queue.h"
 
+//Label linked list
+//name corresponds to the label's name
+//address corresponds to the offset in byte where the label has been found
 typedef struct label_s
 {
     struct label_s *next;

@@ -11,6 +11,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+//Structure usefull for heritage
 typedef struct queue_s
 {
     struct queue_s *next;

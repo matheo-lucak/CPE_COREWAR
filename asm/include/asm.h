@@ -11,12 +11,15 @@
 #include <stdbool.h>
 #include "op.h"
 
+#include "parser.h"
+
 #include "header_info.h"
 #include "instruction.h"
 #include "labels.h"
 
 #include "queue.h"
 
+//Structure for accessing 2bit per 2bit in a byte
 typedef struct byte_parser_s
 {
     int p1 : 2;
@@ -33,6 +36,15 @@ typedef struct asm_info_s
     label_t *labels;
 } asm_info_t;
 
-bool parse_file(int fd, asm_info_t *asm_i);
+//Parses an entire file (opened with fd contained in reader_i)
+//Returns true in case of success
+//Returns false if any error occurs
+bool parse_file(reader_info_t reader_i, asm_info_t *asm_i);
+
+//Redirects the given reader_info to be parsed and analysed
+//Make sure to have a correct fd set in reader_i
+//Returns true in case of success
+//Returns false if any error occurs
+bool redirect_parsing(reader_info_t reader_i, asm_info_t *asm_i);
 
 #endif /* !ASM_H_ */
