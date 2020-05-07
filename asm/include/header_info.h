@@ -18,6 +18,7 @@ typedef struct header_info_s
     header_t header;
     bool name_set;
     bool comment_set;
+    bool parsing_core;
 } header_info_t;
 
 bool is_header(char *line, char *cmd_string);

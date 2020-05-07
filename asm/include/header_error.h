@@ -44,6 +44,12 @@ static inline bool header_name_error(reader_info_t reader_i,
                                             , reader_i.name, reader_i.line_nb);
         return (true);
     }
+    if (header_i->parsing_core) {
+        my_printf("asm, %s, line %d: The name of your program must be"
+                                                    "the first line.\n"
+                                            , reader_i.name, reader_i.line_nb);
+        return (true);
+    }
     return (false);
 }
 
