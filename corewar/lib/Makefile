@@ -32,6 +32,7 @@ SRC_MY		=	my_atoi.c					\
 				my_strlen.c					\
 				my_strlen_until.c			\
 				my_strndup.c				\
+				my_swap_int_endian.c		\
 				my_tablen.c
 
 SRC_MY_PATH	=	$(addprefix ./my/,$(SRC_MY))
