@@ -10,15 +10,15 @@
 
 bool is_header(char *line, char *cmd_string)
 {
-    char **parsed_line = my_str_to_word_array(line, " \t", false);
+    register int len = 0;
 
-    if (!parsed_line || !cmd_string)
+    if (!line || !cmd_string)
         return (false);
+    len = my_strlen(cmd_string);
     my_skip_chars(&line, " \t");
-    if (parsed_line[0] && !my_strcmp(cmd_string, parsed_line[0])) {
-        my_free_arr((void **)parsed_line);
+    if (!my_strncmp(line, cmd_string, len) &&
+        (line[len] == ' ' || line[len] == '\t')) {
         return (true);
     }
-    my_free_arr((void **)parsed_line);
     return (false);
 }

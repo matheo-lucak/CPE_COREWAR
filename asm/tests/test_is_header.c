@@ -38,12 +38,32 @@ Test(is_header_tests, not_a_header_3)
     cr_assert(!is_header(COMMENT_CMD_STRING, ".comment?"));
 }
 
-Test(is_header_tests, a_header_1)
+Test(is_header_tests, no_space_or_tab_header_1)
 {
-    cr_assert(is_header(NAME_CMD_STRING, ".name"));
+    cr_assert(!is_header(NAME_CMD_STRING, ".name"));
 }
 
-Test(is_header_tests, a_header_2)
+Test(is_header_tests, no_space_or_tab_header_2)
 {
-    cr_assert(is_header(COMMENT_CMD_STRING, ".comment"));
+    cr_assert(!is_header(COMMENT_CMD_STRING, ".comment"));
+}
+
+Test(is_header_tests, tab_header_1)
+{
+    cr_assert(!is_header(NAME_CMD_STRING, ".name\t"));
+}
+
+Test(is_header_tests, space_header_1)
+{
+    cr_assert(!is_header(NAME_CMD_STRING, ".name "));
+}
+
+Test(is_header_tests, space_header_2)
+{
+    cr_assert(!is_header(COMMENT_CMD_STRING, ".comment "));
+}
+
+Test(is_header_tests, tab_header_2)
+{
+    cr_assert(!is_header(COMMENT_CMD_STRING, ".comment\t"));
 }
