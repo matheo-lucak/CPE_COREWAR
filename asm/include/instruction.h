@@ -8,8 +8,7 @@
 #ifndef INSTRUCTION_H_
 #define INSTRUCTION_H_
 
-#include "op.h"
-#include "queue.h"
+#include <stddef.h>
 
 union param_storage
 {
@@ -52,5 +51,9 @@ typedef struct instruction_s
     unsigned int line_nb;
     size_t address;
 } instruct_t;
+
+#include "op.h"
+
+#include "queue.h"
 
 #endif /* !INSTRUCTION_H_ */

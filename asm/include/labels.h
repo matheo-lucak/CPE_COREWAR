@@ -8,10 +8,7 @@
 #ifndef LABELS_H_
 #define LABELS_H_
 
-#include "op.h"
-#include "parser.h"
-
-#include "queue.h"
+#include <stddef.h>
 
 //Label linked list
 //name corresponds to the label's name
@@ -20,8 +17,12 @@ typedef struct label_s
 {
     struct label_s *next;
     char *name;
-    int address;
+    size_t address;
 } label_t;
+
+#include "op.h"
+
+#include "queue.h"
 
 //Finds a label corresponding with the given name and
 //  returns his contained address
@@ -38,11 +39,5 @@ bool check_existing_label(label_t *label, char *label_name);
 //Returns true if the given corresponds to a label
 //Returns false in all other cases
 bool is_label(char *str);
-
-//Checks if the given label_name is a valid label
-//A valid label is a label which only contains LABEL_CHARS
-//Returns true if the given label name is a valid label
-//Returns false in all other cases
-bool is_valid_label(reader_info_t reader_i, char *labe_name);
 
 #endif /* !LABELS_H_ */

@@ -5,8 +5,7 @@
 ** parsing
 */
 
-#include "op.h"
-#include "asm.h"
+#include "parser.h"
 #include "my.h"
 
 static void update_reader(reader_info_t *reader_i)
@@ -28,6 +27,8 @@ bool parse_file(reader_info_t reader_i, asm_info_t *asm_i)
         return (false);
     do {
         update_reader(&reader_i);
-        redirect_parsing(reader_i, asm_i);
+        if (!redirect_parsing(reader_i, asm_i))
+            return (false);
     } while (reader_i.line);
+    return (true);
 }

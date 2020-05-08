@@ -5,7 +5,7 @@
 ** redirect_body
 */
 
-#include "asm.h"
+#include "parser.h"
 #include "my.h"
 
 bool redirect_body(reader_info_t reader_i, asm_info_t *asm_i)
@@ -15,5 +15,11 @@ bool redirect_body(reader_info_t reader_i, asm_info_t *asm_i)
                                                                 parser, 0);
     if (!parsed_line)
         return (false);
+    if (is_label(parsed_line[0])) {
+        if (!is_valid_label(reader_i, parsed_line[0]) ||
+            !fill_label(reader_i, parsed_line[0], asm_i))
+            return (false);
+    }
+    my_free_arr((void **)parsed_line);
     return (false);
 }
