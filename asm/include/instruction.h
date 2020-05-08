@@ -50,7 +50,7 @@ typedef struct instruction_s
     char params_types;
     parameters_t params[MAX_ARGS_NUMBER];
     int size;
-    unsigned int line_nb
+    unsigned int line_nb;
     size_t address;
 } instruct_t;
 

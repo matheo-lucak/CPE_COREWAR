@@ -20,7 +20,7 @@
 #include "queue.h"
 
 //Structure for accessing 2bit per 2bit in a byte
-typedef struct byte_parser_s
+typedef struct __attribute__((packed)) byte_parser_s
 {
     int p1 : 2;
     int p2 : 2;
