@@ -28,6 +28,8 @@ typedef struct __attribute__((packed)) byte_parser_s
     int p4 : 2;
 } byte_parser_t;
 
+#define CAST_BYTE_PARSER(c) (*(byte_parser_t *)&c)
+
 //Main structure of ASM
 typedef struct asm_info_s
 {

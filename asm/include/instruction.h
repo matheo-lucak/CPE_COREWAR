@@ -13,11 +13,10 @@
 
 union param_storage
 {
-    int ind : IND_SIZE * 8;
     int dir : DIR_SIZE * 8;
-    int reg : REG_SIZE * 8;
+    unsigned ind : IND_SIZE * 8;
+    unsigned reg : REG_SIZE * 8;
 };
-
 
 //Parameters found in Instruction structure
 //type corresponds to the parameter's type
