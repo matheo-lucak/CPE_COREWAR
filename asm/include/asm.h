@@ -47,4 +47,10 @@ bool parse_file(reader_info_t reader_i, asm_info_t *asm_i);
 //Returns false if any error occurs
 bool redirect_parsing(reader_info_t reader_i, asm_info_t *asm_i);
 
+//Sub fonction of redirec_parsing
+//Used to parse body (~Header)
+//Returns true in case of success
+//Returns false if any error occurs
+bool redirect_body(reader_info_t reader_i, asm_info_t *asm_i);
+
 #endif /* !ASM_H_ */

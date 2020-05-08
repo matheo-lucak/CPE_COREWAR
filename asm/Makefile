@@ -7,10 +7,12 @@
 
 MAIN				=	src/main.c
 
-SRC_LINKING 		=	src/linking/labels/check_existing_label.c	\
-						src/linking/labels/get_label_address.c		\
+SRC_LINKING 		=	src/linking/label/check_existing_label.c	\
+						src/linking/label/get_label_address.c		\
 
-SRC_PARSING			=	src/parsing/header/fill_header.c			\
+SRC_PARSING			=	src/parsing/body/label/is_label.c			\
+						src/parsing/body/redirect_body.c			\
+						src/parsing/header/fill_header.c			\
 						src/parsing/header/is_header.c				\
 
 SRC_QUEUE			=	src/queue/dequeue.c							\
