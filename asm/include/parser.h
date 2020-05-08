@@ -57,5 +57,16 @@ bool fill_label(reader_info_t reader_i, char *label_name, asm_info_t *asm_i);
 //Returns false in all other cases
 bool is_valid_label(reader_info_t reader_i, char *labe_name);
 
+//Adds a new instruction to the asm_info list of instructs
+//Returns true in case of success
+//Returns false if any error occurs
+bool fill_instruction(reader_info_t reader_i, char **parsed_line,
+                                                asm_info_t *asm_i);
+
+bool fill_mnemonic(reader_info_t reader_i, instruct_t *instruct,
+                            char **parsed_line, asm_info_t *asm_i);
+
+bool fill_params(reader_info_t reader_i, instruct_t *instruct,
+                        char **parsed_line, asm_info_t *asm_i);
 
 #endif /* !PARSER_H_ */

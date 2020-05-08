@@ -21,14 +21,14 @@ static bool fill_label_error(reader_info_t reader_i, char * label_name,
 
 bool fill_label(reader_info_t reader_i, char *label_name, asm_info_t *asm_i)
 {
-    label_t new_label;
+    label_t label;
 
     if (!label_name || !asm_i ||
         fill_label_error(reader_i, label_name, asm_i->labels))
         return (false);
-    new_label.name = my_strdup(label_name);
-    new_label.address = asm_i->writing_address;
-    if (!(new_label.name))
+    label.name = my_strdup(label_name);
+    label.address = asm_i->writing_address;
+    if (!(label.name))
         return (false);
-    return (ENQUEUE(&(asm_i->labels), &new_label, label_t));
+    return (ENQUEUE(&(asm_i->labels), &label, label_t));
 }

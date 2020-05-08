@@ -7,25 +7,30 @@
 
 MAIN				=	src/main.c
 
-SRC_LINKING 		=	src/linking/label/check_existing_label.c	\
-						src/linking/label/get_label_address.c		\
+OP					=	src/op.c
 
-SRC_PARSING			=	src/parsing/body/label/fill_label.c			\
-						src/parsing/body/label/is_label.c			\
-						src/parsing/body/label/is_valid_label.c		\
-						src/parsing/body/redirect_body.c			\
-						src/parsing/header/fill_header.c			\
-						src/parsing/header/is_header.c				\
-						src/parsing/parsing.c						\
-						src/parsing/redirect_parsing.c				\
+SRC_LINKING 		=	src/linking/label/check_existing_label.c		\
+						src/linking/label/get_label_address.c			\
 
-SRC_QUEUE			=	src/queue/dequeue.c							\
-						src/queue/empty_queue.c						\
-						src/queue/enqueue.c							\
+SRC_PARSING			=	src/parsing/body/instruction/fill_instruction.c	\
+						src/parsing/body/instruction/fill_mnemonic.c	\
+						src/parsing/body/instruction/fill_params.c		\
+						src/parsing/body/label/fill_label.c				\
+						src/parsing/body/label/is_label.c				\
+						src/parsing/body/label/is_valid_label.c			\
+						src/parsing/body/redirect_body.c				\
+						src/parsing/header/fill_header.c				\
+						src/parsing/header/is_header.c					\
+						src/parsing/parsing.c							\
+						src/parsing/redirect_parsing.c					\
+
+SRC_QUEUE			=	src/queue/dequeue.c								\
+						src/queue/empty_queue.c							\
+						src/queue/enqueue.c								\
 
 SRC_WRITING			=
 
-SRC					= $(SRC_LINKING) $(SRC_PARSING) $(SRC_QUEUE) $(SRC_WRITING)
+SRC					= $(SRC_LINKING) $(SRC_PARSING) $(SRC_QUEUE) $(SRC_WRITING) $(OP)
 
 OBJ					=	$(SRC:.c=.o) $(MAIN:.c=.o)
 
