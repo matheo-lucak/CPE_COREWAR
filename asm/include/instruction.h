@@ -39,6 +39,8 @@ typedef struct parameters_s
 //params_types corresponds to 4 2coding bit, one for each param
 //params //
 //size corresponds of the size in byte of the instruction
+//line_nb corresponds to the line
+//  where the instruction has been found
 //address corresponds to the offset in byte
 //  where the instruction should be written
 typedef struct instruction_s
@@ -48,6 +50,7 @@ typedef struct instruction_s
     char params_types;
     parameters_t params[MAX_ARGS_NUMBER];
     int size;
+    unsigned int line_nb
     size_t address;
 } instruct_t;
 
