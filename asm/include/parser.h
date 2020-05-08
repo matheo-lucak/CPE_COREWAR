@@ -66,10 +66,36 @@ bool is_valid_label(reader_info_t reader_i, char *labe_name);
 bool fill_instruction(reader_info_t reader_i, char **parsed_line,
                                                 asm_info_t *asm_i);
 
+//Sub fonction of fill_instruction
+//Used to parse mnemonic (~params)
+//Returns true in case of success
+//Returns false if any error occurs
 bool fill_mnemonic(reader_info_t reader_i, instruct_t *instruct,
                             char **parsed_line, asm_info_t *asm_i);
 
+//Sub fonction of fill_instruction
+//Used to parse params (~mnemonic)
+//Returns true in case of success
+//Returns false if any error occurs
 bool fill_params(reader_info_t reader_i, instruct_t *instruct,
                         char **parsed_line, asm_info_t *asm_i);
+
+//Checks if given string corresponds to a register
+//A register starts with 'r'
+//Returns true if corresponds to a register
+//Returns false in all other cases
+bool param_is_register(char *str);
+
+//Checks if given string corresponds to a direct
+//A direct starts with DIRECT_CHAR ('%')
+//Returns true if corresponds to a direct
+//Returns false in all other cases
+bool param_is_direct(char *str);
+
+//Checks if given string corresponds to a label
+//A label starts with LABEL_CHAR (':')
+//Returns true if corresponds to a label
+//Returns false in all other cases
+bool param_is_label(char *str);
 
 #endif /* !PARSER_H_ */

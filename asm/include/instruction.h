@@ -45,7 +45,7 @@ typedef struct instruction_s
 {
     struct instruction_s *next;
     char code;
-    char params_types;
+    char params_types_code;
     parameters_t params[MAX_ARGS_NUMBER];
     char params_types[MAX_ARGS_NUMBER];
     unsigned param_nb : MAX_ARGS_NUMBER;
