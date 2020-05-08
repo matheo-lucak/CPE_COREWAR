@@ -13,9 +13,9 @@
 
 union param_storage
 {
-    int ind : IND_SIZE * 8;
     int dir : DIR_SIZE * 8;
-    int reg : REG_SIZE * 8;
+    unsigned int ind : IND_SIZE * 8;
+    unsigned int reg : REG_SIZE * 8;
 };
 
 
