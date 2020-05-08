@@ -15,6 +15,7 @@ static void update_reader(reader_info_t *reader_i)
         return;
     if (reader_i->line) {
         free(reader_i->line);
+        reader_i->line_nb += 1;
         reader_i->line = NULL;
     }
     reader_i->line = get_next_line(reader_i->fd);
