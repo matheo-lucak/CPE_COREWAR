@@ -144,5 +144,5 @@ Test(fill_mnemonic, success_1_eq)
     instruct_t instruct;
 
     fill_mnemonic(reader_i, &instruct, parsed_line, &asm_i);
-    cr_assert(instruct.code == 1);
+    cr_assert(instruct.code == 1 && instruct.param_nb == 1);
 }

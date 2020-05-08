@@ -21,6 +21,9 @@ typedef struct reader_info_s
     unsigned int line_nb;
 } reader_info_t;
 
+#include <stddef.h>
+#include <unistd.h>
+
 #include "asm.h"
 
 //Parses an entire file (opened with fd contained in reader_i)
