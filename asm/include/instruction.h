@@ -47,6 +47,7 @@ typedef struct instruction_s
     char code;
     char params_types;
     parameters_t params[MAX_ARGS_NUMBER];
+    char params_types[MAX_ARGS_NUMBER];
     unsigned param_nb : MAX_ARGS_NUMBER;
     unsigned int line_nb;
     int size;

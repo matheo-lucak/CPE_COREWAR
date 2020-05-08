@@ -36,5 +36,6 @@ bool fill_mnemonic(reader_info_t reader_i, instruct_t *instruct,
     }
     instruct->code = op_tab[index].code;
     instruct->param_nb = op_tab[index].nbr_args;
+    instruct->params_types = op_tab[index].type;
     return (true);
 }
