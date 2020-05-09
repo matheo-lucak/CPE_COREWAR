@@ -340,7 +340,7 @@ Test(fill_instruction, special_instruction_size_5)
     asm_info_t asm_i = {.instructs = NULL,
                         .labels = NULL,
                         .writing_address = 0};
-    char *parsed_line[] = {"ldi", "r1","r2", "r3", NULL};
+    char *parsed_line[] = {"ldi", "r1", "r2", "r3", NULL};
 
     if (!fill_instruction(reader_i, parsed_line, &asm_i) || !(asm_i.instructs))
         cr_assert(0);
@@ -355,7 +355,7 @@ Test(fill_instruction, special_instruction_size_6)
     asm_info_t asm_i = {.instructs = NULL,
                         .labels = NULL,
                         .writing_address = 0};
-    char *parsed_line[] = {"ldi", "%1","r2", "r3", NULL};
+    char *parsed_line[] = {"ldi", "%1", "r2", "r3", NULL};
 
     if (!fill_instruction(reader_i, parsed_line, &asm_i) || !(asm_i.instructs))
         cr_assert(0);
@@ -370,7 +370,7 @@ Test(fill_instruction, special_instruction_size_7)
     asm_info_t asm_i = {.instructs = NULL,
                         .labels = NULL,
                         .writing_address = 0};
-    char *parsed_line[] = {"ldi", "1","r2", "r3", NULL};
+    char *parsed_line[] = {"ldi", "1", "r2", "r3", NULL};
 
     if (!fill_instruction(reader_i, parsed_line, &asm_i) || !(asm_i.instructs))
         cr_assert(0);
@@ -385,7 +385,7 @@ Test(fill_instruction, special_instruction_size_8)
     asm_info_t asm_i = {.instructs = NULL,
                         .labels = NULL,
                         .writing_address = 0};
-    char *parsed_line[] = {"sti", "r1","r2", "r3", NULL};
+    char *parsed_line[] = {"sti", "r1", "r2", "r3", NULL};
 
     if (!fill_instruction(reader_i, parsed_line, &asm_i) || !(asm_i.instructs))
         cr_assert(0);
@@ -400,7 +400,7 @@ Test(fill_instruction, special_instruction_size_9)
     asm_info_t asm_i = {.instructs = NULL,
                         .labels = NULL,
                         .writing_address = 0};
-    char *parsed_line[] = {"sti", "r1","%1", "r3", NULL};
+    char *parsed_line[] = {"sti", "r1", "%1", "r3", NULL};
 
     if (!fill_instruction(reader_i, parsed_line, &asm_i) || !(asm_i.instructs))
         cr_assert(0);
@@ -415,7 +415,7 @@ Test(fill_instruction, special_instruction_size_10)
     asm_info_t asm_i = {.instructs = NULL,
                         .labels = NULL,
                         .writing_address = 0};
-    char *parsed_line[] = {"sti", "r1","1", "r3", NULL};
+    char *parsed_line[] = {"sti", "r1", "1", "r3", NULL};
 
     if (!fill_instruction(reader_i, parsed_line, &asm_i) || !(asm_i.instructs))
         cr_assert(0);
@@ -430,7 +430,7 @@ Test(fill_instruction, special_instruction_size_11)
     asm_info_t asm_i = {.instructs = NULL,
                         .labels = NULL,
                         .writing_address = 0};
-    char *parsed_line[] = {"lldi", "r1","r2", "r3", NULL};
+    char *parsed_line[] = {"lldi", "r1", "r2", "r3", NULL};
 
     if (!fill_instruction(reader_i, parsed_line, &asm_i) || !(asm_i.instructs))
         cr_assert(0);
@@ -445,7 +445,7 @@ Test(fill_instruction, special_instruction_size_12)
     asm_info_t asm_i = {.instructs = NULL,
                         .labels = NULL,
                         .writing_address = 0};
-    char *parsed_line[] = {"lldi", "%1","r1", "r3", NULL};
+    char *parsed_line[] = {"lldi", "%1", "r1", "r3", NULL};
 
     if (!fill_instruction(reader_i, parsed_line, &asm_i) || !(asm_i.instructs))
         cr_assert(0);
@@ -460,7 +460,7 @@ Test(fill_instruction, special_instruction_size_13)
     asm_info_t asm_i = {.instructs = NULL,
                         .labels = NULL,
                         .writing_address = 0};
-    char *parsed_line[] = {"lldi", "1","r1", "r3", NULL};
+    char *parsed_line[] = {"lldi", "1", "r1", "r3", NULL};
 
     if (!fill_instruction(reader_i, parsed_line, &asm_i) || !(asm_i.instructs))
         cr_assert(0);
