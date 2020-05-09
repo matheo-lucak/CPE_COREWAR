@@ -62,7 +62,10 @@ static bool fill_direct_param(reader_info_t reader_i, char types,
         return (false);
     }
     param->type = T_DIR;
-    param->size = DIR_SIZE;
+    if (types == (T_REG | T_DIR | T_IND))
+        param->size = IND_SIZE;
+    else
+        param->size = DIR_SIZE;
     if (param_is_label(line + 1))
         return (fill_label_param(param, line + 1));
     param->value.dir = my_getnbr(line + 1);

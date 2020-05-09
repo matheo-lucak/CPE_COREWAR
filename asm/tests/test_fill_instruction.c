@@ -332,6 +332,141 @@ Test(fill_instruction, special_instruction_size_4)
     cr_assert(asm_i.instructs->size == 5);
 }
 
+Test(fill_instruction, special_instruction_size_5)
+{
+    reader_info_t reader_i = {.name = "test",
+                                .line = "c;",
+                                .line_nb = 1};
+    asm_info_t asm_i = {.instructs = NULL,
+                        .labels = NULL,
+                        .writing_address = 0};
+    char *parsed_line[] = {"ldi", "r1","r2", "r3", NULL};
+
+    if (!fill_instruction(reader_i, parsed_line, &asm_i) || !(asm_i.instructs))
+        cr_assert(0);
+    cr_assert(asm_i.instructs->size == 5);
+}
+
+Test(fill_instruction, special_instruction_size_6)
+{
+    reader_info_t reader_i = {.name = "test",
+                                .line = "c;",
+                                .line_nb = 1};
+    asm_info_t asm_i = {.instructs = NULL,
+                        .labels = NULL,
+                        .writing_address = 0};
+    char *parsed_line[] = {"ldi", "%1","r2", "r3", NULL};
+
+    if (!fill_instruction(reader_i, parsed_line, &asm_i) || !(asm_i.instructs))
+        cr_assert(0);
+    cr_assert(asm_i.instructs->size == 6);
+}
+
+Test(fill_instruction, special_instruction_size_7)
+{
+    reader_info_t reader_i = {.name = "test",
+                                .line = "c;",
+                                .line_nb = 1};
+    asm_info_t asm_i = {.instructs = NULL,
+                        .labels = NULL,
+                        .writing_address = 0};
+    char *parsed_line[] = {"ldi", "1","r2", "r3", NULL};
+
+    if (!fill_instruction(reader_i, parsed_line, &asm_i) || !(asm_i.instructs))
+        cr_assert(0);
+    cr_assert(asm_i.instructs->size == 6);
+}
+
+Test(fill_instruction, special_instruction_size_8)
+{
+    reader_info_t reader_i = {.name = "test",
+                                .line = "c;",
+                                .line_nb = 1};
+    asm_info_t asm_i = {.instructs = NULL,
+                        .labels = NULL,
+                        .writing_address = 0};
+    char *parsed_line[] = {"sti", "r1","r2", "r3", NULL};
+
+    if (!fill_instruction(reader_i, parsed_line, &asm_i) || !(asm_i.instructs))
+        cr_assert(0);
+    cr_assert(asm_i.instructs->size == 5);
+}
+
+Test(fill_instruction, special_instruction_size_9)
+{
+    reader_info_t reader_i = {.name = "test",
+                                .line = "c;",
+                                .line_nb = 1};
+    asm_info_t asm_i = {.instructs = NULL,
+                        .labels = NULL,
+                        .writing_address = 0};
+    char *parsed_line[] = {"sti", "r1","%1", "r3", NULL};
+
+    if (!fill_instruction(reader_i, parsed_line, &asm_i) || !(asm_i.instructs))
+        cr_assert(0);
+    cr_assert(asm_i.instructs->size == 6);
+}
+
+Test(fill_instruction, special_instruction_size_10)
+{
+    reader_info_t reader_i = {.name = "test",
+                                .line = "c;",
+                                .line_nb = 1};
+    asm_info_t asm_i = {.instructs = NULL,
+                        .labels = NULL,
+                        .writing_address = 0};
+    char *parsed_line[] = {"sti", "r1","1", "r3", NULL};
+
+    if (!fill_instruction(reader_i, parsed_line, &asm_i) || !(asm_i.instructs))
+        cr_assert(0);
+    cr_assert(asm_i.instructs->size == 6);
+}
+
+Test(fill_instruction, special_instruction_size_11)
+{
+    reader_info_t reader_i = {.name = "test",
+                                .line = "c;",
+                                .line_nb = 1};
+    asm_info_t asm_i = {.instructs = NULL,
+                        .labels = NULL,
+                        .writing_address = 0};
+    char *parsed_line[] = {"lldi", "r1","r2", "r3", NULL};
+
+    if (!fill_instruction(reader_i, parsed_line, &asm_i) || !(asm_i.instructs))
+        cr_assert(0);
+    cr_assert(asm_i.instructs->size == 5);
+}
+
+Test(fill_instruction, special_instruction_size_12)
+{
+    reader_info_t reader_i = {.name = "test",
+                                .line = "c;",
+                                .line_nb = 1};
+    asm_info_t asm_i = {.instructs = NULL,
+                        .labels = NULL,
+                        .writing_address = 0};
+    char *parsed_line[] = {"lldi", "%1","r1", "r3", NULL};
+
+    if (!fill_instruction(reader_i, parsed_line, &asm_i) || !(asm_i.instructs))
+        cr_assert(0);
+    cr_assert(asm_i.instructs->size == 6);
+}
+
+Test(fill_instruction, special_instruction_size_13)
+{
+    reader_info_t reader_i = {.name = "test",
+                                .line = "c;",
+                                .line_nb = 1};
+    asm_info_t asm_i = {.instructs = NULL,
+                        .labels = NULL,
+                        .writing_address = 0};
+    char *parsed_line[] = {"lldi", "1","r1", "r3", NULL};
+
+    if (!fill_instruction(reader_i, parsed_line, &asm_i) || !(asm_i.instructs))
+        cr_assert(0);
+    cr_assert(asm_i.instructs->size == 6);
+}
+
 Test(fill_instruction, common_instruction_size_1)
 {
     reader_info_t reader_i = {.name = "test",
