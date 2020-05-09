@@ -2,27 +2,14 @@
 ** EPITECH PROJECT, 2020
 ** CPE_corewar_2019
 ** File description:
-** open_file
+** open_file_reader
 */
 
 #include <fcntl.h>
-#include "parser.h"
+#include "open.h"
 #include "my.h"
 
-char *get_file_from_path(const char *path)
-{
-    char **parsed_path = my_str_to_word_array(path, "/", 0);
-    int len = my_arrlen(parsed_path);
-    char *file_name = NULL;
-
-    if (!len || !parsed_path)
-        return (NULL);
-    file_name = my_strdup(parsed_path[len - 1]);
-    my_free_arr((void **)parsed_path);
-    return (file_name);
-}
-
-reader_info_t open_file(const char *path)
+reader_info_t open_file_reader(const char *path)
 {
     reader_info_t reader_i = {.fd = -1,
                                 .name = NULL,

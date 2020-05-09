@@ -26,7 +26,7 @@ bool parse_file(reader_info_t reader_i, asm_info_t *asm_i)
         return (false);
     do {
         update_reader(&reader_i);
-        if (!redirect_parsing(reader_i, asm_i))
+        if (reader_i.line && !redirect_parsing(reader_i, asm_i))
             return (false);
     } while (reader_i.line);
     if (reader_i.name)

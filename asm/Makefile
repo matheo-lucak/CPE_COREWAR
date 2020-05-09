@@ -10,9 +10,12 @@ MAIN				=	src/main.c										\
 
 OP					=	src/op.c
 
-SRC_OPEN			=	src/open/open_file.c							\
+SRC_OPEN			=	src/open/get_file_name_from_path.c				\
+						src/open/open_file_reader.c						\
+						src/open/open_file_writer.c						\
 
-SRC_LINKING 		=	src/linking/label/check_existing_label.c		\
+SRC_LINKING 		=	src/linking/instruction/get_program_size.c		\
+						src/linking/label/check_existing_label.c		\
 						src/linking/label/get_label_address.c			\
 						src/linking/label/link_labels.c					\
 
@@ -36,7 +39,9 @@ SRC_QUEUE			=	src/queue/dequeue.c								\
 						src/queue/empty_queue.c							\
 						src/queue/enqueue.c								\
 
-SRC_WRITING			=
+SRC_WRITING			=	src/writing/write_body.c						\
+						src/writing/write_header.c						\
+						src/writing/writing.c							\
 
 SRC					= $(SRC_LINKING) $(SRC_PARSING) $(SRC_QUEUE) $(SRC_WRITING) $(SRC_OPEN) $(OP)
 

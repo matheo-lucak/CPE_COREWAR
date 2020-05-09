@@ -57,6 +57,7 @@ bool my_skip_is(char **src, bool (*func)(char));
 
 int my_strlen(char const *str);
 int my_find_char(const char *str, char to_find);
+int my_find_last_char(const char *str, char to_find);
 int my_strcmp(char *s1, char *s2);
 int my_strncmp(char const *s1, char const *s2, int n);
 char *my_strstr(char *str, char *to_find);

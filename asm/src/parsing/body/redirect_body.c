@@ -24,7 +24,7 @@ bool redirect_body(reader_info_t reader_i, asm_info_t *asm_i)
             return (false);
         }
     }
-    if (parsed_line[has_label] &&
+    if (parsed_line[has_label] && parsed_line[has_label][0] != '\n' &&
         !fill_instruction(reader_i, parsed_line + has_label, asm_i))
         return (false);
     my_free_arr((void **)parsed_line);

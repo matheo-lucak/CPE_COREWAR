@@ -17,6 +17,9 @@
 
 #include "queue.h"
 
+//file extension of the asm compiled binary files
+#define COR_EXT ".cor"
+
 //Structure for accessing 2bit per 2bit in a byte
 typedef struct __attribute__((packed)) byte_parser_s
 {
@@ -44,6 +47,19 @@ typedef struct asm_info_s
 //Write them in a file corresponding to the first read file[.s] with [.cor] ext
 bool asm_core(const char *paths[]);
 
+//Writes header and all instructions in a file
+//Returns true in case of success
+//Returns false in all other cases
+bool write_file(const char *path, asm_info_t asm_i);
+
+//Returns the program size
+//Program size corresponds to the summ of instructions size
+size_t get_program_size(instruct_t *instruct);
+
+//Links all label variable in instructs's params by
+//the difference between the instruct's address and the found label address
+//Returns true in case of success
+//Returns false in all other cases
 bool link_labels(label_t *label, instruct_t *instruct);
 
 #endif /* !ASM_H_ */
