@@ -12,7 +12,7 @@ static bool fill_label_param(parameters_t *param, char *line)
 {
     param->has_label = true;
     param->label_name = my_strdup(line + 1);
-    if (!param->label_name)
+    if (!(param->label_name))
         return (false);
     return (true);
 }

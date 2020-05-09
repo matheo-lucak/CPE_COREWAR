@@ -16,5 +16,7 @@ bool fill_instruction(reader_info_t reader_i, char **parsed_line,
         return (false);
     if (!fill_params(reader_i, &instruct, parsed_line + 1, asm_i))
         return (false);
+    instruct.address = asm_i->writing_address;
+    asm_i->writing_address += instruct.size;
     return (ENQUEUE(&(asm_i->instructs), &instruct, instruct_t));
 }
