@@ -5,12 +5,16 @@
 ## rtfm
 ##
 
-MAIN				=	src/main.c
+MAIN				=	src/main.c										\
+						src/asm.c										\
 
 OP					=	src/op.c
 
+SRC_OPEN			=	src/open/open_file.c							\
+
 SRC_LINKING 		=	src/linking/label/check_existing_label.c		\
 						src/linking/label/get_label_address.c			\
+						src/linking/label/link_labels.c					\
 
 SRC_PARSING			=	src/parsing/body/instruction/fill_instruction.c	\
 						src/parsing/body/instruction/fill_mnemonic.c	\
@@ -34,7 +38,7 @@ SRC_QUEUE			=	src/queue/dequeue.c								\
 
 SRC_WRITING			=
 
-SRC					= $(SRC_LINKING) $(SRC_PARSING) $(SRC_QUEUE) $(SRC_WRITING) $(OP)
+SRC					= $(SRC_LINKING) $(SRC_PARSING) $(SRC_QUEUE) $(SRC_WRITING) $(SRC_OPEN) $(OP)
 
 OBJ					=	$(SRC:.c=.o) $(MAIN:.c=.o)
 

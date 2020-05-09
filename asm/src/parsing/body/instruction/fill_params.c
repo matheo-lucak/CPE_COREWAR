@@ -37,7 +37,6 @@ static void fill_additionnal_instruct_info(reader_info_t reader_i,
     } else
         size += 1;
     instruct->size = size + 1;
-    instruct->line_nb = reader_i.line_nb;
 }
 
 bool fill_params(reader_info_t reader_i, instruct_t *instruct,

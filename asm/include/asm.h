@@ -37,5 +37,13 @@ typedef struct asm_info_s
 
 #define CAST_BYTE_PARSER(c) (*(byte_parser_t *)&c)
 
+//Main functions of asm
+//Opens all paths
+//Parse them
+//link them
+//Write them in a file corresponding to the first read file[.s] with [.cor] ext
+bool asm_core(char *path[]);
+
+bool link_labels(label_t *label, instruct_t *instruct);
 
 #endif /* !ASM_H_ */

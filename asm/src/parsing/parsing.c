@@ -22,7 +22,6 @@ static void update_reader(reader_info_t *reader_i)
 
 bool parse_file(reader_info_t reader_i, asm_info_t *asm_i)
 {
-
     if (!asm_i || reader_i.fd == -1)
         return (false);
     do {
@@ -30,5 +29,7 @@ bool parse_file(reader_info_t reader_i, asm_info_t *asm_i)
         if (!redirect_parsing(reader_i, asm_i))
             return (false);
     } while (reader_i.line);
+    if (reader_i.name)
+        free(reader_i.name);
     return (true);
 }

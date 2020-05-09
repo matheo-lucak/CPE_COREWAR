@@ -49,9 +49,10 @@ typedef struct instruction_s
     parameters_t params[MAX_ARGS_NUMBER];
     char params_types[MAX_ARGS_NUMBER];
     unsigned param_nb : MAX_ARGS_NUMBER;
-    unsigned int line_nb;
     int size;
     size_t address;
+    char *prog_name;
+    unsigned int line_nb;
 } instruct_t;
 
 #include "op.h"

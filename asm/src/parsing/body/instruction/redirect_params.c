@@ -78,6 +78,7 @@ bool redirect_param(reader_info_t reader_i, char types, parameters_t *param,
 {
     if (!line || !param)
         return (false);
+    my_memset((char *)param, 0, sizeof(parameters_t));
     if (param_is_direct(line))
         return (fill_direct_param(reader_i, types, param, line));
     if (param_is_register(line))

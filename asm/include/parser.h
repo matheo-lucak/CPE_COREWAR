@@ -26,6 +26,11 @@ typedef struct reader_info_s
 
 #include "asm.h"
 
+//Opens a file with the given path
+//Sets the reader_info_t's fd to opened fd
+//Sets the reader_info_t's name to the opened file name
+reader_info_t open_file(char *path);
+
 //Prints error_msg with a specific format
 void parsing_error(reader_info_t reader_i, char *error_msg);
 
