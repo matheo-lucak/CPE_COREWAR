@@ -30,8 +30,7 @@ static inline bool header_parse_error(char *line,
     if (line[0])
         error = true;
     if (error) {
-        my_printf("asm, %s, line %d: Syntax error.\n"
-                                            , reader_i.name, reader_i.line_nb);
+        parsing_error(reader_i, "Syntax error");
     }
     return (error);
 }
@@ -40,14 +39,12 @@ static inline bool header_name_error(reader_info_t reader_i,
                                         header_info_t *header_i)
 {
     if (header_i->name_set) {
-        my_printf("asm, %s, line %d: The name can only be defined once.\n"
-                                            , reader_i.name, reader_i.line_nb);
+        parsing_error(reader_i, "The name can only be defined once");
         return (true);
     }
     if (header_i->parsing_core) {
-        my_printf("asm, %s, line %d: The name of your program must be"
-                                                    "the first line.\n"
-                                            , reader_i.name, reader_i.line_nb);
+        parsing_error(reader_i,
+                    "The name of your program must be the first line");
         return (true);
     }
     return (false);
@@ -57,13 +54,11 @@ static inline bool header_comment_error(reader_info_t reader_i,
                                         header_info_t *header_i)
 {
     if (!(header_i->name_set)) {
-        my_printf("asm, %s, line %d: The comment must be just after the name.\n"
-                                            , reader_i.name, reader_i.line_nb);
+        parsing_error(reader_i, "The comment must be just after the name");
         return (true);
     }
     if (header_i->comment_set) {
-        my_printf("asm, %s, line %d: The comment can only be defined once.\n"
-                                            , reader_i.name, reader_i.line_nb);
+        parsing_error(reader_i, "The comment can only be defined once");
         return (true);
     }
     return (false);

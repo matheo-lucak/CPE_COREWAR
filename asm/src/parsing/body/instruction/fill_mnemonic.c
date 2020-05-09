@@ -30,8 +30,7 @@ bool fill_mnemonic(reader_info_t reader_i, instruct_t *instruct,
         return (false);
     index = find_mnemonic(parsed_line[0]);
     if (index == -1) {
-        my_printf("asm, %s, line %d: Invalid instruction.\n"
-                                            , reader_i.name, reader_i.line_nb);
+        parsing_error(reader_i, "Invalid instruction");
         return (false);
     }
     instruct->code = op_tab[index].code;

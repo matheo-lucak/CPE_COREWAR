@@ -12,8 +12,7 @@ static bool fill_label_error(reader_info_t reader_i, char * label_name,
                                                         label_t *labels)
 {
     if (check_existing_label(labels, label_name)) {
-        my_printf("asm, %s, line %d: Multiple definition of the same label.\n"
-                                            , reader_i.name, reader_i.line_nb);
+        parsing_error(reader_i, "Multiple definition of the same label");
         return (true);
     }
     return (false);

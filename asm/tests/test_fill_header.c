@@ -60,7 +60,7 @@ Test(is_header_tests, name_no_first_line_std1)
     cr_redirect_stdout();
     redirect_fill_header(reader_i, &header_i);
     cr_assert_stdout_eq_str("asm, first_line, line 1: "
-                            "The name of your program must be"
+                            "The name of your program must be "
                             "the first line.\n");
 }
 

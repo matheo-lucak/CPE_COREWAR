@@ -15,13 +15,16 @@ SRC_LINKING 		=	src/linking/label/check_existing_label.c		\
 SRC_PARSING			=	src/parsing/body/instruction/fill_instruction.c	\
 						src/parsing/body/instruction/fill_mnemonic.c	\
 						src/parsing/body/instruction/fill_params.c		\
+						src/parsing/body/instruction/param_errors.c		\
 						src/parsing/body/instruction/param_is.c			\
+						src/parsing/body/instruction/redirect_params.c	\
 						src/parsing/body/label/fill_label.c				\
 						src/parsing/body/label/is_label.c				\
 						src/parsing/body/label/is_valid_label.c			\
 						src/parsing/body/redirect_body.c				\
 						src/parsing/header/fill_header.c				\
 						src/parsing/header/is_header.c					\
+						src/parsing/parsing_error.c						\
 						src/parsing/parsing.c							\
 						src/parsing/redirect_parsing.c					\
 

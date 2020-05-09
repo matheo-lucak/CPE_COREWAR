@@ -26,6 +26,9 @@ typedef struct reader_info_s
 
 #include "asm.h"
 
+//Prints error_msg with a specific format
+void parsing_error(reader_info_t reader_i, char *error_msg);
+
 //Parses an entire file (opened with fd contained in reader_i)
 //Returns true in case of success
 //Returns false if any error occurs

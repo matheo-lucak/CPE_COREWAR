@@ -34,8 +34,7 @@ static bool fill_header_comment(reader_info_t reader_i, header_info_t *header_i)
     if (!tmp)
         return (false);
     if (my_strlen(tmp) > PROG_NAME_LENGTH) {
-        my_printf("asm, %s, line %d: The program name is too long.\n"
-                                            , reader_i.name, reader_i.line_nb);
+        parsing_error(reader_i, "The program name is too long");
         error = false;
     }
     my_memcpy(header_i->header.comment, tmp, my_strlen(tmp));
@@ -55,8 +54,7 @@ static bool fill_header_name(reader_info_t reader_i, header_info_t *header_i)
     if (!tmp)
         return (false);
     if (my_strlen(tmp) > COMMENT_LENGTH) {
-        my_printf("asm, %s, line %d: The comment is too long.\n"
-                                            , reader_i.name, reader_i.line_nb);
+        parsing_error(reader_i, "The comment is too long");
         error = false;
     }
     my_memcpy(header_i->header.prog_name, tmp, my_strlen(tmp));
@@ -73,7 +71,6 @@ bool redirect_fill_header(reader_info_t reader_i, header_info_t *header_i)
         return (fill_header_name(reader_i, header_i));
     else if (is_header(reader_i.line, COMMENT_CMD_STRING))
         return (fill_header_comment(reader_i, header_i));
-    my_printf("asm, %s, line %d: Invalid instruction.\n",
-                                            reader_i.name, reader_i.line_nb);
+    parsing_error(reader_i, "Invalid instruction");
     return (false);
 }

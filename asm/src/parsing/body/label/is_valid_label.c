@@ -15,8 +15,7 @@ bool is_valid_label(reader_info_t reader_i, char *str)
     if (len > 0 && str[len - 1] == LABEL_CHAR)
         str[len - 1] = 0;
     if (!str || !my_str_is_template(str, LABEL_CHARS)) {
-        my_printf("asm, %s, line %d: Invalid label name.\n"
-                                            , reader_i.name, reader_i.line_nb);
+        parsing_error(reader_i, "Invalid label name");
         return (false);
     }
     return (true);
