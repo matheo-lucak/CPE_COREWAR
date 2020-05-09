@@ -15,16 +15,17 @@ static void init_asm_info(asm_info_t *asm_i)
         my_memset((char *)asm_i, 0, sizeof(asm_i));
 }
 
-bool asm_core(char *path[])
+bool asm_core(const char *paths[])
 {
     register size_t index = 0;
     asm_info_t asm_i;
     reader_info_t reader_i;
 
-    if (!path)
+    init_asm_info(&asm_i);
+    if (!paths)
         return (false);
-    for (; path[index]; index += 1) {
-        reader_i = open_file(path[index]);
+    for (; paths[index]; index += 1) {
+        reader_i = open_file(paths[index]);
         if (!parse_file(reader_i, &asm_i))
             return (false);
     }

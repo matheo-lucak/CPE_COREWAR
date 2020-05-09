@@ -42,7 +42,7 @@ typedef struct asm_info_s
 //Parse them
 //link them
 //Write them in a file corresponding to the first read file[.s] with [.cor] ext
-bool asm_core(char *path[]);
+bool asm_core(const char *paths[]);
 
 bool link_labels(label_t *label, instruct_t *instruct);
 

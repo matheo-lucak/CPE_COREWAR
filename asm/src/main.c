@@ -27,22 +27,10 @@ static bool should_print_usage(const int ac, const char *av[])
     return (false);
 }
 
-#include "parser.h"
-
 int main(__attribute__((unused))const int ac,
         __attribute__((unused))const char *av[],
         __attribute__((unused))const char **env)
 {
-        char line[] = "label: ld %15 r4";
-    reader_info_t reader_i = {.name = "test",
-                                .line = line,
-                                .line_nb = 1};
-    asm_info_t asm_i = {.instructs = NULL,
-                        .labels = NULL,
-                        .writing_address = 0};
-
-    redirect_body(reader_i, &asm_i);
-    link_labels(asm_i.labels, asm_i.instructs);
     if (ac != 2)
         return (84);
     if (should_print_usage(ac, av)) {

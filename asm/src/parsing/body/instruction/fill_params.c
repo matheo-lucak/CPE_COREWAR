@@ -24,8 +24,7 @@ static bool fill_params_error(reader_info_t reader_i, char **parsed_line,
     return (true);
 }
 
-static void fill_additionnal_instruct_info(reader_info_t reader_i,
-                            instruct_t *instruct, size_t size)
+static void fill_additionnal_instruct_info(instruct_t *instruct, size_t size)
 {
     if (instruct->code == 0x9 ||
         instruct->code == 0xC || instruct->code == 0xF) {
@@ -57,6 +56,6 @@ bool fill_params(reader_info_t reader_i, instruct_t *instruct,
             return (false);
         size += instruct->params[index].size;
     }
-    fill_additionnal_instruct_info(reader_i, instruct, size);
+    fill_additionnal_instruct_info(instruct, size);
     return (true);
 }

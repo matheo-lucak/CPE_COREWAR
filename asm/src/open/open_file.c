@@ -9,7 +9,7 @@
 #include "parser.h"
 #include "my.h"
 
-char *get_file_from_path(char *path)
+char *get_file_from_path(const char *path)
 {
     char **parsed_path = my_str_to_word_array(path, "/", 0);
     int len = my_arrlen(parsed_path);
@@ -22,7 +22,7 @@ char *get_file_from_path(char *path)
     return (file_name);
 }
 
-reader_info_t open_file(char *path)
+reader_info_t open_file(const char *path)
 {
     reader_info_t reader_i = {.fd = -1,
                                 .name = NULL,
