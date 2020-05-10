@@ -11,9 +11,9 @@ bool my_skip_chars(char **src, char const *template)
 {
     register size_t index = 0;
 
-    if (!src)
+    if (!src || !(*src))
         return (false);
-    while (*src && my_find_char(template, (*src[0])) != -1) {
+    while ((*src)[0] && my_find_char(template, (*src[0])) != -1) {
         *src += 1;
     }
     return (true);
