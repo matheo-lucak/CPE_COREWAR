@@ -217,6 +217,40 @@ Test(is_header_tests, succes_1)
     cr_assert(redirect_fill_header(reader_i, &header_i));
 }
 
+Test(is_header_tests, too_long_name_1)
+{
+    reader_info_t reader_i = {.name = "fail",
+                                .line = ".name \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                                        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                                        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                                        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"",
+                                .line_nb = 1};
+    header_info_t header_i = {.name_set = false,
+                                .comment_set = false,
+                                .parsing_core = false};
+
+    cr_assert(!redirect_fill_header(reader_i, &header_i));
+}
+
+Test(is_header_tests, too_long_name_1_std1)
+{
+    reader_info_t reader_i = {.name = "fail",
+                                .line = ".name \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                                        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                                        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                                        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"",
+                                .line_nb = 1};
+    header_info_t header_i = {.name_set = false,
+                                .comment_set = false,
+                                .parsing_core = false};
+
+    cr_redirect_stdout();
+    if (redirect_fill_header(reader_i, &header_i))
+        cr_assert(0);
+    cr_assert_stdout_eq_str("asm, fail, line 1: "
+                            "The program name is too long.\n");
+}
+
 Test(is_header_tests, succes_1_strcmp)
 {
     reader_info_t reader_i = {.name = "success1",

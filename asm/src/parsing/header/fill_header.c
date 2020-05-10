@@ -33,8 +33,8 @@ static bool fill_header_comment(reader_info_t reader_i, header_info_t *header_i)
     tmp = parse_header_line(reader_i, COMMENT_CMD_STRING);
     if (!tmp)
         return (false);
-    if (my_strlen(tmp) > PROG_NAME_LENGTH) {
-        parsing_error(reader_i, "The program name is too long");
+    if (my_strlen(tmp) > COMMENT_LENGTH) {
+        parsing_error(reader_i, "The comment is too long");
         error = false;
     }
     my_memcpy(header_i->header.comment, tmp, my_strlen(tmp));
@@ -53,8 +53,8 @@ static bool fill_header_name(reader_info_t reader_i, header_info_t *header_i)
     tmp = parse_header_line(reader_i, NAME_CMD_STRING);
     if (!tmp)
         return (false);
-    if (my_strlen(tmp) > COMMENT_LENGTH) {
-        parsing_error(reader_i, "The comment is too long");
+    if (my_strlen(tmp) > PROG_NAME_LENGTH) {
+        parsing_error(reader_i, "The program name is too long");
         error = false;
     }
     my_memcpy(header_i->header.prog_name, tmp, my_strlen(tmp));
