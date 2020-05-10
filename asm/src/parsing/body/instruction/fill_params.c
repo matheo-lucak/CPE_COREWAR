@@ -52,9 +52,9 @@ bool fill_params(reader_info_t reader_i, instruct_t *instruct,
     if (!fill_params_error(reader_i, parsed_line, instruct))
         return (false);
     for (; index < len; index += 1) {
-        if (!redirect_param(reader_i, instruct->params_types[index],
-                                        &(instruct->params[index]),
-                                        parsed_line[index]))
+        instruct->params[index].types = instruct->params_types[index];
+        if (!redirect_param(reader_i, &(instruct->params[index]),
+                            instruct->code, parsed_line[index]))
             return (false);
         size += instruct->params[index].size;
     }

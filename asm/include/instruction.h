@@ -33,6 +33,7 @@ typedef struct parameters_s
     union param_storage value;
     bool has_label;
     char *label_name;
+    char types;
 } parameters_t;
 
 //Instruction linked list

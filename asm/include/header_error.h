@@ -53,7 +53,7 @@ static inline bool header_name_error(reader_info_t reader_i,
 static inline bool header_comment_error(reader_info_t reader_i,
                                         header_info_t *header_i)
 {
-    if (!(header_i->name_set)) {
+    if (!(header_i->name_set) || header_i->parsing_core) {
         parsing_error(reader_i, "The comment must be just after the name");
         return (true);
     }

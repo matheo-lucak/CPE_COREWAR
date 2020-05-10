@@ -14,7 +14,7 @@ reader_info_t open_file_reader(const char *path)
     reader_info_t reader_i = {.fd = -1,
                                 .name = NULL,
                                 .line = NULL,
-                                .line_nb = 0};
+                                .line_nb = 1};
     if (!path)
         return (reader_i);
     reader_i.fd = open(path, O_RDONLY);

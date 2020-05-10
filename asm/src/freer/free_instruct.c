@@ -20,13 +20,13 @@ static bool free_params(instruct_t *instruct)
     return (true);
 }
 
-bool free_instruct(instruct_t *instruct)
-{
-    if (!instruct)
-        return (false);
-    if (instruct->prog_name)
-        free(instruct->prog_name);
-    if (!free_params(instruct))
-        return (false);
-    return (true);
-}
+    bool free_instruct(instruct_t *instruct)
+    {
+        if (!instruct)
+            return (false);
+        if (instruct->prog_name)
+            free(instruct->prog_name);
+        if (!free_params(instruct))
+            return (false);
+        return (true);
+    }

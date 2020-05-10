@@ -17,10 +17,10 @@ static bool fill_label_param(parameters_t *param, char *line)
     return (true);
 }
 
-static bool fill_register_param(reader_info_t reader_i, char types,
-                            parameters_t *param, char *line)
+static bool fill_register_param(reader_info_t reader_i,
+                        parameters_t *param, char *line)
 {
-    if (!(types & T_REG)) {
+    if (!(param->types & T_REG)) {
         parsing_error(reader_i,
                         "The argument given to the instruction is invalid");
         return (false);
@@ -34,10 +34,10 @@ static bool fill_register_param(reader_info_t reader_i, char types,
     return (true);
 }
 
-static bool fill_indirect_param(reader_info_t reader_i, char types,
-                            parameters_t *param, char *line)
+static bool fill_indirect_param(reader_info_t reader_i,
+                        parameters_t *param, char *line)
 {
-    if (!(types & T_IND) ||
+    if (!(param->types & T_IND) ||
         (!param_is_label(line) && !my_str_is(line, my_is_num))) {
         parsing_error(reader_i,
                         "The argument given to the instruction is invalid");
@@ -52,17 +52,19 @@ static bool fill_indirect_param(reader_info_t reader_i, char types,
     return (true);
 }
 
-static bool fill_direct_param(reader_info_t reader_i, char types,
-                                parameters_t *param, char *line)
+static bool fill_direct_param(reader_info_t reader_i, char mnemo_code,
+                                        parameters_t *param, char *line)
 {
-    if (!(types & T_DIR) ||
+    if (!(param->types & T_DIR) ||
         (!param_is_label(line + 1) && !my_str_is(line + 1, my_is_num))) {
         parsing_error(reader_i,
                         "The argument given to the instruction is invalid");
         return (false);
     }
     param->type = T_DIR;
-    if (types == (T_REG | T_DIR | T_IND))
+    if ((mnemo_code == 0x0a || mnemo_code == 0x0b || mnemo_code == 0x0e) &&
+        (param->types == (T_REG | T_DIR | T_IND) ||
+        param->types == (T_DIR | T_REG)))
         param->size = IND_SIZE;
     else
         param->size = DIR_SIZE;
@@ -73,15 +75,15 @@ static bool fill_direct_param(reader_info_t reader_i, char types,
     return (true);
 }
 
-bool redirect_param(reader_info_t reader_i, char types, parameters_t *param,
-                                                                char *line)
+bool redirect_param(reader_info_t reader_i, parameters_t *param,
+                                    char mnemo_code, char *line)
 {
     if (!line || !param)
         return (false);
     my_memset((char *)param, 0, sizeof(parameters_t));
     if (param_is_direct(line))
-        return (fill_direct_param(reader_i, types, param, line));
+        return (fill_direct_param(reader_i, mnemo_code, param, line));
     if (param_is_register(line))
-        return (fill_register_param(reader_i, types, param, line));
-    return (fill_indirect_param(reader_i, types, param, line));
+        return (fill_register_param(reader_i, param, line));
+    return (fill_indirect_param(reader_i, param, line));
 }

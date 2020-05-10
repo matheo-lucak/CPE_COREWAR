@@ -17,6 +17,7 @@ bool redirect_body(reader_info_t reader_i, asm_info_t *asm_i)
 
     if (!parsed_line)
         return (false);
+    asm_i->header_info.parsing_core = true;
     if (is_label(parsed_line[0])) {
         has_label = true;
         if (!is_valid_label(reader_i, parsed_line[0]) ||

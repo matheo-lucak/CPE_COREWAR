@@ -31,9 +31,7 @@ int main(__attribute__((unused))const int ac,
         __attribute__((unused))const char *av[],
         __attribute__((unused))const char **env)
 {
-    if (ac != 2)
-        return (84);
-    if (should_print_usage(ac, av)) {
+    if (should_print_usage(ac, av) || ac == 1) {
         print_usage(av[0]);
         return (84);
     }

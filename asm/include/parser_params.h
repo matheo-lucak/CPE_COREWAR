@@ -10,8 +10,8 @@
 
 #include "parser.h"
 
-bool redirect_param(reader_info_t reader_i, char types, parameters_t *param,
-                                                                char *line);
+bool redirect_param(reader_info_t reader_i, parameters_t *param,
+                                    char mnemo_code, char *line);
 
 bool param_redirect_error(reader_info_t reader_i, char *line);
 
