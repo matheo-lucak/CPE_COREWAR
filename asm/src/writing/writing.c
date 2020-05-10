@@ -14,7 +14,7 @@ bool write_file(const char *path, asm_info_t asm_i)
 
     if (fd == -1)
         return (false);
-    if (!write_header(fd, asm_i.header_info))
+    if (!write_header(fd, asm_i.header_info.header))
         return (false);
     if (!write_body(fd, asm_i.instructs))
         return (false);

@@ -18,23 +18,32 @@ static void update_header(asm_info_t *asm_i)
     asm_i->header_info.header.prog_size = get_program_size(asm_i->instructs);
 }
 
-bool asm_core(const char *paths[])
+static bool parse_all_files(const char *paths[], asm_info_t *asm_i)
 {
     register size_t index = 0;
-    asm_info_t asm_i = {0};
     reader_info_t reader_i = {0};
+
+    for (; paths[index]; index += 1) {
+        reader_i = open_file_reader(paths[index]);
+        if (!parse_file(reader_i, asm_i))
+            return (false);
+    }
+    return (true);
+}
+
+bool asm_core(const char *paths[])
+{
+    asm_info_t asm_i = {0};
 
     if (!paths)
         return (false);
-    for (; paths[index]; index += 1) {
-        reader_i = open_file_reader(paths[index]);
-        if (!parse_file(reader_i, &asm_i))
-            return (false);
-    }
+    if (!parse_all_files(paths, &asm_i))
+        return (false);
     if (!link_labels(asm_i.labels, asm_i.instructs))
         return (false);
     update_header(&asm_i);
     if (!write_file(paths[0], asm_i))
         return (false);
+    free_asm(&asm_i);
     return (true);
 }

@@ -8,6 +8,7 @@
 #ifndef LABELS_H_
 #define LABELS_H_
 
+#include <stdbool.h>
 #include <stddef.h>
 
 //Label linked list
@@ -16,6 +17,7 @@
 typedef struct label_s
 {
     struct label_s *next;
+    bool (*freer)(void *);
     char *name;
     size_t address;
 } label_t;
@@ -39,5 +41,10 @@ bool check_existing_label(label_t *label, char *label_name);
 //Returns true if the given corresponds to a label
 //Returns false in all other cases
 bool is_label(char *str);
+
+//Frees label allocated components
+//Returns true in case of success
+//Returns false in any other cases
+bool free_label(label_t *label);
 
 #endif /* !LABELS_H_ */

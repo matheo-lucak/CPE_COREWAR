@@ -8,6 +8,9 @@
 #ifndef INSTRUCTION_H_
 #define INSTRUCTION_H_
 
+#include "op.h"
+
+#include <stdbool.h>
 #include <stddef.h>
 
 union param_storage
@@ -44,8 +47,9 @@ typedef struct parameters_s
 typedef struct instruction_s
 {
     struct instruction_s *next;
+    bool (*freer)(void *);
     char code;
-    char params_types_code;
+    char param_type_code;
     parameters_t params[MAX_ARGS_NUMBER];
     char params_types[MAX_ARGS_NUMBER];
     unsigned param_nb : MAX_ARGS_NUMBER;
@@ -55,8 +59,11 @@ typedef struct instruction_s
     unsigned int line_nb;
 } instruct_t;
 
-#include "op.h"
-
 #include "queue.h"
+
+//Frees instruct allocated components
+//Returns true in case of success
+//Returns false in any other cases
+bool free_instruct(instruct_t *instruct);
 
 #endif /* !INSTRUCTION_H_ */

@@ -11,6 +11,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 
+//Launch binary with -h or --help to prompt this message
 static const char asm_usage[] = {
     "USAGE\n"
     "%s file_name[.s]\n"

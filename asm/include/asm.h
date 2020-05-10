@@ -23,10 +23,10 @@
 //Structure for accessing 2bit per 2bit in a byte
 typedef struct __attribute__((packed)) byte_parser_s
 {
-    int p1 : 2;
-    int p2 : 2;
-    int p3 : 2;
-    int p4 : 2;
+    unsigned p1 : 2;
+    unsigned p2 : 2;
+    unsigned p3 : 2;
+    unsigned p4 : 2;
 } byte_parser_t;
 
 //Main structure of ASM
@@ -38,7 +38,8 @@ typedef struct asm_info_s
     size_t writing_address;
 } asm_info_t;
 
-#define CAST_BYTE_PARSER(c) (*(byte_parser_t *)&c)
+#define CAST_BYTE_2_CHAR(b) (*(char *)&b)
+#define CAST_CHAR_2_BYTE(c) (*(byte_parser_t *)&c)
 
 //Main functions of asm
 //Opens all paths
@@ -46,6 +47,14 @@ typedef struct asm_info_s
 //link them
 //Write them in a file corresponding to the first read file[.s] with [.cor] ext
 bool asm_core(const char *paths[]);
+
+
+//Frees all asm ressources such as :
+//All labels
+//All instructs
+//Returns true in case of success
+//Returns false in all other cases
+bool free_asm(asm_info_t *asm_i);
 
 //Writes header and all instructions in a file
 //Returns true in case of success

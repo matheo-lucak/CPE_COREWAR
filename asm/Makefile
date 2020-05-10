@@ -10,6 +10,10 @@ MAIN				=	src/main.c										\
 
 OP					=	src/op.c
 
+SRC_FREER			=	src/freer/free_asm.c							\
+						src/freer/free_instruct.c						\
+						src/freer/free_label.c							\
+
 SRC_OPEN			=	src/open/get_file_name_from_path.c				\
 						src/open/open_file_reader.c						\
 						src/open/open_file_writer.c						\
@@ -21,6 +25,7 @@ SRC_LINKING 		=	src/linking/instruction/get_program_size.c		\
 
 SRC_PARSING			=	src/parsing/body/instruction/fill_instruction.c	\
 						src/parsing/body/instruction/fill_mnemonic.c	\
+						src/parsing/body/instruction/fill_param_code.c	\
 						src/parsing/body/instruction/fill_params.c		\
 						src/parsing/body/instruction/param_errors.c		\
 						src/parsing/body/instruction/param_is.c			\
@@ -41,9 +46,11 @@ SRC_QUEUE			=	src/queue/dequeue.c								\
 
 SRC_WRITING			=	src/writing/write_body.c						\
 						src/writing/write_header.c						\
+						src/writing/write_instruction.c					\
+						src/writing/write_params.c						\
 						src/writing/writing.c							\
 
-SRC					= $(SRC_LINKING) $(SRC_PARSING) $(SRC_QUEUE) $(SRC_WRITING) $(SRC_OPEN) $(OP)
+SRC					=	$(OP) $(SRC_FREER) $(SRC_OPEN) $(SRC_LINKING) $(SRC_PARSING) $(SRC_QUEUE) $(SRC_WRITING)
 
 OBJ					=	$(SRC:.c=.o) $(MAIN:.c=.o)
 

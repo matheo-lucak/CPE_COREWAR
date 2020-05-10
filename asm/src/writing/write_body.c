@@ -5,13 +5,17 @@
 ** write_body
 */
 
-#include "open.h"
+#include "writing.h"
 
 bool write_body(int fd, instruct_t *instructs)
 {
     if (fd == -1)
         return (false);
     for (; instructs; instructs = instructs->next) {
+        if (!instructs)
+            continue;
+        if (!write_instruction(fd, instructs))
+            return (false);
     }
     return (true);
 }

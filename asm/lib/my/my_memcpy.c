@@ -19,3 +19,20 @@ void *my_memcpy(void *dest, const void *src, size_t n)
     }
     return (dest);
 }
+
+void *my_rev_memcpy(void *src, size_t n)
+{
+    char buf[n];
+    size_t index = 0;
+
+    if (!src)
+        return (NULL);
+    if (n <= 1)
+        return (src);
+    my_memcpy(buf, src, n);
+    while (index < n) {
+        *((char *)src + index) = *((char *)buf + n - index - 1);
+        index++;
+    }
+    return (src);
+}

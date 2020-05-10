@@ -31,5 +31,7 @@ bool parse_file(reader_info_t reader_i, asm_info_t *asm_i)
     } while (reader_i.line);
     if (reader_i.name)
         free(reader_i.name);
+    if (reader_i.fd != -1)
+        close(reader_i.fd);
     return (true);
 }

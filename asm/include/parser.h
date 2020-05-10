@@ -83,6 +83,10 @@ bool fill_mnemonic(reader_info_t reader_i, instruct_t *instruct,
 bool fill_params(reader_info_t reader_i, instruct_t *instruct,
                         char **parsed_line, asm_info_t *asm_i);
 
+//Sub fonction of full_params
+//Translates all param types in one byte
+void fill_param_code(instruct_t *instruct);
+
 //Checks if given string corresponds to a register
 //A register starts with 'r'
 //Returns true if corresponds to a register

@@ -15,6 +15,7 @@
 typedef struct queue_s
 {
     struct queue_s *next;
+    bool (*freer)(void *);
 } queue_t;
 
 //List utils for queue
@@ -25,6 +26,6 @@ bool enqueue(queue_t **queue, void *src_node, size_t size);
 #define ENQUEUE(queue, node, type) (enqueue(\
                 (queue_t **)queue, (void *)node, sizeof(type)))
 #define DEQUEUE(queue) (dequeue(queue_t **)queue)
-#define EMPTY_QUEUE(queue) (empty_queue(queue_t **)queue)
+#define EMPTY_QUEUE(queue) (empty_queue((queue_t **)queue))
 
 #endif /* !QUEUE_H_ */

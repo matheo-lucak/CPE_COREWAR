@@ -33,8 +33,10 @@ static void fill_additionnal_instruct_info(instruct_t *instruct, size_t size)
     } else if (instruct->code == 0x1) {
         instruct->params[0].size = DIR_SIZE;
         size = DIR_SIZE;
-    } else
+    } else {
+        fill_param_code(instruct);
         size += 1;
+    }
     instruct->size = size + 1;
 }
 

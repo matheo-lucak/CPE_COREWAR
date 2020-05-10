@@ -44,11 +44,11 @@ char *re_alloc_buffer(char *buffer, char *stock, int mode)
         free(buffer);
         return (new_buffer);
     }
-    while (buffer[i + 1] != '\0' && buffer[i + 1] != '\n')
+    while (buffer[i] != '\0' && buffer[i] != '\n')
         i++;
-    if (buffer[i + 1] == '\0')
+    if (buffer[i] == '\0')
         return (NULL);
-    new_buffer = my_strdup(buffer + i + 2);
+    new_buffer = my_strdup(buffer + i + 1);
     free(buffer);
     return (new_buffer);
 }

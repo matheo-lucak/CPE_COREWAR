@@ -22,6 +22,7 @@ bool fill_label(reader_info_t reader_i, char *label_name, asm_info_t *asm_i)
 {
     label_t label;
 
+    label.freer = (void *)&free_label;
     if (!label_name || !asm_i ||
         fill_label_error(reader_i, label_name, asm_i->labels))
         return (false);

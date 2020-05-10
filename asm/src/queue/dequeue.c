@@ -15,6 +15,8 @@ bool dequeue(queue_t **queue)
         return (false);
     save = *queue;
     *queue = (*queue)->next;
+    if (save->freer)
+        save->freer(save);
     free(save);
     return (true);
 }

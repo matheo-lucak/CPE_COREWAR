@@ -27,6 +27,7 @@ Test(queue_tests, dequeue_success)
     if (!queue)
         cr_assert(1);
     queue->next = NULL;
+    queue->freer = NULL;
     dequeue(&queue);
     cr_assert(!queue);
 }
@@ -43,6 +44,8 @@ Test(queue_tests, empty_queue_success_1)
 
     if (!node1 || !node2)
         cr_assert(1);
+    node1->freer = NULL;
+    node2->freer = NULL;
     node1->next = node2;
     node2->next = NULL;
     empty_queue(&node1);
@@ -56,6 +59,8 @@ Test(queue_tests, empty_queue_success_2)
 
     if (!node1 || !node2)
         cr_assert(1);
+    node1->freer = NULL;
+    node2->freer = NULL;
     node1->next = node2;
     node2->next = NULL;
     cr_assert(empty_queue(&node1));

@@ -50,6 +50,7 @@ char *my_strdup_word(const char *src);
 char *my_quoted_strdup(const char *src, char quote);
 void my_memset(char *str, char c, int len);
 void *my_memcpy(void *dest, const void *src, size_t n);
+void *my_rev_memcpy(void *src, size_t n);
 
 bool my_skip_chars(char **src, char const *template);
 bool my_skip_str(char **src, char *str);
