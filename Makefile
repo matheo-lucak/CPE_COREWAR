@@ -5,54 +5,30 @@
 ## Compiles the corewar and asm programs
 ##
 
-CFLAGS			=	-W -Wall -Wextra
+ASM_PATH		=	asm
 
-CPPFLAGS		=	-I./include/
-
-CRI_FLAGS		=   -lcriterion --coverage
-
-SRC_MAIN		=	src/main.c
-
-SRC				=
-
-SRC_PATH		=	$(addprefix ./src/,$(SRC))
-
-TEST_SRC		=
-
-TEST_SRC_PATH	=	$(addprefix ./tests/,$(TEST_SRC))
-
-OBJ				=	$(SRC_MAIN:.c=.o)	\
-					$(SRC_PATH:.c=.o)
+VM_PATH			= 	vm
 
 TEST_NAME		=	tests_run
 
-NAME			=	coeur_guerre
+all:
+				$(MAKE) -C $(ASM_PATH)
+				#$(MAKE) -C $(VM_PATH)
 
-all:			relib $(NAME)
-
-$(NAME):		$(OBJ)
-				gcc -o $(NAME) $(OBJ) $(CFLAGS) -L./lib/ -lmy
-
-relib:
-				make re -C ./lib/
-
-$(TEST_NAME):		clean relib
-				gcc -o $(TEST_NAME) $(CRI_FLAGS) $(SRC_PATH) $(LIB_PATH) $(TEST_SRC_PATH) \
-				-L./lib/ -lmy \
-				./tests_run
+$(TEST_NAME):
+				$(MAKE) $@ -C $(ASM_PATH)
+				#$(MAKE) $@ -C $(VM_PATH)
 
 clean:
-				rm -f $(OBJ) *.gcno *.gcda
-				make clean -C ./lib/
+				$(MAKE) clean -C $(ASM_PATH)
+				#$(MAKE) clean -C $(VM_PATH)
 
-fclean:			clean
-				rm -f $(NAME)
-				rm -f $(TEST_NAME)
-				make fclean -C ./lib/
+fclean:
+				$(MAKE) fclean -C $(ASM_PATH)
+				#$(MAKE) fclean -C $(VM_PATH)
 
-re:				fclean all
+re:
+				$(MAKE) re -C $(ASM_PATH)
+				#$(MAKE) re -C $(VM_PATH)
 
-auteur:
-				echo $(USER) > auteur
-
-.PHONY: 		all $(NAME) clean fclean re auteur
+.PHONY: 		all clean fclean re
