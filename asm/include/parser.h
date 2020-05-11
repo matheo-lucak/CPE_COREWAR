@@ -29,6 +29,12 @@ typedef struct reader_info_s
 //Prints error_msg with a specific format
 void parsing_error(reader_info_t reader_i, char *error_msg);
 
+//Open all given files and parse them
+//Returns true in case of success
+//Returns false if any error occurs
+bool parse_all_files(const char *paths[], asm_info_t *asm_i);
+
+//Sub fonction of parse_all_files
 //Parses an entire file (opened with fd contained in reader_i)
 //Returns true in case of success
 //Returns false if any error occurs
@@ -104,5 +110,11 @@ bool param_is_direct(char *str);
 //Returns true if corresponds to a label
 //Returns false in all other cases
 bool param_is_label(char *str);
+
+//Checks if a header is completed or not
+//Returns true if header is completed
+//Returns false if header is not completed
+//And prints message error
+bool is_header_complete(reader_info_t reader_i, asm_info_t *asm_i);
 
 #endif /* !PARSER_H_ */

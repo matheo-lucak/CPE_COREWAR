@@ -35,6 +35,7 @@ SRC_PARSING			=	src/parsing/body/instruction/fill_instruction.c	\
 						src/parsing/body/label/is_valid_label.c			\
 						src/parsing/body/redirect_body.c				\
 						src/parsing/header/fill_header.c				\
+						src/parsing/header/is_header_complete.c			\
 						src/parsing/header/is_header.c					\
 						src/parsing/parsing_error.c						\
 						src/parsing/parsing.c							\

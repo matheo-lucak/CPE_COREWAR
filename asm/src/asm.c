@@ -18,19 +18,6 @@ static void update_header(asm_info_t *asm_i)
     asm_i->header_info.header.prog_size = get_program_size(asm_i->instructs);
 }
 
-static bool parse_all_files(const char *paths[], asm_info_t *asm_i)
-{
-    register size_t index = 0;
-    reader_info_t reader_i = {0};
-
-    for (; paths[index]; index += 1) {
-        reader_i = open_file_reader(paths[index]);
-        if (!parse_file(reader_i, asm_i))
-            return (false);
-    }
-    return (true);
-}
-
 bool asm_core(const char *paths[])
 {
     asm_info_t asm_i = {0};

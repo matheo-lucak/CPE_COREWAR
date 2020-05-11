@@ -18,9 +18,19 @@ static bool is_comment(reader_info_t reader_i)
     return (false);
 }
 
+static bool is_blank_line(reader_info_t reader_i)
+{
+    if (!(reader_i.line))
+        return (true);
+    my_skip_chars(&(reader_i.line), " \t");
+    if (reader_i.line[0] == '\n')
+        return (true);
+    return (false);
+}
+
 bool redirect_parsing(reader_info_t reader_i, asm_info_t *asm_i)
 {
-    if (is_comment(reader_i))
+    if (is_comment(reader_i) || is_blank_line(reader_i))
         return (true);
     if (is_header(reader_i.line, NAME_CMD_STRING) ||
         is_header(reader_i.line, COMMENT_CMD_STRING)) {
