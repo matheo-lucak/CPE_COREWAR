@@ -9,13 +9,11 @@ ASM_PATH		=	asm
 
 VM_PATH			= 	vm
 
-TEST_NAME		=	tests_run
-
 all:
 				$(MAKE) -C $(ASM_PATH)
 				#$(MAKE) -C $(VM_PATH)
 
-$(TEST_NAME):
+tests_run:
 				$(MAKE) $@ -C $(ASM_PATH)
 				#$(MAKE) $@ -C $(VM_PATH)
 
