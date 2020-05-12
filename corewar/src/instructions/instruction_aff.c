@@ -29,14 +29,3 @@ int instruction_aff(vm_t *vm, champion_t *champion)
         return 84;
     return 0;
 }
-
-int main(void)
-{
-    vm_t vm = {0, 0, 0,
-            {10, (char)64, 0}};
-    char registers[] = {'T', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-
-    champion_t champion = {registers, 0};
-
-    return instruction_aff(&vm, &champion);
-}

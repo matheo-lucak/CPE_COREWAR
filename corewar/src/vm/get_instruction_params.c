@@ -14,8 +14,8 @@
 const int param_sizes[4] = {
         0,
         1,
-        4,
-        2
+        DIR_SIZE,
+        IND_SIZE
 };
 
 static int get_param_types(char *memory, int *pc,
