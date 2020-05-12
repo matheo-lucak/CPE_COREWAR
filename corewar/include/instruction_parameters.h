@@ -21,7 +21,10 @@ typedef struct instruction_parameters_s
 int get_instruction_params(char *memory, int *pc,
         instr_params_t *params, instr_code_t code);
 
-int get_params_values(instr_params_t *params, char *memory,
+int get_ops_params_values(instr_params_t *params, char *memory,
+        champion_t *champion, size_t *dest);
+
+int get_ld_params_values(instr_params_t *params, char *memory,
         champion_t *champion, size_t *dest);
 
 #endif //CPE_COREWAR_2019_INSTRUCTION_PARAMETERS_H

@@ -19,6 +19,7 @@ static int get_champion(champion_t *champion, program_t *program)
     if (my_memcpy(&program->id, &champion->registers[0], REG_SIZE) == 84)
         return 84;
     champion->pc = program->load_address;
+    champion->id = program->id;
     return 0;
 }
 

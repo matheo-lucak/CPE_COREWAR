@@ -18,6 +18,13 @@ const int param_sizes[4] = {
         IND_SIZE
 };
 
+const int tricked_param_sizes[4] = {
+        0,
+        1,
+        2,
+        2
+};
+
 static int get_param_types(char *memory, int *pc,
         instr_params_t *params, instr_code_t code)
 {
@@ -53,6 +60,22 @@ static int get_param_values(char *memory, int *pc,
     return 0;
 }
 
+static int get_tricked_param_values(char *memory, int *pc,
+        instr_params_t *params, instr_code_t code)
+{
+    int i = -1;
+
+    if (!memory || !pc || !params)
+        return 84;
+    while (++i < MAX_ARGS_NUMBER && i < op_tab[code].nbr_args) {
+        if (copy_memory_n_bytes(memory, pc,
+                &params->values[i],
+                tricked_param_sizes[params->types[i]]) == 84)
+            return 84;
+    }
+    return 0;
+}
+
 int get_instruction_params(char *memory, int *pc,
         instr_params_t *params, instr_code_t code)
 {
@@ -60,7 +83,8 @@ int get_instruction_params(char *memory, int *pc,
         return 84;
     if (get_param_types(memory, pc, params, code) == 84)
         return 84;
-    if (get_param_values(memory, pc, params, code) == 84)
-        return 84;
-    return 0;
+    if (code == i_ldi || code == i_lldi || code == i_sti)
+        return get_tricked_param_values(memory, pc, params, code);
+    else
+        return get_param_values(memory, pc, params, code);
 }

@@ -33,4 +33,6 @@ int init_vm(vm_t *vm, setup_t *setup);
 
 int copy_memory_n_bytes(const char *memory, int *pc, void *dest, int n);
 
+int write_memory_n_bytes(char *memory, int *pc, void *src, int n);
+
 #endif //CPE_COREWAR_2019_VM_H
