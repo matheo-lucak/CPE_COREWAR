@@ -289,7 +289,6 @@ Test(is_header_tests, succes_2_strcmp)
     cr_assert(!my_strcmp(header_i.header.comment, "abc"));
 }
 
-
 Test(is_header_tests, succes_3)
 {
     reader_info_t reader_i = {.name = "success3",

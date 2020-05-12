@@ -13,6 +13,7 @@ SRC			=	my_arrlen.c				\
 				my_is.c					\
 				my_mass_strcat.c		\
 				my_mass_strcmp.c		\
+				my_mem_cmp.c			\
 				my_memset.c				\
 				my_pow.c				\
 				my_put_address.c		\

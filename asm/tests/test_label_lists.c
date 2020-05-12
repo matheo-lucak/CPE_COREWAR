@@ -27,6 +27,15 @@ Test(label_list_tests, enqueue_label_2)
                 queue->address == node.address);
 }
 
+Test(label_list_tests, no_label_found_error_1)
+{
+    label_t *queue = NULL;
+    label_t node = {NULL, NULL, "HEAD", 10};
+
+    ENQUEUE(&queue, &node, label_t);
+    cr_assert(!check_existing_label(queue, NULL));
+}
+
 Test(label_list_tests, no_label_found_1)
 {
     label_t *queue = NULL;

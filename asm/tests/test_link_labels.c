@@ -131,3 +131,46 @@ Test(link_labels, link_label_and_instruct_different_line_eq)
     scnd_instruct = asm_i.instructs->next;
     cr_assert(scnd_instruct && scnd_instruct->params[0].value.dir == -5);
 }
+
+Test(link_labels, link_label_undefined_label_1)
+{
+    char line[] = "live: live %123";
+    char line2[] = "zjmp %:patate";
+    reader_info_t reader_i = {.name = "test",
+                                .line = line,
+                                .line_nb = 1};
+    asm_info_t asm_i = {.instructs = NULL,
+                        .labels = NULL,
+                        .writing_address = 12};
+    instruct_t *scnd_instruct = NULL;
+
+    if (!redirect_body(reader_i, &asm_i))
+        cr_assert(0);
+    reader_i.line = line2;
+    if (!redirect_body(reader_i, &asm_i))
+        cr_assert(0);
+    cr_assert(!link_labels(asm_i.labels, asm_i.instructs));
+}
+
+Test(link_labels, link_label_undefined_label_1_std1)
+{
+    char line[] = "live: live %123";
+    char line2[] = "zjmp %:patate";
+    reader_info_t reader_i = {.name = "fail",
+                                .line = line,
+                                .line_nb = 1};
+    asm_info_t asm_i = {.instructs = NULL,
+                        .labels = NULL,
+                        .writing_address = 12};
+    instruct_t *scnd_instruct = NULL;
+
+    if (!redirect_body(reader_i, &asm_i))
+        cr_assert(0);
+    reader_i.line = line2;
+    cr_redirect_stdout();
+    if (!redirect_body(reader_i, &asm_i) ||
+        link_labels(asm_i.labels, asm_i.instructs))
+        cr_assert(0);
+    cr_assert_stdout_eq_str("asm, fail, line 1: "
+                            "Undefined label.\n");
+}
