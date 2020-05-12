@@ -18,6 +18,8 @@ typedef struct champion_s
     int pc;
     bool carry;
     int cycles_left;
+    int id;
+    int last_live;
 } champion_t;
 
 int get_smallest_id_champion(champion_t *champion, int nbr_champions,

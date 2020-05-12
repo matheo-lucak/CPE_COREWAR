@@ -2,23 +2,23 @@
 ** EPITECH PROJECT, 2019
 ** CPE_corewar_2019
 ** File description:
-** get_params_values.c
+** get_ops_params_values.c
 */
 
 #include "my.h"
 #include "champion.h"
 #include "instruction_parameters.h"
 
-int get_register_value(void *registers, size_t index, size_t *dest)
+static int get_register_value(void *registers, size_t index, size_t *dest)
 {
     if (!registers || !dest)
         return 84;
-    if (my_memcpy(registers + REG_SIZE * index, dest, REG_SIZE) == 84)
+    if (my_memcpy(registers + REG_SIZE * (index - 1), dest, REG_SIZE) == 84)
         return 84;
     return 0;
 }
 
-int get_direct_value(size_t param, size_t *dest)
+static int get_direct_value(size_t param, size_t *dest)
 {
     if (!dest)
         return 84;
@@ -27,7 +27,7 @@ int get_direct_value(size_t param, size_t *dest)
     return 0;
 }
 
-int get_indirect_value(char *memory, int pc, size_t index, size_t *dest)
+static int get_indirect_value(char *memory, int pc, size_t index, size_t *dest)
 {
     if (!memory || !dest)
         return 84;
@@ -38,7 +38,7 @@ int get_indirect_value(char *memory, int pc, size_t index, size_t *dest)
     return 0;
 }
 
-int get_params_values(instr_params_t *params, char *memory,
+int get_ld_params_values(instr_params_t *params, char *memory,
         champion_t *champion, size_t *dest)
 {
     int i = -1;

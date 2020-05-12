@@ -21,7 +21,7 @@ int instruction_aff(vm_t *vm, champion_t *champion)
     ++champion->pc;
     if (get_instruction_params(vm->memory, &champion->pc, &params, i_aff) == 84)
         return 84;
-    if (my_memcpy(champion->registers + REG_SIZE * params.values[0],
+    if (my_memcpy(champion->registers + REG_SIZE * (params.values[0] - 1),
             &character, REG_SIZE) == 84)
         return 84;
     character %= 256;
