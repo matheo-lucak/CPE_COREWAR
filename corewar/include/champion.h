@@ -15,7 +15,7 @@
 typedef struct champion_s
 {
     void *registers;
-    char *pc;
+    int pc;
     bool carry;
     int cycles_left;
 } champion_t;

@@ -6,8 +6,9 @@
 */
 
 int corewar(int ac, char **av);
-
+/*
 int main(int ac, char **av)
 {
     return corewar(ac, av);
 }
+ */

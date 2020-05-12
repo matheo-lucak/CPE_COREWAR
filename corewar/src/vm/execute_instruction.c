@@ -9,6 +9,8 @@
 #include "vm.h"
 #include "champion.h"
 #include "instruction.h"
+#include "instruction_codes.h"
+#include "instruction_parameters.h"
 
 const instruction_func_t instructions[] = {
         &instruction_live,
@@ -33,18 +35,13 @@ const instruction_func_t instructions[] = {
 int execute_instruction(vm_t *vm, champion_t *champion)
 {
     int i = -1;
-    char code = 0;
+    instr_code_t code = 0;
 
     if (!vm || !champion)
         return 84;
-    if (champion->cycles_left > 0) {
-        --champion->cycles_left;
-        return 0;
-    }
-    code = *champion->pc;
+    code = (instr_code_t)vm->memory[champion->pc] - 1;
     while (op_tab[++i].mnemonique != 0) {
-        if (op_tab[i].code == code &&
-            instructions[i](vm, champion) == 84)
+        if (instructions[code](vm, champion) == 84)
             return 84;
     }
     return 0;

@@ -16,6 +16,8 @@ void *my_cmalloc(size_t size);
 
 int my_memcpy(void *src, void *dest, size_t size);
 
+int my_putchar(char c);
+
 int my_strcmp(char const *s1, char const *s2);
 
 char *my_strdup(char const *src);

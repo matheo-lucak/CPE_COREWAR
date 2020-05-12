@@ -53,7 +53,7 @@ static int check_opt_a(char *str, int *index, program_t *program, bool *found_a)
     if (*found_a == true || check_a_str(str) == false)
         return 84;
     *found_a = true;
-    program->load_address = (void *)(long)my_atoi(str); // TODO :: C moche
+    program->load_address = my_atoi(str);
     return 0;
 }
 
