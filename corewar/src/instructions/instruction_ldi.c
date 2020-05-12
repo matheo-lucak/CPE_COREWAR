@@ -34,15 +34,3 @@ int instruction_ldi(vm_t *vm, champion_t *champion)
     champion->carry = true;
     return 0;
 }
-
-
-int main(void)
-{
-    vm_t vm = {0, 0, 0,
-            {0, 144, 1, 0, 0, 0, 2}};
-    char registers[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-
-    champion_t champion = {registers, 0};
-
-    return instruction_ld(&vm, &champion);
-}
