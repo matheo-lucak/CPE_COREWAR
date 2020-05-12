@@ -10,6 +10,7 @@
 
 #include <stddef.h>
 #include "op.h"
+#include "instruction_codes.h"
 
 typedef struct instruction_parameters_s
 {
@@ -19,5 +20,8 @@ typedef struct instruction_parameters_s
 
 int get_instruction_params(char *memory, int *pc,
         instr_params_t *params, instr_code_t code);
+
+int get_params_values(instr_params_t *params, char *memory,
+        champion_t *champion, size_t *dest);
 
 #endif //CPE_COREWAR_2019_INSTRUCTION_PARAMETERS_H
