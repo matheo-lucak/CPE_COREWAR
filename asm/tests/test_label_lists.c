@@ -103,3 +103,18 @@ Test(label_list_tests, label_found_address_1)
     ENQUEUE(&queue, &node, label_t);
     cr_assert(get_label_address(queue, "do") == 10);
 }
+
+Test(label_list_tests, label_free_1)
+{
+    label_t *queue = NULL;
+    label_t node = {NULL, NULL, my_strdup("patate"), 10};
+
+    if (!ENQUEUE(&queue, &node, label_t))
+        cr_assert(0);
+    cr_assert(free_label(queue));
+}
+
+Test(label_list_tests, label_free_error_1)
+{
+    cr_assert(!free_label(NULL));
+}
