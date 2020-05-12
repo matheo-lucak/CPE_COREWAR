@@ -15,7 +15,7 @@ typedef struct program_s
 {
     char *file;
     int id;
-    void *load_address;
+    int load_address;
     header_t header;
     char *instructions;
 } program_t;

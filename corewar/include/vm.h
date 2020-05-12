@@ -31,4 +31,6 @@ int get_champions(champion_t **champions, int nbr_champions,
 
 int init_vm(vm_t *vm, setup_t *setup);
 
+int copy_memory_n_bytes(const char *memory, int *pc, void *dest, int n);
+
 #endif //CPE_COREWAR_2019_VM_H
