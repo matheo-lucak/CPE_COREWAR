@@ -6,9 +6,10 @@
 ##
 
 MAIN				=	src/main.c										\
-						src/asm.c										\
 
-OP					=	src/op.c
+OP					=	src/op.c										\
+
+SRC_ASM				=	src/asm.c										\
 
 SRC_FREER			=	src/freer/free_asm.c							\
 						src/freer/free_instruct.c						\
@@ -51,7 +52,7 @@ SRC_WRITING			=	src/writing/write_body.c						\
 						src/writing/write_params.c						\
 						src/writing/writing.c							\
 
-SRC					=	$(OP) $(SRC_FREER) $(SRC_OPEN) $(SRC_LINKING) $(SRC_PARSING) $(SRC_QUEUE) $(SRC_WRITING)
+SRC					=	$(SRC_ASM) $(OP) $(SRC_FREER) $(SRC_OPEN) $(SRC_LINKING) $(SRC_PARSING) $(SRC_QUEUE) $(SRC_WRITING)
 
 OBJ					=	$(SRC:.c=.o) $(MAIN:.c=.o)
 
