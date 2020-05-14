@@ -45,6 +45,4 @@ int instruction_zjmp(vm_t *vm, champion_t *champion);
 
 typedef int(*instruction_func_t)(vm_t *vm, champion_t *champion);
 
-int execute_instruction(vm_t *vm, champion_t *champion);
-
 #endif //CPE_COREWAR_2019_INSTRUCTION_H

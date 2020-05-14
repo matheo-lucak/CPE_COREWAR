@@ -20,9 +20,13 @@ typedef struct champion_s
     int cycles_left;
     int id;
     int last_live;
+    bool dead;
+    char name[PROG_NAME_LENGTH];
 } champion_t;
 
+int get_champion(champion_t *champion, program_t *program);
+
 int get_smallest_id_champion(champion_t *champion, int nbr_champions,
-        program_t *programs);
+        program_t *programs, int *last_id);
 
 #endif //CPE_COREWAR_2019_CHAMPION_H

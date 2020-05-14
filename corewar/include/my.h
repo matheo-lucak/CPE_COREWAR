@@ -16,7 +16,11 @@ void *my_cmalloc(size_t size);
 
 int my_memcpy(void *src, void *dest, size_t size);
 
+int my_put_signed_long_base(long long nb, char const *base);
+
 int my_putchar(char c);
+
+int my_putstr(const char *str);
 
 int my_strcmp(char const *s1, char const *s2);
 

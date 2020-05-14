@@ -15,12 +15,12 @@ int instruction_add(vm_t *vm, champion_t *champion)
 {
     instr_params_t params = {0};
     size_t values[3] = {0};
-    int tmp_pc = 0;
 
     if (!vm || !champion)
         return 84;
     ++champion->pc;
-    if (get_instruction_params(vm->memory, &tmp_pc, &params, i_add) == 84 ||
+    champion->pc %= MEM_SIZE;
+    if (get_instruction_params(vm->memory, &champion->pc, &params, i_add) == 84 ||
         get_ops_params_values(&params, vm->memory, champion, values) == 84)
         return 84;
     values[0] += values[1];

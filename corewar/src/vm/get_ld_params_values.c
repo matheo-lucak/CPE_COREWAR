@@ -13,7 +13,7 @@ static int get_register_value(void *registers, size_t index, size_t *dest)
 {
     if (!registers || !dest)
         return 84;
-    if (my_memcpy(registers + REG_SIZE * (index - 1), dest, REG_SIZE) == 84)
+    if (my_memcpy(registers + REG_SIZE * index, dest, REG_SIZE) == 84)
         return 84;
     return 0;
 }
