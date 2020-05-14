@@ -22,7 +22,7 @@ int instruction_xor(vm_t *vm, champion_t *champion)
         return 84;
     tmp_pc = champion->pc + 1;
     tmp_pc %= MEM_SIZE;
-    if (get_instruction_params(vm->memory, &tmp_pc, &params, i_and) == 84 ||
+    if (get_instruction_params(vm->memory, &tmp_pc, &params, i_xor) == 84 ||
         get_ops_params_values(&params, vm->memory, champion, values) == 84)
         return 84;
     result = values[0] ^ values[1];

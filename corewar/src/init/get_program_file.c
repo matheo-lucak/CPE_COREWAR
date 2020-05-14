@@ -32,7 +32,7 @@ static int read_file(char *path, char **dest)
     while (getline(&line, &read_size, fd) > 0) {
         if (!(*dest = realloc(*dest, size + read_size)))
             return 84;
-        if (copy_line(*dest, line, read_size) == 84)
+        if (copy_line(&(*dest)[size], line, read_size) == 84)
             return 84;
         size += read_size;
         line = NULL;

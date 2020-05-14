@@ -10,14 +10,20 @@
 int copy_memory_n_bytes(const char *memory, int *pc, void *dest, int n)
 {
     int i = 0;
+    int address = 0;
 
     if (!memory || !pc || !dest)
         return 84;
+    address = *pc + n - 1;
+    address %= MEM_SIZE;
     while (i < n) {
-        ((char *)dest)[i] = memory[*pc];
+        ((char *)dest)[i] = memory[address];
         ++i;
         ++*pc;
         *pc %= MEM_SIZE;
+        --address;
+        if (address < 0)
+            address = MEM_SIZE - 1;
     }
     return 0;
 }

@@ -28,4 +28,6 @@ int parse_program_file(program_t *program);
 
 int get_program(int ac, char **av, int *index, program_t *program);
 
+int write_programs(program_t *programs, int nbr_programs, char *memory);
+
 #endif //CPE_COREWAR_2019_PROGRAM_H

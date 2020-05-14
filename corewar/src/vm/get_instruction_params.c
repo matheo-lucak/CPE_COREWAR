@@ -54,7 +54,8 @@ static int get_param_values(char *memory, int *pc,
         return 84;
     while (++i < MAX_ARGS_NUMBER && i < op_tab[code].nbr_args) {
         if (copy_memory_n_bytes(memory, pc,
-                &params->values[i], param_sizes[params->types[i]]) == 84)
+                &params->values[i],
+                param_sizes[params->types[i]]) == 84)
             return 84;
     }
     return 0;
