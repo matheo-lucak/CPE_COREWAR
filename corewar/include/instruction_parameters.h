@@ -14,7 +14,7 @@
 
 typedef struct instruction_parameters_s
 {
-    char types[MAX_ARGS_NUMBER];
+    unsigned char types[MAX_ARGS_NUMBER];
     size_t values[MAX_ARGS_NUMBER];
 } instr_params_t;
 
