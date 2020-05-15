@@ -22,6 +22,8 @@ int my_putchar(char c);
 
 int my_putstr(const char *str);
 
+void *my_sfree(void *ptr);
+
 int my_strcmp(char const *s1, char const *s2);
 
 char *my_strdup(char const *src);

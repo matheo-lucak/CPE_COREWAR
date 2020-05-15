@@ -29,4 +29,6 @@ int get_programs(int ac, char **av, int nbr_programs, program_t **programs);
 
 int init_setup(setup_t *setup);
 
+int destroy_setup(setup_t *setup);
+
 #endif //CPE_COREWAR_2019_SETUP_H
