@@ -20,7 +20,7 @@ static int write_value(vm_t *vm, champion_t *champion, size_t *values,
         return 84;
     if (params.types[1] == 1) {
         if (my_memcpy(&values[0], champion->registers +
-                                  REG_SIZE * params.values[1], REG_SIZE) == 84)
+                                REG_SIZE * params.values[1], REG_SIZE) == 84)
             return 84;
     } else {
         index = (values[1] % IDX_MOD + champion->pc) % MEM_SIZE;

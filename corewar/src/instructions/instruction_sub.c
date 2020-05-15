@@ -20,8 +20,8 @@ int instruction_sub(vm_t *vm, champion_t *champion)
         return 84;
     ++champion->pc;
     champion->pc %= MEM_SIZE;
-    if (get_instruction_params(vm->memory, &champion->pc, &params, i_sub) == 84 ||
-        get_ops_params_values(&params, vm->memory, champion, values) == 84)
+    if (get_instruction_params(vm->memory, &champion->pc, &params, i_sub) == 84
+        || get_ops_params_values(&params, vm->memory, champion, values) == 84)
         return 84;
     values[0] -= values[1];
     if (my_memcpy(&values[0],
