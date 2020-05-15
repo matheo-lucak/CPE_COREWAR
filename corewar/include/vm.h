@@ -46,4 +46,6 @@ int loop(vm_t *vm);
 
 int get_winner(champion_t *champions, int nbr_champions, int id);
 
+int destroy_vm(vm_t *vm);
+
 #endif //CPE_COREWAR_2019_VM_H

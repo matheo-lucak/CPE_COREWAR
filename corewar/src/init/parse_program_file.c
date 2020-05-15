@@ -45,10 +45,7 @@ static int get_program_instructions(char *file, char **instr, int size)
 
     if (!file)
         return 84;
-    if (!(*instr = my_cmalloc(sizeof(char) * size)))
-        return 84;
-    if (my_memcpy(&file[start], *instr, size) == 84)
-        return 84;
+    *instr = &file[start];
     return 0;
 }
 
