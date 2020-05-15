@@ -101,6 +101,7 @@ clean:
 					$(RM) tests/*.gcda
 					$(RM) tests/*.gcno
 					$(RM) tests_run
+					$(RM) debug
 
 fclean:				clean
 					$(RM) $(NAME)
