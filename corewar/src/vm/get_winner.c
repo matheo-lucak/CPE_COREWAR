@@ -31,20 +31,21 @@ static int print_winner(champion_t *champion)
         return 84;
     if (print_name(champion->name) == 84)
         return 84;
-    if (my_putstr(") has won.\n") == 84)
+    if (my_putstr(") has won.") == 84)
         return 84;
     return 0;
 }
 
-int get_winner(champion_t *champions, int nbr_champions)
+int get_winner(champion_t *champions, int nbr_champions, int id)
 {
     int i = -1;
 
     if (!champions)
         return 84;
     while (++i < nbr_champions) {
-        if (champions[i].dead == false)
-            return print_winner(&champions[i]);
+        if (champions[i].id == id &&
+            print_winner(&champions[i]) == 84)
+            return 84;
     }
-    return my_putstr("No one won !\n");
+    return 0;
 }

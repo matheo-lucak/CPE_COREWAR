@@ -5,8 +5,9 @@
 ** get_program_file.c
 */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include "my.h"
 #include "program.h"
 
 static int copy_line(char *dest, char *line, size_t size)
@@ -22,21 +23,25 @@ static int copy_line(char *dest, char *line, size_t size)
 
 static int read_file(char *path, char **dest)
 {
-    FILE *fd = fopen(path, "r");
-    char *line = NULL;
-    size_t read_size = 0;
-    size_t size = 0;
+    int fd = open(path, O_RDONLY);
+    size_t header_size = 4 + PROG_NAME_LENGTH + 8 + COMMENT_LENGTH;
+    char buffer[4 + PROG_NAME_LENGTH + 8 + COMMENT_LENGTH] = {0};
+    int instr_size = 0;
 
-    if (fd == NULL)
+    if (fd < 0)
         return 84;
-    while (getline(&line, &read_size, fd) > 0) {
-        if (!(*dest = realloc(*dest, size + read_size)))
-            return 84;
-        if (copy_line(&(*dest)[size], line, read_size) == 84)
-            return 84;
-        size += read_size;
-        line = NULL;
-    }
+    if (read(fd, buffer, header_size) == -1)
+        return 84;
+    if (my_memcpy(&buffer[4 + PROG_NAME_LENGTH + 4], &instr_size, 4) == 84)
+        return 84;
+    if (my_swap_int_endian(&instr_size) == 84)
+        return 84;
+    if (!(*dest = my_cmalloc(sizeof(char) * (header_size + instr_size))))
+        return 84;
+    if (my_memcpy(buffer, *dest, header_size) == 84)
+        return 84;
+    if (read(fd, &(*dest)[header_size], instr_size) == -1)
+        return 84;
     return 0;
 }
 
