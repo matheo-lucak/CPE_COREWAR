@@ -16,6 +16,8 @@ void *my_cmalloc(size_t size);
 
 int my_memcpy(void *src, void *dest, size_t size);
 
+void my_memset(void *ptr, size_t size, char set);
+
 int my_put_signed_long_base(long long nb, char const *base);
 
 int my_putchar(char c);

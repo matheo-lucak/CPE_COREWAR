@@ -40,9 +40,9 @@ static int execute_instruction(vm_t *vm, champion_t *champion)
     code = (instr_code_t)vm->memory[champion->pc] - 1;
     if (code < 0 || code > 15)
         return 0;
+    champion->cycles_left = op_tab[code].nbr_cycles;
     if (instructions[code](vm, champion) == 84)
         return 84;
-    champion->cycles_left = op_tab[code].nbr_cycles;
     return 0;
 }
 

@@ -5,26 +5,16 @@
 ** get_program_file.c
 */
 
+#include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include "my.h"
 #include "program.h"
 
-static int copy_line(char *dest, char *line, size_t size)
-{
-    size_t i = -1;
-
-    if (!dest || !line)
-        return 84;
-    while (++i < size)
-        dest[i] = line[i];
-    return 0;
-}
-
 static int read_file(char *path, char **dest)
 {
     int fd = open(path, O_RDONLY);
-    size_t header_size = 4 + PROG_NAME_LENGTH + 8 + COMMENT_LENGTH;
+    size_t header_size = 4 + PROG_NAME_LENGTH + 8 + COMMENT_LENGTH + 4;
     char buffer[4 + PROG_NAME_LENGTH + 8 + COMMENT_LENGTH] = {0};
     int instr_size = 0;
 

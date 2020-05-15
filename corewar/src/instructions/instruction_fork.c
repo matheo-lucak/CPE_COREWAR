@@ -23,8 +23,8 @@ int instruction_fork(vm_t *vm, champion_t *champion)
     index %= IDX_MOD;
     index += champion->pc;
     index %= MEM_SIZE;
+    champion->pc = tmp_pc;
     if (dup_champion(vm, champion, index) == 84)
         return 84;
-    champion->pc = tmp_pc;
     return 0;
 }
