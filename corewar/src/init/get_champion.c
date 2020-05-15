@@ -14,7 +14,7 @@ int get_champion(champion_t *champion, program_t *program)
 {
     if (!champion || !program)
         return 84;
-    if (!(champion->registers = my_cmalloc(REG_SIZE * REG_NUMBER)))
+    if (!(champion->registers = my_cmalloc(REG_SIZE * (REG_NUMBER + 1))))
         return 84;
     if (my_memcpy(&program->id, champion->registers + REG_SIZE, REG_SIZE) == 84)
         return 84;
