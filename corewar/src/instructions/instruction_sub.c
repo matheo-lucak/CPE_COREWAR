@@ -25,7 +25,7 @@ int instruction_sub(vm_t *vm, champion_t *champion)
         return 84;
     values[0] -= values[1];
     if (my_memcpy(&values[0],
-            champion->registers + REG_SIZE * (params.values[2] - 1),
+            champion->registers + REG_SIZE * (params.values[2]),
             REG_SIZE) == 84)
         return 84;
     return 0;
