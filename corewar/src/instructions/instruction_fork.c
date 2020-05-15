@@ -24,6 +24,8 @@ int instruction_fork(vm_t *vm, champion_t *champion)
     index += champion->pc;
     index %= MEM_SIZE;
     champion->pc = tmp_pc;
+    if (champion->pc < 0)
+            champion->pc += MEM_SIZE;
     if (dup_champion(vm, champion, index) == 84)
         return 84;
     return 0;
