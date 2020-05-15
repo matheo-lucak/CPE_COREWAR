@@ -73,6 +73,5 @@ Test(instruction_st, success_2_eq)
     my_memcpy("\x03\x70\x01\x00\x05", vm.memory, 5);
     if (instruction_st(&vm, &champion) == 84)
         cr_assert(0);
-    printf("mem :%d\n", *(int *)(vm.memory + 5));
     cr_assert(*(int *)(vm.memory + 5) == 9);
 }
