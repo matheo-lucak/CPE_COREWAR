@@ -15,7 +15,6 @@ int my_swap_int_endian(int *value)
     bytes[1] = (*value & 0x0000ff00) << 8;
     bytes[2] = (*value & 0x00ff0000) >> 8;
     bytes[3] = (*value & 0xff000000) >> 24;
-
     *value = bytes[0] | bytes[1] | bytes[2] | bytes[3];
     return 0;
 }

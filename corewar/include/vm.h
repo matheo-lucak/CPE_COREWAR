@@ -21,8 +21,8 @@ typedef struct virtual_machine_s
     char memory[MEM_SIZE];
     int nbr_champions;
     champion_t *champions;
-    char **names;
     int nbr_live_champions;
+    int last_live;
 } vm_t;
 
 int get_champions(champion_t **champions, int nbr_champions,
@@ -44,6 +44,6 @@ int dump_memory(char *memory);
 
 int loop(vm_t *vm);
 
-int get_winner(champion_t *champions, int nbr_champions);
+int get_winner(champion_t *champions, int nbr_champions, int id);
 
 #endif //CPE_COREWAR_2019_VM_H

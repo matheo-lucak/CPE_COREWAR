@@ -21,7 +21,7 @@ int corewar(int ac, char **av)
         return 84;
     if (loop(&vm) == 84)
         return 84;
-    if (get_winner(vm.champions, vm.nbr_champions) == 84)
+    if (get_winner(vm.champions, vm.nbr_champions, vm.last_live) == 84)
         return 84;
     return 0;
 }

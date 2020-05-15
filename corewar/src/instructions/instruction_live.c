@@ -64,8 +64,9 @@ int instruction_live(vm_t *vm, champion_t *champion)
         return 84;
     if (print_live(champion) == 84)
         return 84;
+    ++vm->count_live;
+    vm->last_live = champion->id;
     champion->pc += 4;
     champion->pc %= MEM_SIZE;
-    ++vm->count_live;
     return 0;
 }

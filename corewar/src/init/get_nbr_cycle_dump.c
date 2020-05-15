@@ -28,7 +28,7 @@ int get_nbr_cycle_dump(int ac, char **av, int *nbr_cycle_dump)
 
     if (!av || !nbr_cycle_dump)
         return 84;
-    *nbr_cycle_dump = 0;
+    *nbr_cycle_dump = -1;
     while (++i < ac) {
         if (!my_strcmp(av[i], "-dump") &&
             (found == true ||
