@@ -32,7 +32,7 @@ static int write_value(vm_t *vm, champion_t *champion, size_t *values,
     } else
         index = index + (int)(values[2] % IDX_MOD) % MEM_SIZE;
     if (params.types[1] != 1 || params.types[2] != 1)
-        return write_memory_n_bytes(vm->memory, &index,&values[0], REG_SIZE);
+        return write_memory_n_bytes(vm->memory, &index, &values[0], REG_SIZE);
     return 0;
 }
 
