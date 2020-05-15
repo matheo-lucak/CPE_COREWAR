@@ -25,5 +25,7 @@ int instruction_lfork(vm_t *vm, champion_t *champion)
     if (dup_champion(vm, champion, index) == 84)
         return 84;
     champion->pc = tmp_pc;
+    if (champion->pc < 0)
+            champion->pc += MEM_SIZE;
     return 0;
 }

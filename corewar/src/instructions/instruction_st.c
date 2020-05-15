@@ -23,7 +23,7 @@ static int write_value(vm_t *vm, champion_t *champion, size_t *values,
                                 REG_SIZE * params.values[1], REG_SIZE) == 84)
             return 84;
     } else {
-        index = (values[1] % IDX_MOD + champion->pc) % MEM_SIZE;
+        index = (params.values[1] % IDX_MOD + champion->pc) % MEM_SIZE;
         if (write_memory_n_bytes(vm->memory, (int *)&index,
                 &values[0], REG_SIZE) == 84)
             return 84;
