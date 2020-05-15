@@ -23,6 +23,8 @@ int instruction_zjmp(vm_t *vm, champion_t *champion)
     if (champion->carry == true) {
         champion->pc += index;
         champion->pc %= MEM_SIZE;
+        if (champion->pc < 0)
+            champion->pc += MEM_SIZE;
     }
     return 0;
 }
