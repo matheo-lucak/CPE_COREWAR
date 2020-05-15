@@ -58,5 +58,4 @@ Test(instruction_sub, success_1_eq)
     if (instruction_sub(&vm, &champion) == 84)
         cr_assert(0);
     cr_assert(*(int *)(champion.registers + (REG_SIZE * 3)) == 3);
-
 }
