@@ -34,7 +34,7 @@ Test(instruction_sub, success_1)
     vm_t vm = {0};
     champion_t champion = {0};
 
-    champion.registers = malloc(REG_SIZE * 3);
+    champion.registers = malloc(REG_SIZE * 4);
     my_memcpy("\x04\x54\x01\x02\x03", vm.memory, 5);
     if (!(champion.registers))
         cr_assert(0);
