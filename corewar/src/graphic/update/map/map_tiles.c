@@ -7,11 +7,34 @@
 
 #include "update_graphic.h"
 #include "vector_engine.h"
+#include "my.h"
+
+void update_vertices(sfVertex vertices[7], sfVector3f point, presets_t map_sets)
+{
+    vertices[0].position = project_iso_point(VEC3F(point.x, point.y + 1, 0), map_sets.size, map_sets.angles);
+    vertices[1].position = project_iso_point(VEC3F(point.x + 1, point.y + 1, 0), map_sets.size, map_sets.angles);
+    vertices[2].position = project_iso_point(VEC3F(point.x, point.y + 1, point.z), map_sets.size, map_sets.angles);
+    vertices[3].position = project_iso_point(VEC3F(point.x + 1, point.y + 1, point.z), map_sets.size, map_sets.angles);
+    vertices[4].position = project_iso_point(VEC3F(point.x, point.y, point.z), map_sets.size, map_sets.angles);
+    vertices[5].position = project_iso_point(VEC3F(point.x + 1, point.y, point.z), map_sets.size, map_sets.angles);
+    vertices[6].position = project_iso_point(VEC3F(point.x + 1, point.y, 0), map_sets.size, map_sets.angles);
+}
 
 void update_tile(sfVertexArray *tile, sfVector3f point, int color,
                                                 presets_t map_sets)
 {
+    sfVertex vertices[7] = {0};
+    register size_t index = 0;
 
+    if (!tile)
+        return ;
+    sfVertexArray_clear(tile);
+    update_vertices(vertices, point, map_sets);
+    for (; index < 7; index += 1) {
+        vertices[index].color = sfGreen;
+        vertices[index].texCoords = VEC2F(0, 0);
+        sfVertexArray_append(tile, vertices[index]);
+    }
 }
 
 void update_tile_map(map_formatter_t *map)
