@@ -28,7 +28,7 @@ int instruction_lldi(vm_t *vm, champion_t *champion)
     index = (champion->pc + values[0] + values[1]) % MEM_SIZE;
     if (my_memcpy(&vm->memory[index], &index, REG_SIZE) == 84 ||
         my_memcpy(&index, champion->registers +
-                          REG_SIZE * params.values[2], REG_SIZE) == 84)
+        REG_SIZE * params.values[2], REG_SIZE) == 84)
         return 84;
     champion->carry = (index == 0) ? true : false;
     champion->pc = tmp_pc;
