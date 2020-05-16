@@ -10,6 +10,8 @@
 #include "champion.h"
 #include "instruction.h"
 #include "instruction_codes.h"
+#include "graphic.h"
+#include "update_graphic.h"
 
 const instruction_func_t instructions[] = {
         &instruction_live,
@@ -46,7 +48,7 @@ static int execute_instruction(vm_t *vm, champion_t *champion)
     return 0;
 }
 
-int execute_instructions(vm_t *vm)
+int execute_instructions(vm_t *vm, map_formatter_t *ter)
 {
     int i = -1;
 
@@ -54,6 +56,8 @@ int execute_instructions(vm_t *vm)
         if (vm->champions[i].dead == false &&
             vm->champions[i].cycles_left <= 0 &&
             execute_instruction(vm, &vm->champions[i]) == 84)
+            return 84;
+        if (update_memory_3d(vm, ter, &vm->champions[i]) == 84)
             return 84;
         --vm->champions[i].cycles_left;
     }
