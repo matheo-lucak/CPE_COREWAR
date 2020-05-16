@@ -60,7 +60,7 @@ NAME 				=	asm
 
 override CFLAGS		+=	-W -Wall -Wextra
 
-override CPPFLAGS	+=	-I./include/ -I./../include
+override CPPFLAGS	+=	-I./include/
 
 LDFLAGS				=	-L./lib/
 
