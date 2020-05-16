@@ -11,7 +11,7 @@
 #include <stdbool.h>
 #include <SFML/Graphics.h>
 
-#define MAX_TILE_HEIGHT 100
+#define MAX_TILE_HEIGHT 20
 
 typedef struct memory_3d_s
 {

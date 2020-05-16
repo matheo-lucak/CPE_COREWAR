@@ -20,7 +20,7 @@ int init_vm(vm_t *vm, setup_t *setup)
     if (get_champions(&vm->champions, setup->nbr_programs,
             setup->programs) == 84)
         return 84;
-    if (get_names(setup->programs, setup->nbr_programs, vm->names) == 84)
+    if (get_names(setup->programs, setup->nbr_programs, &(vm->names)) == 84)
         return 84;
     if (write_programs(setup->programs, setup->nbr_programs, vm->memory) == 84)
         return 84;

@@ -79,8 +79,9 @@ sfBool control_angle_view(presets_t *map_settings)
                                                     rotate_left, rotate_right};
 
     while (index < 4) {
-        if (sfKeyboard_isKeyPressed(rotate_inputs[index]))
+        if (sfKeyboard_isKeyPressed(rotate_inputs[index])) {
             rotation[index](map_settings, &changed);
+        }
         index += 1;
     }
     if (map_settings->angles.x < 0)

@@ -10,8 +10,9 @@
 void update_graphic(win_settings_t *sets, map_formatter_t *map)
 {
     control_camera_view(*sets, map->map_settings);
+    control_angle_view((&(map->map_settings)));
+    center_cam(sets, map);
     update_window_settings(sets);
     update_tile_map(map);
     draw_tile_map(sets, map);
-    center_cam(sets, map);
 }

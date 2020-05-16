@@ -20,31 +20,30 @@ static int update_color_height(char memory, char memory_dup,
     if (memory != memory_dup) {
         memory_3d->color = color;
         memory_3d->height = MAX_TILE_HEIGHT;
-    } else
-        --memory_3d->height;
+    } else if (memory_3d->height > 0)
+        memory_3d->height -= 0.02;
     return 0;
 }
 
-int update_memory_3d(vm_t *vm, map_formatter_t *ter, champion_t *champion)
+int update_memory_3d(vm_t *vm, map_formatter_t *map, champion_t *champion)
 {
-    int i = -1;
-    int x = -1;
+    int x = 0;
     int y = 0;
     int color = 0;
+    int i = 0;
 
-    if (!vm || !ter || get_champion_color(vm, champion, &color) == 84)
+    if (!vm || !map || get_champion_color(vm, champion, &color) == 84)
         return 84;
-    while (++i < MEM_SIZE) {
-        if (update_color_height(vm->memory[i], vm->memory_dup[i],
-                &ter->map_3d[y][x], color) == 84)
+    for (y = 0; y < map->map_settings.size.y; y += 1) {
+        for (x = 0; x < map->map_settings.size.x; x += 1) {
+            i = D2TOD1(x, y, map->map_settings.size.x);
+            if (update_color_height(vm->memory[i], vm->memory_dup[i],
+                &map->map_3d[y][x], color) == 84)
             return 84;
-        ter->map_2d[y][x] = project_iso_point(
-                VEC3F(x, y, ter->map_3d[y][x].height),
-                ter->map_settings.size, ter->map_settings.angles);
-        if (i % ter->map_settings.size.x == 0) {
-            x = -1;
-            ++y;
+            map->map_2d[y][x] = project_iso_point(
+                VEC3F(x, y, map->map_3d[y][x].height),
+                map->map_settings.size, map->map_settings.angles);
         }
-        ++x;
-    } return 0;
+    }
+    return 0;
 }

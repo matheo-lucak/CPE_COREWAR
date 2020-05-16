@@ -10,6 +10,7 @@
 #include "op.h"
 #include "my.h"
 #include "init_graphic.h"
+#include "vector_engine.h"
 
 static bool init_map_3d(map_formatter_t *map)
 {
@@ -53,6 +54,9 @@ static bool init_map_size(map_formatter_t *map)
 
     map->map_settings.size.x = (int)side_lenght;
     map->map_settings.size.y = (int)side_lenght;
+    map->map_settings.movement_speed = VEC2I(10, 10);
+    map->map_settings.rotation_speed = VEC2I(1, 1);
+    map->map_settings.angles = VEC2I(55, 70);
     return (true);
 }
 

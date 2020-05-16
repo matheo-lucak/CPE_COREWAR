@@ -12,6 +12,7 @@
 #include "instruction_codes.h"
 #include "graphic.h"
 #include "update_graphic.h"
+#include "my.h"
 
 const instruction_func_t instructions[] = {
         &instruction_live,
@@ -59,6 +60,7 @@ int execute_instructions(vm_t *vm, map_formatter_t *ter)
             return 84;
         if (update_memory_3d(vm, ter, &vm->champions[i]) == 84)
             return 84;
+        my_memcpy(vm->memory, vm->memory_dup, MEM_SIZE);
         --vm->champions[i].cycles_left;
     }
     return 0;
