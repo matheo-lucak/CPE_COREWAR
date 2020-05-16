@@ -5,6 +5,7 @@
 ** loop.c
 */
 
+#include "graphic.h"
 #include "vm.h"
 
 static int check_cycle_to_die(int *count_live, int *cycle_to_die)
@@ -18,23 +19,33 @@ static int check_cycle_to_die(int *count_live, int *cycle_to_die)
     return 0;
 }
 
+static int exec_loop(vm_t *vm, int cycle)
+{
+    if (cycle == vm->nbr_cycle_dump &&
+        dump_memory(vm->memory) == 84)
+        return 84;
+    if (execute_instructions(vm) == 84)
+        return 84;
+    if (check_live_champions(vm) == 84)
+        return 84;
+    if (check_cycle_to_die(&vm->count_live, &vm->cycle_to_die) == 84)
+        return 84;
+    return (0);
+}
+
 int loop(vm_t *vm)
 {
     int cycle = 0;
+    win_settings_t sets;
+    map_formatter_t map;
 
-    if (!vm)
+    if (!vm || !init_map(&map) || !init_win_settings(&sets))
         return 84;
     while (vm->nbr_live_champions > 0) {
-        if (cycle == vm->nbr_cycle_dump &&
-            dump_memory(vm->memory) == 84)
-            return 84;
-        if (execute_instructions(vm) == 84)
-            return 84;
-        if (check_live_champions(vm) == 84)
-            return 84;
-        if (check_cycle_to_die(&vm->count_live, &vm->cycle_to_die) == 84)
-            return 84;
+        if (exec_loop(vm, cycle) == 84)
+            return (84);
         ++cycle;
     }
+    free_ressources(&sets, &map);
     return 0;
 }

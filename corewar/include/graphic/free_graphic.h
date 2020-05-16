@@ -13,6 +13,6 @@
 
 void free_map(map_formatter_t *map);
 
-void free_win_settings(win_settings_t sets);
+void free_win_settings(win_settings_t *sets);
 
 #endif /* !FREE_GRAPHIC_H_ */

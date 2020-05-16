@@ -60,6 +60,7 @@ bool init_map(map_formatter_t *map)
 {
     if (!map)
         return (sfFalse);
+    my_memset((void *)map, sizeof(map_formatter_t), 0);
     init_map_size(map);
     if (!init_map_3d(map) ||
         !init_map_2d(map) ||

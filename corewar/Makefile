@@ -67,6 +67,7 @@ SRC_GRAPHIC			=	src/graphic/draw/draw_map.c						\
 						src/graphic/update/camera/control_view.c		\
 						src/graphic/update/camera/translations.c		\
 						src/graphic/update/win/mouse.c					\
+						src/graphic/update/maths/project_iso_point.c	\
 						src/graphic/update/win/win.c					\
 
 

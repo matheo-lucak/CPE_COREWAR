@@ -7,13 +7,15 @@
 
 #include "free_graphic.h"
 
-void free_win_settings(win_settings_t sets)
+void free_win_settings(win_settings_t *sets)
 {
-    if (sets.view)
-        sfView_destroy(sets.view);
-    if (sets.window) {
-        if (sfRenderWindow_isOpen(sets.window))
-            sfRenderWindow_close(sets.window);
-        sfRenderWindow_destroy(sets.window);
+    if (!sets)
+        return;
+    if (sets->view)
+        sfView_destroy(sets->view);
+    if (sets->window) {
+        if (sfRenderWindow_isOpen(sets->window))
+            sfRenderWindow_close(sets->window);
+        sfRenderWindow_destroy(sets->window);
     }
 }

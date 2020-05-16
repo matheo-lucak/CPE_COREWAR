@@ -56,4 +56,6 @@ bool init_map(map_formatter_t *map);
 
 void draw_tile_map(win_settings_t *sets, map_formatter_t *map);
 
+void free_ressources(win_settings_t *sets, map_formatter_t *map);
+
 #endif /* !GRAPHIC_H_ */
