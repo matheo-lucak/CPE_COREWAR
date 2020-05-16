@@ -28,7 +28,7 @@ int instruction_lld(vm_t *vm, champion_t *champion)
             champion->registers + REG_SIZE * params.values[1],
             REG_SIZE) == 84)
         return 84;
+    champion->carry = (values[0] == 0) ? true : false;
     champion->pc = tmp_pc;
-    champion->carry = true;
     return 0;
 }
