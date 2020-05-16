@@ -27,7 +27,7 @@ static bool init_tiles(sfVertexArray **tile_line, size_t width)
 
 bool init_map_tiles(map_formatter_t *map)
 {
-    size_t index = 0;
+    int index = 0;
 
     map->tiles = malloc(sizeof(sfVertexArray **) * map->map_settings.size.y);
     if (!(map->tiles))

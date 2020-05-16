@@ -56,8 +56,30 @@ SRC_VM				=	src/vm/check_live_champions.c					\
 						src/vm/get_winner.c								\
 						src/vm/loop.c									\
 
+SRC_GRAPHIC			=	src/graphic/draw/draw_map.c						\
+						src/graphic/freer/free_map.c					\
+						src/graphic/freer/free_win.c					\
+						src/graphic/init/init_map_tiles.c				\
+						src/graphic/init/init_map.c						\
+						src/graphic/init/init_win.c						\
+						src/graphic/update/camera/angle_rotation.c		\
+						src/graphic/update/camera/center_cam.c			\
+						src/graphic/update/camera/control_view.c		\
+						src/graphic/update/camera/translations.c		\
+						src/graphic/update/win/mouse.c					\
+						src/graphic/update/win/win.c					\
 
-SRC					=	$(OP) $(SRC_COREWAR) $(SRC_DESTROY) $(SRC_INIT) $(SRC_INSTRUCTIONS) $(SRC_VM)
+
+SRC_VECTOR_ENGINE	=	src/vector_engine/vec_angle.c					\
+						src/vector_engine/vec_basic.c					\
+						src/vector_engine/vec_cross.c					\
+						src/vector_engine/vec_dot.c						\
+						src/vector_engine/vec_lim.c						\
+						src/vector_engine/vec_mag.c						\
+						src/vector_engine/vec_norm.c					\
+						src/vector_engine/vec_normal.c					\
+
+SRC					=	$(OP) $(SRC_COREWAR) $(SRC_DESTROY) $(SRC_INIT) $(SRC_INSTRUCTIONS) $(SRC_VM) $(SRC_GRAPHIC) $(SRC_VECTOR_ENGINE)
 
 OBJ					=	$(SRC:.c=.o) $(MAIN:.c=.o)
 
@@ -65,11 +87,11 @@ NAME 				=	corewar
 
 override CFLAGS		+=	-W -Wall -Wextra
 
-override CPPFLAGS	+=	-I./include/ -I./../include
+override CPPFLAGS	+=	-I./include/ -I./include/graphic
 
 LDFLAGS				=	-L./lib/
 
-override LDLIBS		+= 	-lmy
+override LDLIBS		+= 	-lmy -lcsfml-graphics -lcsfml-window -lcsfml-audio -lcsfml-system -lm
 
 LIB 				= lib/libmy.a
 

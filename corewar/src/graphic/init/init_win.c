@@ -5,16 +5,17 @@
 ** init_win
 */
 
+#include "my.h"
 #include "vector_engine.h"
 #include "init_graphic.h"
+
+void update_window_settings(win_settings_t *sets);
 
 static bool init_win_view(win_settings_t *sets)
 {
     sets->view = sfView_createFromRect((sfFloatRect){0, 0, 1920, 1080});
-    if (!sets->view) {
-        free_win_settings(*sets);
+    if (!sets->view)
         return (false);
-    }
     sfView_setCenter(sets->view, VEC2F(0, 0));
     return (true);
 }

@@ -29,6 +29,6 @@ void free_map(map_formatter_t *map)
     if (!map)
         return ;
     free_tile_map(map);
-    my_free_array(map->map_2d, map->map_settings.size.y);
-    my_free_array(map->map_3d, map->map_settings.size.y);
+    my_free_array((void **)map->map_2d, map->map_settings.size.y);
+    my_free_array((void **)map->map_3d, map->map_settings.size.y);
 }

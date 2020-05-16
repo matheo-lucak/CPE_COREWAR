@@ -40,7 +40,7 @@ sfBool center_cam(win_settings_t *sets, map_formatter_t *ter)
 
     if (!sfKeyboard_isKeyPressed(sfKeyC))
         return (sfFalse);
-    size = vec2i(size.x - 1, size.y - 1);
+    size = VEC2I(size.x - 1, size.y - 1);
     if (size.x < 0 || size.y < 0)
         return (sfFalse);
     center.x = (ter->map_2d[size.y][size.x].x + ter->map_2d[0][0].x) / 2;

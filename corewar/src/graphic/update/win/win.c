@@ -16,7 +16,7 @@
 #include "win_update.h"
 #include "vector_engine.h"
 
-    static void update_window_anchor(win_settings_t *sets)
+static void update_window_anchor(win_settings_t *sets)
 {
     sets->anchor.topleft = sfRenderWindow_mapPixelToCoords(sets->window,
                                             VEC2I(0, 0),

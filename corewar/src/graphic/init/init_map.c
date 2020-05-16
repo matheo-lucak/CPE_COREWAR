@@ -13,7 +13,7 @@
 
 static bool init_map_3d(map_formatter_t *map)
 {
-    size_t index = 0;
+    int index = 0;
 
     map->map_3d = malloc(sizeof(float) * map->map_settings.size.y);
     if (!(map->map_3d))
@@ -30,7 +30,7 @@ static bool init_map_3d(map_formatter_t *map)
 
 static bool init_map_2d(map_formatter_t *map)
 {
-    size_t index = 0;
+    int index = 0;
 
     map->map_2d = malloc(sizeof(sfVector2f) * map->map_settings.size.y);
     if (!(map->map_2d))
