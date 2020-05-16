@@ -23,6 +23,17 @@ static int get_smallest_free_id(program_t *programs, int index)
     return 0;
 }
 
+static int get_load_address(program_t *program, int i, int nbr_programs)
+{
+    int address = MEM_SIZE / nbr_programs * i;
+
+    if (!program)
+        return 84;
+    if (program->spec_address == false)
+        program->load_address = address;
+    return 0;
+}
+
 int get_programs(int ac, char **av, int nbr_programs, program_t **programs)
 {
     int i = -1;
@@ -36,6 +47,8 @@ int get_programs(int ac, char **av, int nbr_programs, program_t **programs)
         if (get_smallest_free_id(*programs, i) == 84)
             return 84;
         if (get_program(ac, av, &index, &(*programs)[i]) == 84)
+            return 84;
+        if (get_load_address(&(*programs)[i], i, nbr_programs) == 84)
             return 84;
     }
     return 0;

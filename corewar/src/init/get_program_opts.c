@@ -54,6 +54,7 @@ static int check_opt_a(char *str, int *index, program_t *program, bool *found_a)
         return 84;
     *found_a = true;
     program->load_address = my_atoi(str);
+    program->spec_address = true;
     return 0;
 }
 
