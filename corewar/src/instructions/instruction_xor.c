@@ -29,8 +29,7 @@ int instruction_xor(vm_t *vm, champion_t *champion)
     if (my_memcpy(&result,
             champion->registers + REG_SIZE * params.values[2], REG_SIZE) == 84)
         return 84;
-    if (result == 0)
-        champion->carry = true;
+    champion->carry = (result == 0) ? true : false;
     champion->pc = tmp_pc;
     return 0;
 }
