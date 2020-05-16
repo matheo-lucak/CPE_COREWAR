@@ -40,4 +40,6 @@ char *my_strndup(char const *src, int n);
 
 int my_swap_int_endian(int *value);
 
+void my_free_array(void **array, const int size);
+
 #endif //CPE_COREWAR_2019_MY_H

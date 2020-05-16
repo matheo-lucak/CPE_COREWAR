@@ -13,6 +13,7 @@ CRI_FLAGS	=	-lcriterion --coverage
 
 SRC_MY		=	my_atoi.c					\
 				my_cmalloc.c				\
+				my_free_arr.c				\
 				my_memcpy.c					\
 				my_memset.c					\
 				my_put_signed_long_base.c	\
