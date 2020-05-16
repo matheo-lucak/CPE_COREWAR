@@ -11,9 +11,13 @@
 #include "graphic.h"
 #include "camera.h"
 #include "win_update.h"
+#include "vm.h"
 
 sfVector2f project_iso_point(const sfVector3f pos_3d,
                             const sfVector2i map_size,
                             const sfVector2i angles);
+
+int update_memory_3d(vm_t *vm, map_formatter_t *map_formatter,
+        champion_t *champion);
 
 #endif /* !UPDATE_GRAPHIC_H_ */

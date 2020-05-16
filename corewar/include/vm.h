@@ -19,10 +19,12 @@ typedef struct virtual_machine_s
     int count_live;
     int nbr_cycle_dump;
     char memory[MEM_SIZE];
+    char memory_dup[MEM_SIZE];
     int nbr_champions;
     champion_t *champions;
     int nbr_live_champions;
     int last_live;
+    char **names;
 } vm_t;
 
 int get_champions(champion_t **champions, int nbr_champions,
@@ -30,11 +32,15 @@ int get_champions(champion_t **champions, int nbr_champions,
 
 int init_vm(vm_t *vm, setup_t *setup);
 
+int get_names(program_t *programs, int nbr_programs, char ***names);
+
 int copy_memory_n_bytes(const char *memory, int *pc, void *dest, int n);
 
 int write_memory_n_bytes(char *memory, int *pc, void *src, int n);
 
 int dup_champion(vm_t *vm, champion_t *champion, size_t index);
+
+int get_champion_color(vm_t *vm, champion_t *champion, int *color);
 
 int execute_instructions(vm_t *vm);
 
