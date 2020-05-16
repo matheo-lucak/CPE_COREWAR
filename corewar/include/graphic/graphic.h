@@ -11,6 +11,12 @@
 #include <stdbool.h>
 #include <SFML/Graphics.h>
 
+typedef struct memory_3d_s
+{
+    float height;
+    int color;
+} memory_3d_t;
+
 typedef struct presets_s {
     sfVector2i size;
     sfVector2i angles;
@@ -20,7 +26,8 @@ typedef struct presets_s {
 
 typedef struct map_formatter_s {
     presets_t map_settings;
-    float **map_3d;
+
+    memory_3d_t **map_3d;
     sfVector2f **map_2d;
     sfVertexArray ***tiles;
 } map_formatter_t;

@@ -15,15 +15,16 @@ static bool init_map_3d(map_formatter_t *map)
 {
     int index = 0;
 
-    map->map_3d = malloc(sizeof(float) * map->map_settings.size.y);
+    map->map_3d = malloc(sizeof(memory_3d_t *) * map->map_settings.size.y);
     if (!(map->map_3d))
         return (false);
     for (; index < map->map_settings.size.y; index += 1) {
-        map->map_3d[index] = malloc(sizeof(float) * map->map_settings.size.x);
+        map->map_3d[index] = malloc(sizeof(memory_3d_t) *
+                                            map->map_settings.size.x);
         if (!(map->map_3d[index]))
             return (false);
-        my_memset(map->map_3d[index], 0,
-                                    sizeof(float) * map->map_settings.size.x);
+        my_memset(map->map_3d[index],
+                    sizeof(memory_3d_t) * map->map_settings.size.x, 0);
     }
     return (true);
 }
@@ -32,17 +33,16 @@ static bool init_map_2d(map_formatter_t *map)
 {
     int index = 0;
 
-    map->map_2d = malloc(sizeof(sfVector2f) * map->map_settings.size.y);
+    map->map_2d = malloc(sizeof(sfVector2f *) * map->map_settings.size.y);
     if (!(map->map_2d))
         return (false);
     for (; index < map->map_settings.size.y; index += 1) {
         map->map_2d[index] = malloc(sizeof(sfVector2f) *
-                                                    map->map_settings.size.x);
+                                            map->map_settings.size.x);
         if (!(map->map_2d[index]))
             return (false);
-        my_memset(map->map_2d[index], 0,
-                                    sizeof(sfVector2f) *
-                                                    map->map_settings.size.x);
+        my_memset(map->map_2d[index],
+                    sizeof(sfVector2f) * map->map_settings.size.x, 0);
     }
     return (true);
 }
