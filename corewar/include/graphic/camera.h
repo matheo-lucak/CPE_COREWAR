@@ -10,7 +10,7 @@
 
 #include "graphic.h"
 
-sfBool center_cam(win_settings_t *sets, map_formatter_t *ter);
+sfBool center_cam(win_settings_t *sets, map_formatter_t *map);
 
 sfBool control_camera_view(win_settings_t sets, presets_t map_settings);
 sfBool control_angle_view(presets_t *map_settings);

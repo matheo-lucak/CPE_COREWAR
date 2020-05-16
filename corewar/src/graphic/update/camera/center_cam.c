@@ -33,23 +33,23 @@ static sfBool is_outside_view(win_settings_t *sets, sfVector2f **map,
     return (sfTrue);
 }
 
-sfBool center_cam(win_settings_t *sets, map_formatter_t *ter)
+sfBool center_cam(win_settings_t *sets, map_formatter_t *map)
 {
     sfVector2f center = {0, 0};
-    sfVector2i size = ter->map_settings.size;
+    sfVector2i size = map->map_settings.size;
 
     if (!sfKeyboard_isKeyPressed(sfKeyC))
         return (sfFalse);
     size = VEC2I(size.x - 1, size.y - 1);
     if (size.x < 0 || size.y < 0)
         return (sfFalse);
-    center.x = (ter->map_2d[size.y][size.x].x + ter->map_2d[0][0].x) / 2;
-    center.y = (ter->map_2d[size.y][size.x].y + ter->map_2d[0][0].y) / 2;
+    center.x = (map->map_2d[size.y][size.x].x + map->map_2d[0][0].x) / 2;
+    center.y = (map->map_2d[size.y][size.x].y + map->map_2d[0][0].y) / 2;
     sfView_setCenter(sets->view, center);
-    while (!is_outside_view(sets, ter->map_2d, size))
+    while (!is_outside_view(sets, map->map_2d, size))
         sfView_zoom(sets->view, 1.001);
     do {
         sfView_zoom(sets->view, 0.999);
-    } while (is_outside_view(sets, ter->map_2d, size));
+    } while (is_outside_view(sets, map->map_2d, size));
     return (sfTrue);
 }

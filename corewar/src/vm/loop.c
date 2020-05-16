@@ -19,12 +19,12 @@ static int check_cycle_to_die(int *count_live, int *cycle_to_die)
     return 0;
 }
 
-static int exec_loop(vm_t *vm, map_formatter_t *ter, int cycle)
+static int exec_loop(vm_t *vm, map_formatter_t *map, int cycle)
 {
     if (cycle == vm->nbr_cycle_dump &&
         dump_memory(vm->memory) == 84)
         return 84;
-    if (execute_instructions(vm, ter) == 84)
+    if (execute_instructions(vm, map) == 84)
         return 84;
     if (check_live_champions(vm) == 84)
         return 84;

@@ -49,7 +49,7 @@ static int execute_instruction(vm_t *vm, champion_t *champion)
     return 0;
 }
 
-int execute_instructions(vm_t *vm, map_formatter_t *ter)
+int execute_instructions(vm_t *vm, map_formatter_t *map)
 {
     int i = -1;
 
@@ -58,9 +58,8 @@ int execute_instructions(vm_t *vm, map_formatter_t *ter)
             vm->champions[i].cycles_left <= 0 &&
             execute_instruction(vm, &vm->champions[i]) == 84)
             return 84;
-        if (update_memory_3d(vm, ter, &vm->champions[i]) == 84)
+        if (update_memory_3d(vm, map, &vm->champions[i]) == 84)
             return 84;
-        my_memcpy(vm->memory, vm->memory_dup, MEM_SIZE);
         --vm->champions[i].cycles_left;
     }
     return 0;

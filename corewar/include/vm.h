@@ -43,7 +43,7 @@ int dup_champion(vm_t *vm, champion_t *champion, size_t index);
 
 int get_champion_color(vm_t *vm, champion_t *champion, int *color);
 
-int execute_instructions(vm_t *vm, map_formatter_t *ter);
+int execute_instructions(vm_t *vm, map_formatter_t *map);
 
 int check_live_champions(vm_t *vm);
 
