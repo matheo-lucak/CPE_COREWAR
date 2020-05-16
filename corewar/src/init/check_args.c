@@ -19,6 +19,28 @@ static bool check_opt(char *arg)
     return true;
 }
 
+static bool count_opts(int ac, char **av)
+{
+    int i = 0;
+    int count = 0;
+    int champions = 0;
+    bool dump = false;
+
+    if (!av)
+        return false;
+    while (++i < ac) {
+        if (av[i][0] == '-')
+            ++count;
+        else if (av[i - 1][0] != '-')
+            ++champions;
+        if (!my_strcmp(av[i], "-dump"))
+            dump = true;
+    }
+    if (ac - count * 2 - dump - 1 != champions)
+        return false;
+    return true;
+}
+
 bool check_opts(int ac, char **av)
 {
     int i = 0;
@@ -29,5 +51,7 @@ bool check_opts(int ac, char **av)
         if (av[i][0] == '-' && check_opt(av[i]) == false)
             return false;
     }
+    if (count_opts(ac, av) == false)
+        return false;
     return true;
 }
