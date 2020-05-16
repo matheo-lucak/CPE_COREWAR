@@ -9,9 +9,9 @@
 
 static void tile_change_color(sfVertexArray *tile)
 {
-    sfVertex *vertex;
-    size_t size = sfVertexArray_getVertexCount(tile);
-    size_t index = 0;
+    register size_t size = sfVertexArray_getVertexCount(tile);
+    register size_t index = 0;
+    sfVertex *vertex = NULL;
 
     for (index = 0; index < size; index++) {
         vertex = sfVertexArray_getVertex(tile, index);
@@ -21,15 +21,21 @@ static void tile_change_color(sfVertexArray *tile)
     }
 }
 
-static void draw_tile(win_settings_t *sets, sfVertexArray *tile)
+static void draw_tile(win_settings_t *sets, tile_t tile)
 {
-    if (!sets || !tile)
+    size_t side = 0;
+
+    if (!sets)
         return ;
-    sfVertexArray_setPrimitiveType(tile, sfTriangleStrip);
-    sfRenderWindow_drawVertexArray(sets->window, tile, NULL);
-    tile_change_color(tile);
-    sfVertexArray_setPrimitiveType(tile, sfLineStrip);
-    sfRenderWindow_drawVertexArray(sets->window, tile, NULL);
+    for (side = 0; side < 3; side += 1) {
+        sfVertexArray_setPrimitiveType(tile.tile[side], sfQuads);
+        sfRenderWindow_drawVertexArray(sets->window, tile.tile[side], NULL);
+    }
+    for (side = 0; side < 3; side += 1) {
+        tile_change_color(tile.tile[side]);
+        sfVertexArray_setPrimitiveType(tile.tile[side], sfLineStrip);
+        sfRenderWindow_drawVertexArray(sets->window, tile.tile[side], NULL);
+    }
 }
 
 void draw_tile_map(win_settings_t *sets, map_formatter_t *map)

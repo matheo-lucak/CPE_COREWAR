@@ -26,11 +26,17 @@ typedef struct presets_s {
     sfVector2i movement_speed;
 } presets_t;
 
+typedef struct tile_s
+{
+    sfVertexArray *tile[3];
+    sfColor color;
+} tile_t;
+
 typedef struct map_formatter_s {
     presets_t map_settings;
     memory_3d_t **map_3d;
     sfVector2f **map_2d;
-    sfVertexArray ***tiles;
+    tile_t **tiles;
 } map_formatter_t;
 
 typedef struct mouse_tool_s {

@@ -17,7 +17,9 @@ static void free_tile_map(map_formatter_t *map)
         return ;
     for (y = 0; y < map->map_settings.size.y; y += 1) {
         for (x = 0; x < map->map_settings.size.x; x += 1) {
-            sfVertexArray_destroy(map->tiles[y][x]);
+            sfVertexArray_destroy(map->tiles[y][x].tile[0]);
+            sfVertexArray_destroy(map->tiles[y][x].tile[1]);
+            sfVertexArray_destroy(map->tiles[y][x].tile[2]);
         }
         free(map->tiles[y]);
     }
