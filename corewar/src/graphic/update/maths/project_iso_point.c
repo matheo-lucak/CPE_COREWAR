@@ -6,6 +6,7 @@
 */
 
 #include "update_graphic.h"
+#include "vector_engine.h"
 
 sfVector2f project_iso_point(const sfVector3f pos_3d,
                             const sfVector2i map_size,
@@ -16,9 +17,9 @@ sfVector2f project_iso_point(const sfVector3f pos_3d,
 
     coeff.x = (pos_3d.x - (map_size.x / 2));
     coeff.y = (pos_3d.y - (map_size.y / 2));
-    pos_2d.x = cos(my_radians(angles.x)) * coeff.x;
-    pos_2d.x -= sin(my_radians(angles.x)) * coeff.y;
-    pos_2d.y = sin(my_radians(angles.y) + my_radians(90)) * coeff.y;
-    pos_2d.y += cos(my_radians(angles.y)) * coeff.x - coeff.z;
+    pos_2d.x = cos(RAD(angles.x)) * coeff.x;
+    pos_2d.x -= sin(RAD(angles.x)) * coeff.y;
+    pos_2d.y = sin(RAD(angles.y) + RAD(90)) * coeff.y;
+    pos_2d.y += cos(RAD(angles.y)) * coeff.x - coeff.z;
     return (pos_2d);
 }

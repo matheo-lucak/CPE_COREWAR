@@ -5,7 +5,7 @@
 ** vec_angle
 */
 
-#include "math.h"
+#include <math.h>
 #include "vector_engine.h"
 
 float vec_angle(sfVector2f vec1, sfVector2f vec2)
@@ -18,5 +18,5 @@ float vec_angle(sfVector2f vec1, sfVector2f vec2)
         return (0);
     angle = (vec_dot(vec1, vec2) / (magn1 * magn2));
     angle = acos(angle);
-    return (angle * 180 / M_PI);
+    return (DEG(angle));
 }

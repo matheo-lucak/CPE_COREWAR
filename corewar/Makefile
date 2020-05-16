@@ -59,6 +59,7 @@ SRC_VM				=	src/vm/check_live_champions.c					\
 SRC_GRAPHIC			=	src/graphic/draw/draw_map.c						\
 						src/graphic/freer/free_map.c					\
 						src/graphic/freer/free_win.c					\
+						src/graphic/freer/freeer.c						\
 						src/graphic/init/init_map_tiles.c				\
 						src/graphic/init/init_map.c						\
 						src/graphic/init/init_win.c						\

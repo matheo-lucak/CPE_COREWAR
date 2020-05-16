@@ -11,6 +11,19 @@
 #include <SFML/System/Vector2.h>
 #include <SFML/Graphics/Rect.h>
 
+#include <math.h>
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
+#define ABS(x) ((x > 0) ? (x) : (-x))
+#define MAX(a, b) ((a > b) ? (a) : (b))
+#define MIN(a, b) ((a < b) ? (a) : (b))
+
+#define RAD(degree) (degree * M_PI / 180)
+#define DEG(radian) (radian * 180 / M_PI)
+
 #define VEC2I(x, y) (sfVector2i) {x, y}
 #define VEC2F(x, y) (sfVector2f) {x, y}
 #define IRECT(a, b, x, y) (sfIntRect) {a, b, x, y}
