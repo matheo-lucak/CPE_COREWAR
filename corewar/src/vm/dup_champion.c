@@ -27,7 +27,7 @@ static int get_smallest_id(champion_t *champions, int nbr_champions,
         int *dest)
 {
     int i = -1;
-    int id = 0;
+    int id = 1;
 
     if (!champions || !dest)
         return 84;

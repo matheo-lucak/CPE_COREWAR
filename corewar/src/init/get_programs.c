@@ -11,7 +11,7 @@
 static int get_smallest_free_id(program_t *programs, int index)
 {
     int i = -1;
-    int smallest = 0;
+    int smallest = 1;
 
     if (!programs)
         return 84;
