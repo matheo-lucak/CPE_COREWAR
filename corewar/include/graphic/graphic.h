@@ -26,7 +26,6 @@ typedef struct presets_s {
 
 typedef struct map_formatter_s {
     presets_t map_settings;
-
     memory_3d_t **map_3d;
     sfVector2f **map_2d;
     sfVertexArray ***tiles;
