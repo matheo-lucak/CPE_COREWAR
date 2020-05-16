@@ -17,6 +17,7 @@ SRC_DESTROY			=	src/destroy/destroy_setup.c						\
 SRC_INIT			=	src/init/check_args.c							\
 						src/init/get_champion.c							\
 						src/init/get_champions.c						\
+						src/init/get_names.c							\
 						src/init/get_nbr_cycle_dump.c					\
 						src/init/get_nbr_programs.c						\
 						src/init/get_program_file.c						\
@@ -50,11 +51,13 @@ SRC_VM				=	src/vm/check_live_champions.c					\
 						src/vm/dump_memory.c							\
 						src/vm/dup_champion.c							\
 						src/vm/execute_instruction.c					\
+						src/vm/get_champion_color.c						\
 						src/vm/get_instruction_params.c					\
 						src/vm/get_ld_params_values.c					\
 						src/vm/get_ops_params_values.c					\
 						src/vm/get_winner.c								\
 						src/vm/loop.c									\
+						src/vm/update_memory_3d.c						\
 
 SRC_GRAPHIC			=	src/graphic/draw/draw_map.c						\
 						src/graphic/freer/free_map.c					\
@@ -67,6 +70,7 @@ SRC_GRAPHIC			=	src/graphic/draw/draw_map.c						\
 						src/graphic/update/camera/center_cam.c			\
 						src/graphic/update/camera/control_view.c		\
 						src/graphic/update/camera/translations.c		\
+						src/graphic/update/map/map_tiles.c				\
 						src/graphic/update/win/mouse.c					\
 						src/graphic/update/maths/project_iso_point.c	\
 						src/graphic/update/win/win.c					\

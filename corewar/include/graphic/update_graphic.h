@@ -19,4 +19,6 @@ sfVector2f project_iso_point(const sfVector3f pos_3d,
 
 int update_memory_3d(vm_t *vm, map_formatter_t *ter, champion_t *champion);
 
+void update_tile_map(map_formatter_t *map);
+
 #endif /* !UPDATE_GRAPHIC_H_ */
