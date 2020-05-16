@@ -42,9 +42,12 @@ int loop(vm_t *vm)
     if (!vm || !init_map(&map) || !init_win_settings(&sets))
         return 84;
     while (vm->nbr_live_champions > 0) {
+        sfRenderWindow_clear(sets.window, sfBlack);
         if (exec_loop(vm, cycle) == 84)
             return (84);
         ++cycle;
+        update_graphic(&sets, &map);
+        sfRenderWindow_display(sets.window);
     }
     free_ressources(&sets, &map);
     return 0;

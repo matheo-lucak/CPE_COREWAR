@@ -54,6 +54,8 @@ bool init_win_settings(win_settings_t *sets);
 
 bool init_map(map_formatter_t *map);
 
+void update_graphic(win_settings_t *sets, map_formatter_t *map);
+
 void draw_tile_map(win_settings_t *sets, map_formatter_t *map);
 
 void free_ressources(win_settings_t *sets, map_formatter_t *map);

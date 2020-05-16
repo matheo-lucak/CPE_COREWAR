@@ -70,6 +70,7 @@ SRC_GRAPHIC			=	src/graphic/draw/draw_map.c						\
 						src/graphic/update/win/mouse.c					\
 						src/graphic/update/maths/project_iso_point.c	\
 						src/graphic/update/win/win.c					\
+						src/graphic/update/update.c						\
 
 
 SRC_VECTOR_ENGINE	=	src/vector_engine/vec_angle.c					\

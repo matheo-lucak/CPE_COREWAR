@@ -9,6 +9,7 @@
 #define UPDATE_GRAPHIC_H_
 
 #include "graphic.h"
+#include "camera.h"
 #include "win_update.h"
 
 sfVector2f project_iso_point(const sfVector3f pos_3d,
