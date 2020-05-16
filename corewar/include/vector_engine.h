@@ -9,6 +9,7 @@
 #define VECTOR_H
 
 #include <SFML/System/Vector2.h>
+#include <SFML/System/Vector3.h>
 #include <SFML/Graphics/Rect.h>
 
 #include <math.h>
@@ -26,6 +27,7 @@
 
 #define VEC2I(x, y) (sfVector2i) {x, y}
 #define VEC2F(x, y) (sfVector2f) {x, y}
+#define VEC3F(x, y, z) (sfVector3f) {x, y, z}
 #define IRECT(a, b, x, y) (sfIntRect) {a, b, x, y}
 #define FRECT(a, b, x, y) (sfFloatRect) {a, b, x, y}
 
