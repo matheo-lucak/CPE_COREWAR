@@ -60,7 +60,7 @@ NAME 				=	asm
 
 override CFLAGS		+=	-W -Wall -Wextra
 
-override CPPFLAGS	+=	-I./include/ -I./../include
+override CPPFLAGS	+=	-I./include/
 
 LDFLAGS				=	-L./lib/
 
@@ -95,6 +95,7 @@ clean:
 					$(RM) *.gcno
 					$(RM) tests/*.gcda
 					$(RM) tests/*.gcno
+					$(RM) test*.cor
 
 fclean:				clean
 					$(RM) $(NAME)

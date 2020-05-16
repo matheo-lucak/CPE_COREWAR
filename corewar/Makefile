@@ -61,7 +61,7 @@ SRC					=	$(OP) $(SRC_COREWAR) $(SRC_DESTROY) $(SRC_INIT) $(SRC_INSTRUCTIONS) $(
 
 OBJ					=	$(SRC:.c=.o) $(MAIN:.c=.o)
 
-NAME 				=	asm
+NAME 				=	corewar
 
 override CFLAGS		+=	-W -Wall -Wextra
 
