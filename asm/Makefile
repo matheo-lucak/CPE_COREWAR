@@ -2,7 +2,7 @@
 ## EPITECH PROJECT, 2019
 ## Makefile
 ## File description:
-## rtfm
+## asm
 ##
 
 MAIN				=	src/main.c										\
@@ -96,6 +96,7 @@ clean:
 					$(RM) tests/*.gcda
 					$(RM) tests/*.gcno
 					$(RM) test*.cor
+					$(RM) debug
 
 fclean:				clean
 					$(RM) $(NAME)

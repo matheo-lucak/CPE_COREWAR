@@ -57,7 +57,6 @@ SRC_VM				=	src/vm/check_live_champions.c					\
 						src/vm/increment_pc.c							\
 						src/vm/loop.c									\
 
-
 SRC					=	$(OP) $(SRC_COREWAR) $(SRC_DESTROY) $(SRC_INIT) $(SRC_INSTRUCTIONS) $(SRC_VM)
 
 OBJ					=	$(SRC:.c=.o) $(MAIN:.c=.o)
