@@ -61,7 +61,6 @@ static int update_size_memory(map_formatter_t *map, sfVector2i pos,
 
     if (!map)
         return 84;
-    pos = D1TOD2(size, map->map_settings.size.x);
     while (++i < size) {
         if (update_color_height(&map->map_3d[pos.y][pos.x], color) == 84)
             return 84;
@@ -91,8 +90,8 @@ int update_memory_3d(vm_t *vm, map_formatter_t *map, champion_t *champion,
     if (pos.x >= map->map_settings.size.x || pos.y >= map->map_settings.size.y)
         return 0;
     code = (instr_code_t)vm->memory[tmp_pc] - 1;
-    if (code == i_fork || code == i_lfork || code == i_zjmp)
-        size = 1;
+    if (code == i_zjmp)
+        size = 5;
     else
         size = champion->pc - tmp_pc + ((champion->pc < tmp_pc) ? MEM_SIZE : 0);
     map->map_3d[pos.y][pos.x].is_live = (code == i_live) ? true : false;
