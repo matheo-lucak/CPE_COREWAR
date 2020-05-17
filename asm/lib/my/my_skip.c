@@ -19,7 +19,7 @@ bool my_skip_chars(char **src, char const *template)
 
 bool my_skip_str(char **src, char *str)
 {
-    register size_t index = 0;
+    register int index = 0;
 
     if (!src)
         return (false);
