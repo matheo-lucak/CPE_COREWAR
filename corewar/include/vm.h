@@ -8,6 +8,7 @@
 #ifndef CPE_COREWAR_2019_VM_H
 #define CPE_COREWAR_2019_VM_H
 
+#include <sys/types.h>
 #include <stddef.h>
 #include "op.h"
 #include "setup.h"
@@ -38,6 +39,8 @@ int get_names(program_t *programs, int nbr_programs, char ***names);
 int copy_memory_n_bytes(const char *memory, int *pc, void *dest, int n);
 
 int write_memory_n_bytes(char *memory, int *pc, void *src, int n);
+
+int increment_pc(int pc, ssize_t increment);
 
 int dup_champion(vm_t *vm, champion_t *champion, size_t index);
 

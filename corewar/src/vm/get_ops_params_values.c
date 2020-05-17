@@ -5,11 +5,12 @@
 ** get_ops_params_values.c
 */
 
+#include <monetary.h>
 #include "my.h"
 #include "champion.h"
 #include "instruction_parameters.h"
 
-static int get_register_value(void *registers, size_t index, size_t *dest)
+static int get_register_value(void *registers, size_t index, ssize_t *dest)
 {
     if (!registers || !dest)
         return 84;
@@ -18,7 +19,7 @@ static int get_register_value(void *registers, size_t index, size_t *dest)
     return 0;
 }
 
-static int get_direct_value(size_t param, size_t *dest)
+static int get_direct_value(size_t param, ssize_t *dest)
 {
     if (!dest)
         return 84;
@@ -27,7 +28,7 @@ static int get_direct_value(size_t param, size_t *dest)
     return 0;
 }
 
-static int get_indirect_value(char *memory, int pc, size_t index, size_t *dest)
+static int get_indirect_value(char *memory, int pc, size_t index, ssize_t *dest)
 {
     if (!memory || !dest)
         return 84;
@@ -39,7 +40,7 @@ static int get_indirect_value(char *memory, int pc, size_t index, size_t *dest)
 }
 
 int get_ops_params_values(instr_params_t *params, char *memory,
-        champion_t *champion, size_t *dest)
+        champion_t *champion, ssize_t *dest)
 {
     int i = -1;
 

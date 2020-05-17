@@ -8,7 +8,7 @@
 #ifndef CPE_COREWAR_2019_INSTRUCTION_PARAMETERS_H
 #define CPE_COREWAR_2019_INSTRUCTION_PARAMETERS_H
 
-#include <stddef.h>
+#include <sys/types.h>
 #include "op.h"
 #include "instruction_codes.h"
 
@@ -22,9 +22,9 @@ int get_instruction_params(char *memory, int *pc,
         instr_params_t *params, instr_code_t code);
 
 int get_ops_params_values(instr_params_t *params, char *memory,
-        champion_t *champion, size_t *dest);
+        champion_t *champion, ssize_t *dest);
 
 int get_ld_params_values(instr_params_t *params, char *memory,
-        champion_t *champion, size_t *dest);
+        champion_t *champion, ssize_t *dest);
 
 #endif //CPE_COREWAR_2019_INSTRUCTION_PARAMETERS_H
