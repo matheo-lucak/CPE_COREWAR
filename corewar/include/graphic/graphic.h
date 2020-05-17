@@ -21,7 +21,7 @@ typedef struct memory_3d_s
 } memory_3d_t;
 
 typedef struct presets_s {
-    sfVector2i size;
+    const sfVector2i size;
     sfVector2i angles;
     sfVector2i rotation_speed;
     sfVector2i movement_speed;
