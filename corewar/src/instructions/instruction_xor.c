@@ -14,8 +14,8 @@
 int instruction_xor(vm_t *vm, champion_t *champion)
 {
     instr_params_t params = {0};
-    size_t values[3] = {0};
-    size_t result = 0;
+    ssize_t values[3] = {0};
+    ssize_t result = 0;
     int tmp_pc = 0;
 
     if (!vm || !champion)
@@ -24,7 +24,7 @@ int instruction_xor(vm_t *vm, champion_t *champion)
     if (get_instruction_params(vm->memory, &tmp_pc, &params, i_xor) == 84 ||
         get_ops_params_values(&params, vm->memory, champion, values) == 84)
         return 84;
-    result = values[0] ^ values[1];
+    result = (size_t)values[0] ^ (size_t)values[1];
     if (my_memcpy(&result,
             champion->registers + REG_SIZE * params.values[2], REG_SIZE) == 84)
         return 84;
