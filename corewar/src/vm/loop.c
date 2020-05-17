@@ -6,6 +6,7 @@
 */
 
 #include "graphic.h"
+#include "update_graphic.h"
 #include "vm.h"
 
 static int check_cycle_to_die(int *count_live, int *cycle_to_die)
@@ -25,6 +26,8 @@ static int exec_loop(vm_t *vm, map_formatter_t *map, int cycle)
 {
     if (cycle == vm->nbr_cycle_dump &&
         dump_memory(vm->memory) == 84)
+        return 84;
+    if (decrease_memory_3d_height(map, vm) == 84)
         return 84;
     if (execute_instructions(vm, map) == 84)
         return 84;

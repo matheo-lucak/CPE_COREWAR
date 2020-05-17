@@ -34,17 +34,23 @@ const instruction_func_t instructions[] = {
         NULL
 };
 
-static int execute_instruction(vm_t *vm, champion_t *champion)
+static int execute_instruction(vm_t *vm, map_formatter_t *map, int index)
 {
+    champion_t *champion = NULL;
     instr_code_t code = 0;
+    int tmp_pc = 0;
 
-    if (!vm || !champion)
+    if (!vm || !map)
         return 84;
+    champion = &vm->champions[index];
     code = (instr_code_t)vm->memory[champion->pc] - 1;
     if (code < 0 || code > 15)
         return 0;
+    tmp_pc = champion->pc;
     champion->cycles_left = op_tab[code].nbr_cycles;
     if (instructions[code](vm, champion) == 84)
+        return 84;
+    if (update_memory_3d(vm, map, champion, tmp_pc) == 84)
         return 84;
     return 0;
 }
@@ -56,9 +62,7 @@ int execute_instructions(vm_t *vm, map_formatter_t *map)
     while (++i < vm->nbr_champions) {
         if (vm->champions[i].dead == false &&
             vm->champions[i].cycles_left <= 0 &&
-            execute_instruction(vm, &vm->champions[i]) == 84)
-            return 84;
-        if (update_memory_3d(vm, map, &vm->champions[i]) == 84)
+            execute_instruction(vm, map, i) == 84)
             return 84;
         if (my_memcpy(vm->memory, vm->memory_dup, MEM_SIZE) == 84)
             return 84;
