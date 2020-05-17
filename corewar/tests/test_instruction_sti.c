@@ -59,7 +59,7 @@ Test(instruction_sti, success_1_eq)
     my_memcpy("\x0b\x58\x01\x02\x00\x02", vm.memory, 6);
     if (instruction_sti(&vm, &champion) == 84)
         cr_assert(0);
-    cr_assert(*(int *)(vm.memory + 6 + 6) == 10);
+    cr_assert(*(int *)(vm.memory + 6) == 10);
 }
 
 Test(instruction_sti, success_2_eq)
@@ -78,7 +78,7 @@ Test(instruction_sti, success_2_eq)
     my_memcpy("\x0b\x54\x01\x02\x03", vm.memory, 5);
     if (instruction_sti(&vm, &champion) == 84)
         cr_assert(0);
-    cr_assert(*(int *)(vm.memory + 8 + 5) == 10);
+    cr_assert(*(int *)(vm.memory + 8) == 10);
 }
 
 Test(instruction_sti, success_3_eq)
@@ -94,7 +94,7 @@ Test(instruction_sti, success_3_eq)
     my_memcpy("\x0b\x78\x01\x00\x14\x00\x0a", vm.memory, 7);
     if (instruction_sti(&vm, &champion) == 84)
         cr_assert(0);
-    cr_assert(*(int *)(vm.memory + 14 + 7) == 10);
+    cr_assert(*(int *)(vm.memory + 14) == 10);
 }
 
 Test(instruction_sti, success_4_eq)
@@ -112,5 +112,5 @@ Test(instruction_sti, success_4_eq)
     my_memcpy("\x0b\x74\x01\x00\x14\x02", vm.memory, 6);
     if (instruction_sti(&vm, &champion) == 84)
         cr_assert(0);
-    cr_assert(*(int *)(vm.memory + 14 + 6) == 10);
+    cr_assert(*(int *)(vm.memory + 14) == 10);
 }
