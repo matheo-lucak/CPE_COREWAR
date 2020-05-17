@@ -15,6 +15,8 @@ static int check_cycle_to_die(int *count_live, int *cycle_to_die)
         *cycle_to_die -= CYCLE_DELTA;
         *count_live = 0;
     }
+    if (*cycle_to_die < 0)
+        *cycle_to_die = 0;
     return 0;
 }
 
