@@ -65,7 +65,7 @@ static int update_size_memory(map_formatter_t *map, sfVector2i pos,
         if (update_color_height(&map->map_3d[pos.y][pos.x], color) == 84)
             return 84;
         if (pos.x >= map->map_settings.size.x) {
-            ++pos.y;
+            pos.y = (pos.y + 1) % map->map_settings.size.y;
             pos.x = -1;
         }
         ++pos.x;
