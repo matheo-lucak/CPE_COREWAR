@@ -16,6 +16,7 @@ all:
 debug:
 				$(MAKE) $@ -C $(ASM_PATH)
 				$(MAKE) $@ -C $(VM_PATH)
+
 tests_run:
 				$(MAKE) $@ -C $(ASM_PATH)
 				$(MAKE) $@ -C $(VM_PATH)
