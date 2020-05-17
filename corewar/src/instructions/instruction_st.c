@@ -11,7 +11,7 @@
 #include "instruction_codes.h"
 #include "instruction_parameters.h"
 
-static int write_value(vm_t *vm, champion_t *champion, size_t *values,
+static int write_value(vm_t *vm, champion_t *champion, ssize_t *values,
         instr_params_t params)
 {
     size_t index = 0;
@@ -34,7 +34,7 @@ static int write_value(vm_t *vm, champion_t *champion, size_t *values,
 int instruction_st(vm_t *vm, champion_t *champion)
 {
     instr_params_t params = {0};
-    size_t values[2] = {0};
+    ssize_t values[2] = {0};
     int tmp_pc = 0;
 
     if (!vm || !champion)
