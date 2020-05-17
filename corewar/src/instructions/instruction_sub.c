@@ -23,7 +23,7 @@ int instruction_sub(vm_t *vm, champion_t *champion)
     if (get_instruction_params(vm->memory, &champion->pc,
             &params, i_sub) == 84)
         return 84;
-    if (get_ops_params_values(&params, vm->memory, champion, values) == 84)
+    if (get_ldi_params_values(&params, vm->memory, champion, values) == 84)
         return 84;
     result = values[0] - values[1];
     if (my_memcpy(&result,

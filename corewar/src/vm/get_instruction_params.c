@@ -21,8 +21,8 @@ const int param_sizes[4] = {
 const int tricked_param_sizes[4] = {
         0,
         1,
-        2,
-        2
+        IND_SIZE,
+        IND_SIZE
 };
 
 static int get_param_types(char *memory, int *pc,

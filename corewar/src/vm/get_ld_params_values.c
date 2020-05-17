@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** CPE_corewar_2019
 ** File description:
-** get_ops_params_values.c
+** get_ldi_params_values.c
 */
 
 #include "my.h"

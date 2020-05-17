@@ -22,7 +22,8 @@ int instruction_or(vm_t *vm, champion_t *champion)
         return 84;
     tmp_pc = increment_pc(champion->pc, 1);
     if (get_instruction_params(vm->memory, &tmp_pc, &params, i_or) == 84 ||
-        get_ops_params_values(&params, vm->memory, champion, values) == 84)
+            get_logicals_params_values(&params, vm->memory,
+                    champion, values) == 84)
         return 84;
     result = (size_t)values[0] | (size_t)values[1];
     if (my_memcpy(&result,
