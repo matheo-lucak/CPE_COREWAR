@@ -14,7 +14,8 @@
 #include "update_graphic.h"
 #include "my.h"
 
-const instruction_func_t instructions[] = {
+static const instruction_func_t instructions[] =
+{
         &instruction_live,
         &instruction_ld,
         &instruction_st,

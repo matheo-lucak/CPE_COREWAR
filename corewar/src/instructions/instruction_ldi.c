@@ -23,9 +23,9 @@ int instruction_ldi(vm_t *vm, champion_t *champion)
     tmp_pc = increment_pc(champion->pc, 1);
     if (get_instruction_params(vm->memory, (int *)&tmp_pc,
             &params, i_ldi) == 84 ||
-            get_ops_params_values(&params, vm->memory, champion, values) == 84)
+            get_ldi_params_values(&params, vm->memory, champion, values) == 84)
         return 84;
-    index = (champion->pc + (values[0] + values[1]) % IDX_MOD) % MEM_SIZE;
+    index = increment_pc(index, (values[0] + values[1]) % IDX_MOD);
     if (my_memcpy(&vm->memory[index], &index, REG_SIZE) == 84 ||
         my_memcpy(&index, champion->registers +
         REG_SIZE * params.values[2], REG_SIZE) == 84)

@@ -41,7 +41,7 @@ int instruction_st(vm_t *vm, champion_t *champion)
         return 84;
     tmp_pc = increment_pc(champion->pc, 1);
     if (get_instruction_params(vm->memory, &tmp_pc, &params, i_st) == 84 ||
-        get_ops_params_values(&params, vm->memory, champion, values) == 84)
+            get_ldi_params_values(&params, vm->memory, champion, values) == 84)
         return 84;
     if (write_value(vm, champion, values, params) == 84)
         return 84;

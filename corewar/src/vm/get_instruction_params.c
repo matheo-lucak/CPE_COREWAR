@@ -11,18 +11,20 @@
 #include "instruction_codes.h"
 #include "instruction_parameters.h"
 
-const int param_sizes[4] = {
+const int param_sizes[4] =
+{
         0,
         1,
         DIR_SIZE,
         IND_SIZE
 };
 
-const int tricked_param_sizes[4] = {
+const int tricked_param_sizes[4] =
+{
         0,
         1,
-        2,
-        2
+        IND_SIZE,
+        IND_SIZE
 };
 
 static int get_param_types(char *memory, int *pc,

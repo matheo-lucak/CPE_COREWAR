@@ -53,8 +53,8 @@ SRC_VM				=	src/vm/check_live_champions.c					\
 						src/vm/execute_instruction.c					\
 						src/vm/get_champion_color.c						\
 						src/vm/get_instruction_params.c					\
-						src/vm/get_ld_params_values.c					\
-						src/vm/get_ops_params_values.c					\
+						src/vm/get_ldi_params_values.c					\
+						src/vm/get_logical_params_values.c				\
 						src/vm/get_winner.c								\
 						src/vm/increment_pc.c							\
 						src/vm/loop.c									\
