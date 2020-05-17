@@ -54,6 +54,7 @@ SRC_VM				=	src/vm/check_live_champions.c					\
 						src/vm/get_ld_params_values.c					\
 						src/vm/get_ops_params_values.c					\
 						src/vm/get_winner.c								\
+						src/vm/increment_pc.c							\
 						src/vm/loop.c									\
 
 
