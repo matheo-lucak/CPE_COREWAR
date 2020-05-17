@@ -14,13 +14,12 @@
 int instruction_sub(vm_t *vm, champion_t *champion)
 {
     instr_params_t params = {0};
-    size_t values[3] = {0};
-    size_t result = 0;
+    ssize_t values[3] = {0};
+    ssize_t result = 0;
 
     if (!vm || !champion)
         return 84;
-    ++champion->pc;
-    champion->pc %= MEM_SIZE;
+    champion->pc = increment_pc(champion->pc, 1);
     if (get_instruction_params(vm->memory, &champion->pc,
             &params, i_sub) == 84)
         return 84;

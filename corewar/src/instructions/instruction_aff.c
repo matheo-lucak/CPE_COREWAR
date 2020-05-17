@@ -14,12 +14,11 @@
 int instruction_aff(vm_t *vm, champion_t *champion)
 {
     instr_params_t params = {0};
-    size_t character = 0;
+    ssize_t character = 0;
 
     if (!vm || !champion)
         return 84;
-    ++champion->pc;
-    champion->pc %= MEM_SIZE;
+    champion->pc = increment_pc(champion->pc, 1);
     if (get_instruction_params(vm->memory, &champion->pc, &params, i_aff) == 84)
         return 84;
     if (my_memcpy(champion->registers + REG_SIZE * params.values[0],
