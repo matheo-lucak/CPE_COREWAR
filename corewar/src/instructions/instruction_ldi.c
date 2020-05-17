@@ -26,9 +26,9 @@ int instruction_ldi(vm_t *vm, champion_t *champion)
             get_ldi_params_values(&params, vm->memory, champion, values) == 84)
         return 84;
     index = increment_pc(index, (values[0] + values[1]) % IDX_MOD);
-    if (my_memcpy(&vm->memory[index], &index, REG_SIZE) == 84 ||
-        my_memcpy(&index, champion->registers +
-        REG_SIZE * params.values[2], REG_SIZE) == 84)
+    if (my_memcpy(&vm->memory[index], &index, REG_SIZE) == 84 || (params
+    .values[2] <= REG_NUMBER && my_memcpy(&index, champion->registers +
+    REG_SIZE * params.values[2], REG_SIZE) == 84))
         return 84;
     champion->carry = (index == 0) ? true : false;
     champion->pc = tmp_pc;
