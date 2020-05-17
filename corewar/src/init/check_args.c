@@ -24,7 +24,6 @@ static bool count_opts(int ac, char **av)
     int i = 0;
     int count = 0;
     int champions = 0;
-    bool dump = false;
 
     if (!av)
         return false;
@@ -33,10 +32,8 @@ static bool count_opts(int ac, char **av)
             ++count;
         else if (av[i - 1][0] != '-')
             ++champions;
-        if (!my_strcmp(av[i], "-dump"))
-            dump = true;
     }
-    if (ac - count * 2 - dump - 1 != champions)
+    if (ac - count * 2 - 1 != champions)
         return false;
     return true;
 }
