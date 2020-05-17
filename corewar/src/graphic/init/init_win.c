@@ -36,6 +36,7 @@ bool init_win_settings(win_settings_t *sets)
     sfRenderWindow_setMouseCursorVisible(sets->window, true);
     if (!init_win_view(sets))
         return (false);
+    my_memset(&(sets->mouse_tool), sizeof(mouse_tool_t), 0);
     update_window_settings(sets);
     return (true);
 }
