@@ -17,7 +17,10 @@ sfVector2f project_iso_point(const sfVector3f pos_3d,
                             const sfVector2i map_size,
                             const sfVector2i angles);
 
-int update_memory_3d(vm_t *vm, map_formatter_t *map, champion_t *champion);
+int update_memory_3d(vm_t *vm, map_formatter_t *map, champion_t *champion,
+        int tmp_pc);
+
+int decrease_memory_3d_height(map_formatter_t *map, vm_t *vm);
 
 void update_tile_map(map_formatter_t *map);
 
