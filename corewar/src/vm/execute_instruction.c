@@ -50,7 +50,7 @@ static int execute_instruction(vm_t *vm, map_formatter_t *map, int index)
     champion->cycles_left = op_tab[code].nbr_cycles;
     if (instructions[code](vm, champion) == 84)
         return 84;
-    if (update_memory_3d(vm, map, champion, tmp_pc) == 84)
+    if (update_memory_3d(vm, map, &vm->champions[index], tmp_pc) == 84)
         return 84;
     return 0;
 }

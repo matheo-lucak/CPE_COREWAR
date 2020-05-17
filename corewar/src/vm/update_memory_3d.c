@@ -68,7 +68,7 @@ static int update_size_memory(map_formatter_t *map, sfVector2i pos,
         map->map_2d[pos.y][pos.x] = project_iso_point(
                 VEC3F(pos.x, pos.y, map->map_3d[pos.y][pos.x].height),
                 map->map_settings.size, map->map_settings.angles);
-        if (pos.x == map->map_settings.size.x) {
+        if (pos.x >= map->map_settings.size.x) {
             ++pos.y;
             pos.x = -1;
         }
