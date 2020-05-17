@@ -62,12 +62,12 @@ static int update_size_memory(map_formatter_t *map, sfVector2i pos,
     if (!map)
         return 84;
     while (++i < size) {
-        if (update_color_height(&map->map_3d[pos.y][pos.x], color) == 84)
-            return 84;
         if (pos.x >= map->map_settings.size.x) {
             pos.y = (pos.y + 1) % map->map_settings.size.y;
-            pos.x = -1;
+            pos.x = 0;
         }
+        if (update_color_height(&map->map_3d[pos.y][pos.x], color) == 84)
+            return 84;
         ++pos.x;
     }
     return 0;
@@ -78,7 +78,7 @@ int update_memory_3d(vm_t *vm, map_formatter_t *map, champion_t *champion,
 {
     int color = 0;
     instr_code_t code = 0;
-    size_t size = 0;
+    ssize_t size = 0;
     sfVector2i pos = {0};
 
     if (!vm || !map || get_champion_color(vm, champion, &color) == 84)
