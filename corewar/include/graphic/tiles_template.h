@@ -21,9 +21,9 @@ static const sfVector3f corner_offset[3][4] =
     },
     {
         VEC3F(1, 1, 0),
-        VEC3F(1, 0, 0),
+        VEC3F(1, 1, 1),
         VEC3F(1, 0, 1),
-        VEC3F(1, 1, 1)
+        VEC3F(1, 0, 0)
     },
     {
         VEC3F(1, 1, 1),
