@@ -60,5 +60,5 @@ Test(instruction_sti, success_1_eq)
     my_memcpy("\x0b\x58\x01\x02\x00\x02", vm.memory, 6);
     if (instruction_sti(&vm, &champion) == 84)
         cr_assert(0);
-    cr_assert(*(int *)(vm.memory + 6) == 10);
+    cr_assert(*(int *)(vm.memory + 12) == 10);
 }
