@@ -83,7 +83,7 @@ int update_memory_3d(vm_t *vm, map_formatter_t *map, champion_t *champion,
 
     if (!vm || !map || get_champion_color(vm, champion, &color) == 84)
         return 84;
-    pos = D1TOD2(champion->pc, map->map_settings.size.x);
+    pos = D1TOD2(tmp_pc, map->map_settings.size.x);
     if (pos.x >= map->map_settings.size.x || pos.y >= map->map_settings.size.y)
         return 0;
     code = (instr_code_t)vm->memory[tmp_pc] - 1;
