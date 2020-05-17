@@ -39,6 +39,31 @@ static int get_smallest_id(champion_t *champions, int nbr_champions,
     return 0;
 }
 
+static int func_to_norme(vm_t *vm, champion_t *champion, program_t *program)
+{
+    void *reg = NULL;
+    bool carry = false;
+
+    if (!vm || !champion)
+        return 84;
+    carry = champion->carry;
+    if (!(reg = my_cmalloc(REG_SIZE * (REG_NUMBER + 1))) ||
+        my_memcpy(champion->registers, reg, REG_SIZE * (REG_NUMBER + 1)))
+        return 84;
+    if (!(vm->champions = realloc(vm->champions,
+            sizeof(champion_t) * (vm->nbr_champions + 1))))
+        return 84;
+    my_memset(&vm->champions[vm->nbr_champions - 1], sizeof(champion_t), 0);
+    if (get_champion(&vm->champions[vm->nbr_champions - 1], program) == 84)
+        return 84;
+    vm->champions[vm->nbr_champions - 1].carry = carry;
+    vm->champions[vm->nbr_champions - 1].registers = reg;
+    if (my_memcpy(&program->id, vm->champions[vm->nbr_champions - 1].registers
+    + (REG_SIZE), 4) == 84)
+        return 84;
+    return 0;
+}
+
 int dup_champion(vm_t *vm, champion_t *champion, size_t index)
 {
     program_t program = {0};
@@ -53,11 +78,5 @@ int dup_champion(vm_t *vm, champion_t *champion, size_t index)
         return 84;
     ++vm->nbr_champions;
     ++vm->nbr_live_champions;
-    if (!(vm->champions = realloc(vm->champions,
-            sizeof(champion_t) * (vm->nbr_champions + 1))))
-        return 84;
-    my_memset(&vm->champions[vm->nbr_champions - 1], sizeof(champion_t), 0);
-    if (get_champion(&vm->champions[vm->nbr_champions - 1], &program) == 84)
-        return 84;
-    return 0;
+    return func_to_norme(vm, champion, &program);
 }
