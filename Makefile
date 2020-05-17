@@ -30,7 +30,6 @@ fclean:
 				$(MAKE) $@ -C $(VM_PATH)
 
 re:
-
 				$(MAKE) $@ -C $(ASM_PATH)
 				$(MAKE) $@ -C $(VM_PATH)
 
