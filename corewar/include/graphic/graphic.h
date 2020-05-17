@@ -17,6 +17,7 @@ typedef struct memory_3d_s
 {
     float height;
     int color;
+    bool is_live;
 } memory_3d_t;
 
 typedef struct presets_s {
@@ -30,6 +31,7 @@ typedef struct tile_s
 {
     sfVertexArray *tile[3];
     sfColor color;
+    bool is_live;
 } tile_t;
 
 typedef struct map_formatter_s {
