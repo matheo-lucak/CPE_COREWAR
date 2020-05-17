@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-int my_mem_cmp_error(void *buff1, void *buff2)
+static int my_mem_cmp_error(void *buff1, void *buff2)
 {
     if (!buff1 && !buff2)
         return (0);
@@ -15,6 +15,7 @@ int my_mem_cmp_error(void *buff1, void *buff2)
         return (1);
     if (!buff2)
         return (-1);
+    return (0);
 }
 
 int my_mem_cmp(void *buff1, void *buff2, size_t n)

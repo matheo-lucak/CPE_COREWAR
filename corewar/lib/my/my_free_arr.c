@@ -10,7 +10,7 @@
 
 void my_free_array(void **array, const int size)
 {
-    register size_t index = 0;
+    register int index = 0;
 
     if (!array)
         return;

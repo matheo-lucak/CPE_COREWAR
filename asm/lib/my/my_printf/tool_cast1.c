@@ -12,7 +12,7 @@
 
 void cast_char(long long *nb, char *base, int size)
 {
-    if ((int)*nb > 0 && (int)*nb <= 255 || size != 10)
+    if (((int)*nb > 0 && (int)*nb <= 255) || size != 10)
         my_put_uchar((unsigned char)*nb, base, size);
     else
         my_put_char((char)*nb, base, size);
@@ -20,7 +20,7 @@ void cast_char(long long *nb, char *base, int size)
 
 void cast_short(long long *nb, char *base, int size)
 {
-    if ((int)*nb > 0 && (int)*nb < 65535 || size != 10)
+    if (((int)*nb > 0 && (int)*nb < 65535) || size != 10)
         my_put_ushort((unsigned short)*nb, base, size);
     else
         my_put_short((short)*nb, base, size);
