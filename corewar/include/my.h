@@ -9,6 +9,7 @@
 #define CPE_COREWAR_2019_MY_H
 
 #include <stddef.h>
+#include <stdbool.h>
 
 int my_atoi(char const *str);
 

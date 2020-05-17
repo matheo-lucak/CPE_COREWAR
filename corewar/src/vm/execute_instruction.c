@@ -11,7 +11,8 @@
 #include "instruction.h"
 #include "instruction_codes.h"
 
-const instruction_func_t instructions[] = {
+static const instruction_func_t instructions[] =
+{
         &instruction_live,
         &instruction_ld,
         &instruction_st,
