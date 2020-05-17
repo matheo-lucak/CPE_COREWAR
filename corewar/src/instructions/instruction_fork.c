@@ -11,7 +11,7 @@
 
 int instruction_fork(vm_t *vm, champion_t *champion)
 {
-    ssize_t index = 0;
+    short index = 0;
     int tmp_pc = 0;
 
     if (!vm || !champion)
