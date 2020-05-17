@@ -32,6 +32,7 @@ static int get_indirect_value(char *memory, int pc, size_t index, ssize_t *dest)
 {
     if (!memory || !dest)
         return 84;
+    index %= IDX_MOD;
     pc += index;
     pc %= MEM_SIZE;
     if (my_memcpy(&memory[pc], dest, IND_SIZE) == 84)
