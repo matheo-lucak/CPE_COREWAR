@@ -25,7 +25,7 @@ int get_instruction_params(char *memory, int *pc,
 int get_ldi_params_values(instr_params_t *params, char *memory,
         champion_t *champion, ssize_t *dest);
 
-int get_ld_params_values(instr_params_t *params, char *memory,
+int get_logicals_params_values(instr_params_t *params, char *memory,
         champion_t *champion, ssize_t *dest);
 
 #endif //CPE_COREWAR_2019_INSTRUCTION_PARAMETERS_H

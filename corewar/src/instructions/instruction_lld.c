@@ -21,7 +21,7 @@ int instruction_lld(vm_t *vm, champion_t *champion)
     tmp_pc = increment_pc(champion->pc, 1);
     if (get_instruction_params(vm->memory, &tmp_pc, &params, i_lld) == 84)
         return 84;
-    if (get_ld_params_values(&params, vm->memory, champion, values) == 84)
+    if (get_logicals_params_values(&params, vm->memory, champion, values) == 84)
         return 84;
     if (my_memcpy(&values[0],
             champion->registers + REG_SIZE * params.values[1],

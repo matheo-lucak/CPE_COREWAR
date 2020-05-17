@@ -39,7 +39,7 @@ static int get_indirect_value(char *memory, int pc, size_t index, ssize_t *dest)
     return 0;
 }
 
-int get_ld_params_values(instr_params_t *params, char *memory,
+int get_logicals_params_values(instr_params_t *params, char *memory,
         champion_t *champion, ssize_t *dest)
 {
     int i = -1;
