@@ -20,7 +20,7 @@ static int update_color_height(char memory_diff,
     if (!memory_3d)
         return 84;
     if (cycle_to_die > 0)
-        decrease_rate = 1 / (float)cycle_to_die;
+        decrease_rate = MAX_TILE_HEIGHT / (float)cycle_to_die;
     else
         decrease_rate = 0.1;
     if (memory_diff) {
