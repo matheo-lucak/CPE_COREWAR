@@ -40,6 +40,7 @@ int instruction_sti(vm_t *vm, champion_t *champion)
 {
     instr_params_t params = {0};
     ssize_t values[3] = {0};
+    ssize_t index = 0;
     int tmp_pc = 0;
 
     if (!vm || !champion)
@@ -48,7 +49,8 @@ int instruction_sti(vm_t *vm, champion_t *champion)
     if (get_instruction_params(vm->memory, &tmp_pc, &params, i_sti) == 84 ||
         get_ops_params_values(&params, vm->memory, champion, values) == 84)
         return 84;
-    if (write_value(vm, champion, values, params) == 84)
+    index = tmp_pc + (values[1] + values[2]) % IDX_MOD;
+    if (write_memory_n_bytes(vm->memory, &index, &values[0], REG_SIZE) == 84)
         return 84;
     champion->pc = tmp_pc;
     return 0;
