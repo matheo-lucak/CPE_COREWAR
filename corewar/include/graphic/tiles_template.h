@@ -33,8 +33,9 @@ static const sfVector3f corner_offset[3][4] =
     }
 };
 
-static inline sfVector2f compute_vertex_pos(sfVector3f point, presets_t map_sets,
-                                                        size_t side, size_t index)
+static inline sfVector2f compute_vertex_pos(sfVector3f point,
+                                            presets_t map_sets,
+                                        size_t side, size_t index)
 {
     return (project_iso_point(VEC3F(
                 point.x + corner_offset[side][index].x,

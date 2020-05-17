@@ -16,7 +16,7 @@ int get_champion_color(vm_t *vm, champion_t *champion, int *color)
         return 84;
     while (++i < vm->nbr_champions) {
         if (!my_strcmp(vm->names[i], champion->name)) {
-            *color = i;
+            *color = i + 1;
             return 0;
         }
     }

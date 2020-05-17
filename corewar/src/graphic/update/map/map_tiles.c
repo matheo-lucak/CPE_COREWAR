@@ -11,6 +11,18 @@
 #include "colors.h"
 #include "my.h"
 
+static sfColor fade_color(sfColor color, float height)
+{
+    float ratio = height / MAX_TILE_HEIGHT;
+
+    if (ratio <= 0.5)
+        ratio = 0.5;
+    color.r *= ratio;
+    color.g *= ratio;
+    color.b *= ratio;
+    return (color);
+}
+
 static void update_tile(tile_t tile, sfVector3f point, int color_index,
                                                 presets_t map_sets)
 {
@@ -19,6 +31,7 @@ static void update_tile(tile_t tile, sfVector3f point, int color_index,
     register size_t side = 0;
     sfColor color = get_color_from_index(color_index);
 
+    color = fade_color(color, point.z);
     for (side = 0; side < 3; side++) {
         sfVertexArray_clear(tile.tile[side]);
         for (index = 0; index < 4; index += 1) {
