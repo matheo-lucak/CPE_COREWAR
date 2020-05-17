@@ -5,7 +5,7 @@
 ## task01
 ##
 
-CFLAGS		=
+CFLAGS		=	-W -Wall -Wextra
 
 CPPFLAGS	=	-I../include
 

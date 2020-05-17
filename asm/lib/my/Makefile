@@ -68,6 +68,8 @@ ARFLAGS 	=	rc
 
 NAME		=	libmy.a
 
+CFLAGS		=	-W -Wall -Wextra
+
 CPPFLAGS	=	-I./include/
 
 NAME_MY_H	=	my.h
