@@ -53,7 +53,7 @@ Test(instruction_sti, success_1_eq)
     champion.registers = malloc(REG_SIZE * 3);
     if (!(champion.registers))
         cr_assert(0);
-    my_memcpy("\x0a\x00\x00\x00", champion.registers + REG_SIZE, REG_SIZE);
+    my_memcpy("\x00\x00\x00\x0a", champion.registers + REG_SIZE, REG_SIZE);
     my_memcpy("\x04\x00\x00\x00", champion.registers + (REG_SIZE * 2),
                                                                     REG_SIZE);
     my_memcpy("\x0b\x58\x01\x02\x00\x02", vm.memory, 6);
@@ -70,7 +70,7 @@ Test(instruction_sti, success_2_eq)
     champion.registers = malloc(REG_SIZE * 4);
     if (!(champion.registers))
         cr_assert(0);
-    my_memcpy("\x0a\x00\x00\x00", champion.registers + REG_SIZE, REG_SIZE);
+    my_memcpy("\x00\x00\x00\x0a", champion.registers + REG_SIZE, REG_SIZE);
     my_memcpy("\x04\x00\x00\x00", champion.registers + (REG_SIZE * 2),
                                                                     REG_SIZE);
     my_memcpy("\x04\x00\x00\x00", champion.registers + (REG_SIZE * 3),
@@ -79,8 +79,8 @@ Test(instruction_sti, success_2_eq)
     if (instruction_sti(&vm, &champion) == 84)
         cr_assert(0);
     cr_assert(*(int *)(vm.memory + 8) == 10);
-}
 
+}
 Test(instruction_sti, success_3_eq)
 {
     vm_t vm = {0};
@@ -89,7 +89,7 @@ Test(instruction_sti, success_3_eq)
     champion.registers = malloc(REG_SIZE * 2);
     if (!(champion.registers))
         cr_assert(0);
-    my_memcpy("\x0a\x00\x00\x00", champion.registers + REG_SIZE, REG_SIZE);
+    my_memcpy("\x00\x00\x00\x0a", champion.registers + REG_SIZE, REG_SIZE);
     my_memcpy("\x04\x00\x00\x00", vm.memory + 20, 2);
     my_memcpy("\x0b\x78\x01\x00\x14\x00\x0a", vm.memory, 7);
     if (instruction_sti(&vm, &champion) == 84)
@@ -105,7 +105,7 @@ Test(instruction_sti, success_4_eq)
     champion.registers = malloc(REG_SIZE * 3);
     if (!(champion.registers))
         cr_assert(0);
-    my_memcpy("\x0a\x00\x00\x00", champion.registers + REG_SIZE, REG_SIZE);
+    my_memcpy("\x00\x00\x00\x0a", champion.registers + REG_SIZE, REG_SIZE);
     my_memcpy("\x0a\x00\x00\x00", champion.registers + (REG_SIZE * 2),
                                                                     REG_SIZE);
     my_memcpy("\x04\x00\x00\x00", vm.memory + 20, 2);

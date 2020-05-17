@@ -69,9 +69,9 @@ Test(instruction_st, success_2_eq)
     champion.registers = malloc(REG_SIZE * 2);
     if (!(champion.registers))
         cr_assert(0);
-    my_memcpy("\x09\x00\x00\x00", champion.registers + REG_SIZE, REG_SIZE);
+    my_memcpy("\x00\x00\x00\x0a", champion.registers + REG_SIZE, REG_SIZE);
     my_memcpy("\x03\x70\x01\x00\x05", vm.memory, 5);
     if (instruction_st(&vm, &champion) == 84)
         cr_assert(0);
-    cr_assert(*(int *)(vm.memory + 5) == 9);
+    cr_assert(*(int *)(vm.memory + 5) == 10);
 }
