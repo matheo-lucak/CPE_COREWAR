@@ -30,8 +30,6 @@ int loop(vm_t *vm)
         if (cycle == vm->nbr_cycle_dump &&
             dump_memory(vm->memory) == 84)
             return 84;
-        if (cycle == 945)
-            cycle = 945;
         if (execute_instructions(vm) == 84)
             return 84;
         if (check_live_champions(vm) == 84)
