@@ -20,11 +20,7 @@ int instruction_zjmp(vm_t *vm, champion_t *champion)
     if (copy_memory_n_bytes(vm->memory, &tmp_pc, &index, 2) == 84)
         return 84;
     index %= IDX_MOD;
-    if (champion->carry == true) {
-        champion->pc += index;
-        champion->pc %= MEM_SIZE;
-        if (champion->pc < 0)
-            champion->pc += MEM_SIZE;
-    }
+    if (champion->carry == true)
+        champion->pc = increment_pc(champion->pc, index);
     return 0;
 }

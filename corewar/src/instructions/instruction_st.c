@@ -23,7 +23,7 @@ static int write_value(vm_t *vm, champion_t *champion, size_t *values,
                                 REG_SIZE * params.values[1], REG_SIZE) == 84)
             return 84;
     } else {
-        index = (params.values[1] % IDX_MOD + champion->pc) % MEM_SIZE;
+        index = increment_pc(champion->pc, params.values[1] % IDX_MOD);
         if (write_memory_n_bytes(vm->memory, (int *)&index,
                 &values[0], REG_SIZE) == 84)
             return 84;
@@ -39,8 +39,7 @@ int instruction_st(vm_t *vm, champion_t *champion)
 
     if (!vm || !champion)
         return 84;
-    tmp_pc = champion->pc + 1;
-    tmp_pc %= MEM_SIZE;
+    tmp_pc = increment_pc(champion->pc, 1);
     if (get_instruction_params(vm->memory, &tmp_pc, &params, i_st) == 84 ||
         get_ops_params_values(&params, vm->memory, champion, values) == 84)
         return 84;

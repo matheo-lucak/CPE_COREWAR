@@ -14,13 +14,13 @@
 int instruction_lldi(vm_t *vm, champion_t *champion)
 {
     instr_params_t params = {0};
-    size_t values[2] = {0};
-    size_t tmp_pc = 0;
-    size_t index = 0;
+    ssize_t values[2] = {0};
+    ssize_t tmp_pc = 0;
+    ssize_t index = 0;
 
     if (!vm || !champion)
         return 84;
-    tmp_pc = (champion->pc + 1) % MEM_SIZE;
+    tmp_pc = increment_pc(champion->pc, 1);
     if (get_instruction_params(vm->memory, (int *)&tmp_pc,
             &params, i_ldi) == 84 ||
             get_ops_params_values(&params, vm->memory, champion, values) == 84)
