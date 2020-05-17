@@ -60,6 +60,7 @@ int execute_instructions(vm_t *vm, map_formatter_t *map)
             return 84;
         if (update_memory_3d(vm, map, &vm->champions[i]) == 84)
             return 84;
+        my_memcpy(vm->memory, vm->memory_dup, MEM_SIZE);
         --vm->champions[i].cycles_left;
     }
     return 0;
