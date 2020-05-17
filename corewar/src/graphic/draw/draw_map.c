@@ -7,17 +7,18 @@
 
 #include "graphic.h"
 
-static void tile_change_color(sfVertexArray *tile)
+static void tile_change_color(sfVertexArray *tile, bool is_live)
 {
     register size_t size = sfVertexArray_getVertexCount(tile);
     register size_t index = 0;
     sfVertex *vertex = NULL;
+    sfColor color = is_live ? sfBlack : sfWhite;
 
     for (index = 0; index < size; index++) {
         vertex = sfVertexArray_getVertex(tile, index);
         if (!vertex)
             break;
-        vertex->color = sfWhite;
+        vertex->color = color;
     }
 }
 
@@ -32,7 +33,7 @@ static void draw_tile(win_settings_t *sets, tile_t tile)
         sfRenderWindow_drawVertexArray(sets->window, tile.tile[side], NULL);
     }
     for (side = 0; side < 3; side += 1) {
-        tile_change_color(tile.tile[side]);
+        tile_change_color(tile.tile[side], tile.is_live);
         sfVertexArray_setPrimitiveType(tile.tile[side], sfLineStrip);
         sfRenderWindow_drawVertexArray(sets->window, tile.tile[side], NULL);
     }

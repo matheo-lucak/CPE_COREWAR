@@ -7,11 +7,13 @@
 
 #include "vm.h"
 #include "setup.h"
+#include "my.h"
 
 int init_vm(vm_t *vm, setup_t *setup)
 {
     if (!vm || !setup)
         return 84;
+    my_memset(vm, sizeof(vm_t), 0);
     vm->cycle_to_die = CYCLE_TO_DIE;
     vm->count_live = 0;
     vm->nbr_cycle_dump = setup->nbr_cycle_dump;
