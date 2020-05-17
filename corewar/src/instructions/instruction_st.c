@@ -18,11 +18,12 @@ static int write_value(vm_t *vm, champion_t *champion, ssize_t *values,
 
     if (!vm || !champion || !values)
         return 84;
-    if (params.types[1] == 1) {
-        if (my_memcpy(&values[0], champion->registers +
-                                REG_SIZE * params.values[1], REG_SIZE) == 84)
-            return 84;
-    } else {
+    if (params.types[1] == 1 &&
+        (params.values[1] <= REG_NUMBER &&
+        my_memcpy(&values[0], champion->registers + REG_SIZE * params
+        .values[1], REG_SIZE) == 84))
+        return 84;
+    else if (params.types[1] != 1) {
         index = increment_pc(champion->pc, params.values[1] % IDX_MOD);
         if (write_memory_n_bytes(vm->memory, (int *)&index,
                 &values[0], REG_SIZE) == 84)

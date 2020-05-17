@@ -23,7 +23,8 @@ int instruction_lld(vm_t *vm, champion_t *champion)
         return 84;
     if (get_logicals_params_values(&params, vm->memory, champion, values) == 84)
         return 84;
-    if (my_memcpy(&values[0],
+    if (params.values[1] <= REG_NUMBER &&
+        my_memcpy(&values[0],
             champion->registers + REG_SIZE * params.values[1],
             REG_SIZE) == 84)
         return 84;

@@ -26,7 +26,8 @@ int instruction_sub(vm_t *vm, champion_t *champion)
     if (get_ldi_params_values(&params, vm->memory, champion, values) == 84)
         return 84;
     result = values[0] - values[1];
-    if (my_memcpy(&result,
+    if (params.values[2] <= REG_NUMBER &&
+        my_memcpy(&result,
             champion->registers + REG_SIZE * (params.values[2]),
             REG_SIZE) == 84)
         return 84;
