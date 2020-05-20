@@ -60,7 +60,7 @@ int instruction_live(vm_t *vm, champion_t *champion)
     if (!vm || !champion)
         return 84;
     champion->pc = increment_pc(champion->pc, 1);
-    if (my_memcpy(&vm->memory[champion->pc], &id, 4) == 84)
+    if (copy_memory_n_bytes(vm->memory, &champion->pc, &id, 4) == 84)
         return 84;
     if (get_live_champion(vm->champions, vm->nbr_champions, &live, id) == 84)
         return 84;
@@ -68,6 +68,5 @@ int instruction_live(vm_t *vm, champion_t *champion)
         return 84;
     ++vm->count_live;
     vm->last_live = champion->id;
-    champion->pc = increment_pc(champion->pc, 4);
     return 0;
 }
